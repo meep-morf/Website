@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions - NomadLabz</title>
+    <link rel="icon" type="image/svg+xml" href="./Images/NomadLabz.svg">
+    <link rel="icon" type="image/png" href="./Images/NomadLabz.png">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .solution-card {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+        }
+        .solution-card:hover {
+            background-color: var(--card-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
+        .solution-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .solution-icon {
+            font-size: 4rem;
+            filter: grayscale(0.3);
+        }
+        .solution-title {
+            font-size: 2rem;
+            margin: 0;
+        }
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .solution-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .solution-section p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+        .solution-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .solution-list li {
+            color: var(--text-secondary);
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.7;
+        }
+        .solution-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-purple);
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .solution-content {
+                grid-template-columns: 1fr;
+            }
+            .solution-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="./index.html" class="logo-brand">
+                    <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                    <span class="brand-text">Nomad Labz</span>
+                </a>
+                <nav class="nav">
+                    <a href="./index.html" class="nav-link">Home</a>
+                    <a href="./about.html" class="nav-link">About</a>
+                    <a href="./services.html" class="nav-link">Services</a>
+                    <a href="./solutions.html" class="nav-link">Solutions</a>
+                    <a href="./portfolio.html" class="nav-link">Portfolio</a>
+                    <a href="./contact.html" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-headline">Industry Solutions</h1>
+                <p class="hero-subheading">Tailored software solutions designed to address the unique challenges and opportunities in your industry. We understand that each sector has specific needs, and we build accordingly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Solutions Overview -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Solutions by Industry</h2>
+            <div class="services-grid">
+                <div class="service-card service-card-green">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Startups</h3>
+                    <p class="service-description">Rapid development and scalable architecture to help startups launch quickly and grow efficiently.</p>
+                </div>
+                <div class="service-card service-card-purple">
+                    <div class="service-icon">🏢</div>
+                    <h3 class="service-title">Enterprises</h3>
+                    <p class="service-description">Enterprise-grade solutions for complex organizations requiring robust, scalable systems.</p>
+                </div>
+                <div class="service-card service-card-green">
+                    <div class="service-icon">🛒</div>
+                    <h3 class="service-title">E-commerce</h3>
+                    <p class="service-description">Complete e-commerce platforms with AI-powered features and seamless payment processing.</p>
+                </div>
+                <div class="service-card service-card-purple">
+                    <div class="service-icon">🎓</div>
+                    <h3 class="service-title">Education</h3>
+                    <p class="service-description">Learning management systems and educational tools that enhance teaching and learning.</p>
+                </div>
+                <div class="service-card service-card-green">
+                    <div class="service-icon">🏥</div>
+                    <h3 class="service-title">Healthcare</h3>
+                    <p class="service-description">Secure, compliant healthcare solutions including patient portals and telemedicine platforms.</p>
+                </div>
+                <div class="service-card service-card-purple">
+                    <div class="service-icon">💰</div>
+                    <h3 class="service-title">Financial Services</h3>
+                    <p class="service-description">Secure fintech solutions with compliance, automation, and advanced analytics capabilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Detailed Solutions -->
+    <section class="services" style="padding-top: 3rem;">
+        <div class="container">
+            <!-- Startups -->
+            <div class="solution-card">
+                <div class="solution-header">
+                    <div class="solution-icon">🚀</div>
+                    <h2 class="solution-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Startups</h2>
+                </div>
+                <div class="solution-content">
+                    <div class="solution-section">
+                        <h4>Pain Points</h4>
+                        <p>Startups face unique challenges: limited budgets, rapid growth needs, and the pressure to prove market fit quickly. Common struggles include:</p>
+                        <ul class="solution-list">
+                            <li>Need to launch fast with limited resources</li>
+                            <li>Scaling infrastructure as user base grows</li>
+                            <li>Building MVP quickly without technical debt</li>
+                            <li>Attracting investors with a working product</li>
+                            <li>Competing with established players</li>
+                        </ul>
+                    </div>
+                    <div class="solution-section">
+                        <h4>How Nomad Labz Helps</h4>
+                        <p>We specialize in rapid MVP development and scalable architecture that grows with your startup. Our approach includes:</p>
+                        <ul class="solution-list">
+                            <li>Lean development process for faster time-to-market</li>
+                            <li>Cloud-native architecture that scales automatically</li>
+                            <li>AI-powered features that differentiate your product</li>
+                            <li>Cost-effective solutions that maximize budget impact</li>
+                            <li>Technical foundation built for future growth</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprises -->
+            <div class="solution-card">
+                <div class="solution-header">
+                    <div class="solution-icon">🏢</div>
+                    <h2 class="solution-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Enterprises</h2>
+                </div>
+                <div class="solution-content">
+                    <div class="solution-section">
+                        <h4>Pain Points</h4>
+                        <p>Large organizations grapple with legacy systems, complex integrations, and the need to modernize without disrupting operations. Key challenges include:</p>
+                        <ul class="solution-list">
+                            <li>Outdated legacy systems that limit innovation</li>
+                            <li>Complex integrations across multiple departments</li>
+                            <li>Security and compliance requirements</li>
+                            <li>Need for digital transformation without disruption</li>
+                            <li>Managing large-scale deployments</li>
+                        </ul>
+                    </div>
+                    <div class="solution-section">
+                        <h4>How Nomad Labz Helps</h4>
+                        <p>We design enterprise-grade solutions that integrate seamlessly with existing infrastructure while modernizing capabilities:</p>
+                        <ul class="solution-list">
+                            <li>Phased migration strategies that minimize risk</li>
+                            <li>Robust architecture designed for scale and reliability</li>
+                            <li>Security-first approach meeting compliance standards</li>
+                            <li>API-driven integration with legacy systems</li>
+                            <li>Dedicated support and maintenance services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-commerce -->
+            <div class="solution-card">
+                <div class="solution-header">
+                    <div class="solution-icon">🛒</div>
+                    <h2 class="solution-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">E-commerce</h2>
+                </div>
+                <div class="solution-content">
+                    <div class="solution-section">
+                        <h4>Pain Points</h4>
+                        <p>E-commerce businesses struggle with cart abandonment, inventory management, personalization, and providing exceptional customer experiences. Common issues include:</p>
+                        <ul class="solution-list">
+                            <li>High cart abandonment rates</li>
+                            <li>Complex inventory and order management</li>
+                            <li>Limited personalization capabilities</li>
+                            <li>Payment and checkout friction</li>
+                            <li>Mobile experience gaps</li>
+                        </ul>
+                    </div>
+                    <div class="solution-section">
+                        <h4>How Nomad Labz Helps</h4>
+                        <p>We build complete e-commerce platforms with AI-powered recommendations and seamless user experiences:</p>
+                        <ul class="solution-list">
+                            <li>AI-driven product recommendations and personalization</li>
+                            <li>Streamlined checkout processes reducing abandonment</li>
+                            <li>Real-time inventory management systems</li>
+                            <li>Mobile-first responsive design</li>
+                            <li>Integrated payment and shipping solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="solution-card">
+                <div class="solution-header">
+                    <div class="solution-icon">🎓</div>
+                    <h2 class="solution-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Education</h2>
+                </div>
+                <div class="solution-content">
+                    <div class="solution-section">
+                        <h4>Pain Points</h4>
+                        <p>Educational institutions need to deliver engaging learning experiences while managing administration efficiently. Key challenges include:</p>
+                        <ul class="solution-list">
+                            <li>Engaging students in remote and hybrid learning</li>
+                            <li>Managing complex administrative workflows</li>
+                            <li>Tracking student progress and outcomes</li>
+                            <li>Limited accessibility and inclusivity features</li>
+                            <li>Integration with existing educational tools</li>
+                        </ul>
+                    </div>
+                    <div class="solution-section">
+                        <h4>How Nomad Labz Helps</h4>
+                        <p>We create learning management systems and educational tools that enhance both teaching and learning:</p>
+                        <ul class="solution-list">
+                            <li>Interactive learning platforms with AI-powered insights</li>
+                            <li>Student portals with progress tracking</li>
+                            <li>Administrative automation reducing manual work</li>
+                            <li>Accessible design meeting diverse learning needs</li>
+                            <li>Integration with popular educational software</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Healthcare -->
+            <div class="solution-card">
+                <div class="solution-header">
+                    <div class="solution-icon">🏥</div>
+                    <h2 class="solution-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Healthcare</h2>
+                </div>
+                <div class="solution-content">
+                    <div class="solution-section">
+                        <h4>Pain Points</h4>
+                        <p>Healthcare providers face unique challenges around patient privacy, regulatory compliance, and improving care delivery. Common struggles include:</p>
+                        <ul class="solution-list">
+                            <li>Patient data security and HIPAA compliance</li>
+                            <li>Fragmented patient information across systems</li>
+                            <li>Limited telemedicine capabilities</li>
+                            <li>Inefficient appointment scheduling and management</li>
+                            <li>Difficulty accessing patient records quickly</li>
+                        </ul>
+                    </div>
+                    <div class="solution-section">
+                        <h4>How Nomad Labz Helps</h4>
+                        <p>We build secure, compliant healthcare solutions prioritizing privacy and usability:</p>
+                        <ul class="solution-list">
+                            <li>HIPAA-compliant patient portals and systems</li>
+                            <li>Secure telemedicine platforms for remote care</li>
+                            <li>Integrated electronic health record (EHR) systems</li>
+                            <li>Automated appointment scheduling and reminders</li>
+                            <li>Encrypted data storage and transmission</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Services -->
+            <div class="solution-card">
+                <div class="solution-header">
+                    <div class="solution-icon">💰</div>
+                    <h2 class="solution-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Financial Services</h2>
+                </div>
+                <div class="solution-content">
+                    <div class="solution-section">
+                        <h4>Pain Points</h4>
+                        <p>Financial institutions must balance security, compliance, and user experience while modernizing outdated systems. Key challenges include:</p>
+                        <ul class="solution-list">
+                            <li>Regulatory compliance (PCI-DSS, GDPR, SOX)</li>
+                            <li>Fraud detection and prevention</li>
+                            <li>Real-time transaction processing</li>
+                            <li>Legacy system integration and modernization</li>
+                            <li>Customer experience expectations</li>
+                        </ul>
+                    </div>
+                    <div class="solution-section">
+                        <h4>How Nomad Labz Helps</h4>
+                        <p>We develop secure fintech solutions with compliance, automation, and advanced analytics:</p>
+                        <ul class="solution-list">
+                            <li>Compliance-first architecture meeting regulatory standards</li>
+                            <li>AI-powered fraud detection and prevention systems</li>
+                            <li>Real-time transaction processing infrastructure</li>
+                            <li>Secure API integrations with banking systems</li>
+                            <li>Modern user interfaces improving customer experience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Call-to-Action Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Not Seeing Your Industry?</h2>
+                <p class="cta-text">We work across diverse sectors and have experience solving unique industry challenges. Let's discuss how we can create a custom solution tailored to your specific industry needs and business goals.</p>
+                <a href="./contact.html" class="btn btn-primary btn-large">Discuss Your Needs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo-brand">
+                        <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                        <span class="footer-brand-text">Nomad Labz</span>
+                    </div>
+                    <p class="footer-description">Premium software solutions powered by AI and modern engineering practices. Transforming businesses through intelligent automation and cutting-edge technology.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="./index.html" class="footer-link">Home</a>
+                        <a href="./about.html" class="footer-link">About</a>
+                        <a href="./services.html" class="footer-link">Services</a>
+                        <a href="./solutions.html" class="footer-link">Solutions</a>
+                        <a href="./portfolio.html" class="footer-link">Portfolio</a>
+                        <a href="./contact.html" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Services</h4>
+                    <div class="footer-links">
+                        <a href="./services.html#ai-automations" class="footer-link">AI Automations</a>
+                        <a href="./services.html#web-applications" class="footer-link">Web Applications</a>
+                        <a href="./services.html#mobile-apps" class="footer-link">Mobile Apps</a>
+                        <a href="./services.html#api-integrations" class="footer-link">API Integrations</a>
+                        <a href="./services.html#cloud-deployment" class="footer-link">Cloud & Deployment</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Get Started</h4>
+                    <p class="footer-cta-text">Ready to transform your business?</p>
+                    <a href="./contact.html" class="btn btn-footer">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2024 NomadLabz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./main.js" defer></script>
+</body>
+</html>

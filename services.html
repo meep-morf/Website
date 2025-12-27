@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - NomadLabz</title>
+    <link rel="icon" type="image/svg+xml" href="./Images/NomadLabz.svg">
+    <link rel="icon" type="image/png" href="./Images/NomadLabz.png">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .service-detail-section {
+            margin-bottom: 6rem;
+        }
+        .service-detail-card {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 3rem;
+        }
+        .service-detail-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .service-detail-icon {
+            font-size: 4rem;
+            filter: grayscale(0.3);
+        }
+        .service-detail-title {
+            font-size: 2rem;
+            margin: 0;
+        }
+        .service-detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .detail-block h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .detail-block p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .detail-list {
+            list-style: none;
+            padding: 0;
+        }
+        .detail-list li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .detail-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .service-detail-content {
+                grid-template-columns: 1fr;
+            }
+            .service-detail-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="./index.html" class="logo-brand">
+                    <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                    <span class="brand-text">Nomad Labz</span>
+                </a>
+                <nav class="nav">
+                    <a href="./index.html" class="nav-link">Home</a>
+                    <a href="./about.html" class="nav-link">About</a>
+                    <a href="./services.html" class="nav-link">Services</a>
+                    <a href="./solutions.html" class="nav-link">Solutions</a>
+                    <a href="./portfolio.html" class="nav-link">Portfolio</a>
+                    <a href="./contact.html" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-headline">Our Services</h1>
+                <p class="hero-subheading">Comprehensive software solutions tailored to your business needs, powered by AI and modern engineering practices. Each service is designed to solve specific challenges and deliver measurable results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Services Overview -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Service Overview</h2>
+            <div class="services-grid">
+                <div class="service-card service-card-green">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="service-title">AI Automations</h3>
+                    <p class="service-description">Intelligent automation solutions that streamline workflows and enhance productivity.</p>
+                </div>
+                <div class="service-card service-card-purple">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Web Applications</h3>
+                    <p class="service-description">Modern, responsive web applications built with cutting-edge technologies.</p>
+                </div>
+                <div class="service-card service-card-green">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title">Mobile Apps</h3>
+                    <p class="service-description">Native and cross-platform mobile applications for iOS and Android.</p>
+                </div>
+                <div class="service-card service-card-purple">
+                    <div class="service-icon">🔗</div>
+                    <h3 class="service-title">API Integrations</h3>
+                    <p class="service-description">Seamless integrations connecting your systems with third-party services.</p>
+                </div>
+                <div class="service-card service-card-green">
+                    <div class="service-icon">☁️</div>
+                    <h3 class="service-title">Cloud & Deployment</h3>
+                    <p class="service-description">Scalable cloud infrastructure and deployment solutions for your applications.</p>
+                </div>
+                <div class="service-card service-card-purple">
+                    <div class="service-icon">🔒</div>
+                    <h3 class="service-title">Consulting & Strategy</h3>
+                    <p class="service-description">Expert guidance on technology strategy, architecture decisions, and digital transformation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Detailed Services -->
+    <section class="services" style="padding-top: 3rem;">
+        <div class="container">
+            <!-- AI Automations -->
+            <div class="service-detail-section" id="ai-automations">
+                <div class="service-detail-card">
+                    <div class="service-detail-header">
+                        <div class="service-detail-icon">🤖</div>
+                        <h2 class="service-detail-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">AI Automations</h2>
+                    </div>
+                    <div class="service-detail-content">
+                        <div class="detail-block">
+                            <h4>What We Build</h4>
+                            <p>We develop custom AI systems that learn from your processes and continuously improve efficiency. From intelligent chatbots and virtual assistants to predictive analytics and automated decision-making systems, our AI solutions transform how your business operates.</p>
+                            <ul class="detail-list">
+                                <li>Intelligent chatbots and customer service automation</li>
+                                <li>Predictive analytics and forecasting systems</li>
+                                <li>Process automation workflows</li>
+                                <li>Machine learning models for data insights</li>
+                                <li>Natural language processing applications</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Problems We Solve</h4>
+                            <p>Manual processes consume time and resources, human error causes costly mistakes, and decision-making lacks data-driven insights. Our AI automations eliminate repetitive tasks, reduce errors, and enable smarter, faster decisions.</p>
+                            <h4 style="margin-top: 2rem;">Who It's For</h4>
+                            <p>Businesses of all sizes that want to automate routine tasks, improve accuracy, and leverage data for competitive advantage. Particularly valuable for companies with high-volume operations, customer service needs, or data-intensive processes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Applications -->
+            <div class="service-detail-section" id="web-applications">
+                <div class="service-detail-card">
+                    <div class="service-detail-header">
+                        <div class="service-detail-icon">🌐</div>
+                        <h2 class="service-detail-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Web Applications</h2>
+                    </div>
+                    <div class="service-detail-content">
+                        <div class="detail-block">
+                            <h4>What We Build</h4>
+                            <p>Modern, responsive web applications built with cutting-edge technologies. We create scalable, secure, and user-friendly web solutions that perform flawlessly across all devices. From single-page applications to complex enterprise systems, we deliver excellence.</p>
+                            <ul class="detail-list">
+                                <li>Single-page applications (SPAs)</li>
+                                <li>Enterprise web platforms</li>
+                                <li>E-commerce and online stores</li>
+                                <li>Progressive web apps (PWAs)</li>
+                                <li>Admin dashboards and management systems</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Problems We Solve</h4>
+                            <p>Outdated websites that don't work on mobile, slow loading times that drive away users, security vulnerabilities that put data at risk, and systems that can't scale with business growth. We build modern, fast, secure, and scalable web solutions.</p>
+                            <h4 style="margin-top: 2rem;">Who It's For</h4>
+                            <p>Any business that needs a web presence, from startups building their first platform to enterprises modernizing legacy systems. Ideal for companies requiring customer-facing applications, internal tools, or complex business logic delivered through the web.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Apps -->
+            <div class="service-detail-section" id="mobile-apps">
+                <div class="service-detail-card">
+                    <div class="service-detail-header">
+                        <div class="service-detail-icon">📱</div>
+                        <h2 class="service-detail-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Mobile Apps</h2>
+                    </div>
+                    <div class="service-detail-content">
+                        <div class="detail-block">
+                            <h4>What We Build</h4>
+                            <p>Native and cross-platform mobile applications for iOS and Android. Our mobile solutions combine beautiful design with powerful functionality, ensuring your app stands out in the marketplace while providing exceptional user experiences.</p>
+                            <ul class="detail-list">
+                                <li>Native iOS and Android apps</li>
+                                <li>Cross-platform React Native applications</li>
+                                <li>Mobile-first business tools</li>
+                                <li>Consumer-facing mobile apps</li>
+                                <li>Mobile app maintenance and updates</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Problems We Solve</h4>
+                            <p>Limited mobile functionality, poor user experience on smaller screens, app store rejection issues, and the complexity of maintaining separate codebases for iOS and Android. We deliver polished, performant mobile apps that work seamlessly.</p>
+                            <h4 style="margin-top: 2rem;">Who It's For</h4>
+                            <p>Businesses that need to engage customers or employees through mobile devices. Perfect for companies looking to reach users on-the-go, provide mobile-specific features like location services or push notifications, or extend their brand into the mobile ecosystem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Integrations -->
+            <div class="service-detail-section" id="api-integrations">
+                <div class="service-detail-card">
+                    <div class="service-detail-header">
+                        <div class="service-detail-icon">🔗</div>
+                        <h2 class="service-detail-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">API Integrations</h2>
+                    </div>
+                    <div class="service-detail-content">
+                        <div class="detail-block">
+                            <h4>What We Build</h4>
+                            <p>Seamless integrations connecting your systems with third-party services. We design robust APIs and integrate existing platforms to create unified workflows, enabling your systems to communicate efficiently and share data securely.</p>
+                            <ul class="detail-list">
+                                <li>RESTful and GraphQL API development</li>
+                                <li>Third-party service integrations</li>
+                                <li>System-to-system data synchronization</li>
+                                <li>API documentation and developer portals</li>
+                                <li>Microservices architecture and integration</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Problems We Solve</h4>
+                            <p>Disconnected systems that don't communicate, manual data entry between platforms, inefficient workflows caused by siloed information, and the inability to leverage best-in-class tools due to integration challenges. We connect everything seamlessly.</p>
+                            <h4 style="margin-top: 2rem;">Who It's For</h4>
+                            <p>Organizations using multiple software systems that need to work together. Essential for businesses that want to automate data flow, eliminate duplicate entry, create unified customer experiences, or leverage specialized tools without switching platforms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud & Deployment -->
+            <div class="service-detail-section" id="cloud-deployment">
+                <div class="service-detail-card">
+                    <div class="service-detail-header">
+                        <div class="service-detail-icon">☁️</div>
+                        <h2 class="service-detail-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Cloud & Deployment</h2>
+                    </div>
+                    <div class="service-detail-content">
+                        <div class="detail-block">
+                            <h4>What We Build</h4>
+                            <p>Scalable cloud infrastructure and deployment solutions for your applications. We architect reliable, secure, and cost-effective cloud environments that grow with your business. From setup to monitoring, we handle every aspect of your cloud journey.</p>
+                            <ul class="detail-list">
+                                <li>Cloud architecture and infrastructure design</li>
+                                <li>CI/CD pipelines and automated deployments</li>
+                                <li>Container orchestration (Docker, Kubernetes)</li>
+                                <li>Serverless application deployment</li>
+                                <li>Monitoring, logging, and performance optimization</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Problems We Solve</h4>
+                            <p>Applications that crash under load, expensive infrastructure that sits idle, security vulnerabilities in deployment processes, and the complexity of managing servers. We build cloud solutions that scale automatically, optimize costs, and maintain high security.</p>
+                            <h4 style="margin-top: 2rem;">Who It's For</h4>
+                            <p>Any business deploying applications, from startups needing scalable infrastructure to enterprises migrating legacy systems. Critical for companies experiencing growth, needing high availability, or wanting to reduce infrastructure management overhead.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Call-to-Action Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Get Started?</h2>
+                <p class="cta-text">Let's discuss how our services can transform your business operations and drive innovation. Every project begins with understanding your unique challenges and goals.</p>
+                <a href="./contact.html" class="btn btn-primary btn-large">Contact Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo-brand">
+                        <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                        <span class="footer-brand-text">Nomad Labz</span>
+                    </div>
+                    <p class="footer-description">Premium software solutions powered by AI and modern engineering practices. Transforming businesses through intelligent automation and cutting-edge technology.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="./index.html" class="footer-link">Home</a>
+                        <a href="./about.html" class="footer-link">About</a>
+                        <a href="./services.html" class="footer-link">Services</a>
+                        <a href="./solutions.html" class="footer-link">Solutions</a>
+                        <a href="./portfolio.html" class="footer-link">Portfolio</a>
+                        <a href="./contact.html" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Services</h4>
+                    <div class="footer-links">
+                        <a href="./services.html#ai-automations" class="footer-link">AI Automations</a>
+                        <a href="./services.html#web-applications" class="footer-link">Web Applications</a>
+                        <a href="./services.html#mobile-apps" class="footer-link">Mobile Apps</a>
+                        <a href="./services.html#api-integrations" class="footer-link">API Integrations</a>
+                        <a href="./services.html#cloud-deployment" class="footer-link">Cloud & Deployment</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Get Started</h4>
+                    <p class="footer-cta-text">Ready to transform your business?</p>
+                    <a href="./contact.html" class="btn btn-footer">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2024 NomadLabz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./main.js" defer></script>
+</body>
+</html>
