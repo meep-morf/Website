@@ -2,14 +2,6 @@
   "name": "nomadlabz-website",
   "version": "1.0.0",
   "description": "Static website for NomadLabz - Deployable on Vercel",
-  "scripts": {
-    "dev": "echo 'Static site - no dev server needed'",
-    "build": "echo 'Static site - no build needed'",
-    "start": "echo 'Static site - deployed on Vercel'"
-  },
-  "engines": {
-    "node": ">=18.x"
-  },
   "private": true
 }
 
