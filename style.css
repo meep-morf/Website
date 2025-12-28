@@ -62,6 +62,7 @@ body {
     gap: 0.875rem;
     text-decoration: none;
     transition: opacity 0.3s ease;
+    background: transparent;
 }
 
 .logo-brand:hover {
@@ -72,6 +73,22 @@ body {
     height: 56px;
     width: auto;
     display: block;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    object-fit: contain;
+    mix-blend-mode: normal;
+    vertical-align: middle;
+}
+
+.logo-img[src=""],
+.logo-img:not([src]) {
+    display: none;
+}
+
+img[src=""],
+img:not([src]) {
+    opacity: 0;
 }
 
 .brand-text {
