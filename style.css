@@ -316,6 +316,16 @@ img:not([src]) {
     align-items: stretch;
 }
 
+/* Force single column on smaller tablets and below */
+@media (max-width: 900px) {
+    .services-grid,
+    .portfolio-grid,
+    .solution-content,
+    .service-detail-content {
+        grid-template-columns: 1fr !important;
+    }
+}
+
 .service-card {
     background-color: var(--card-bg);
     padding: 2.5rem 2rem;
@@ -605,15 +615,15 @@ h4 {
     }
 
     .header {
-        padding: 1.5rem 0;
+        padding: 1.25rem 0;
     }
 
     .logo-img {
-        height: 48px;
+        height: 44px;
     }
 
     .brand-text {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
     }
 
     .header-content {
@@ -673,28 +683,66 @@ h4 {
     }
 
     .hero {
-        padding: 5.5rem 0;
+        padding: 4rem 0 3.5rem;
+    }
+
+    .hero-headline {
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-subheading {
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 6vw, 2.5rem);
+        margin-bottom: 2.5rem;
     }
 
     .services {
-        padding: 4.5rem 0;
+        padding: 3.5rem 0;
     }
 
     .services-grid {
-        grid-template-columns: 1fr;
-        gap: 1.75rem;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
     }
 
     .service-card {
         min-height: auto;
+        padding: 2rem 1.5rem;
+    }
+
+    .service-title {
+        font-size: 1.35rem;
+        margin-bottom: 1rem;
+    }
+
+    .service-description {
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
 
     .cta {
-        padding: 5rem 0;
+        padding: 4rem 0;
+    }
+
+    .cta-title {
+        font-size: clamp(2rem, 6vw, 2.5rem);
+        margin-bottom: 1.25rem;
+    }
+
+    .cta-text {
+        font-size: clamp(1rem, 4vw, 1.1rem);
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
     }
     
     .footer {
-        padding: 5rem 0 2.5rem;
+        padding: 4rem 0 2rem;
     }
 
     .footer-content {
@@ -708,47 +756,164 @@ h4 {
     }
 
     .footer-logo-img {
-        height: 70px;
-    }
-
-    .footer-brand-text {
-        font-size: 1.65rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .btn {
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .nav-link {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.95rem;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .logo-img {
-        height: 44px;
-    }
-
-    .brand-text {
-        font-size: 1.2rem;
-    }
-
-    .footer-logo-img {
         height: 65px;
     }
 
     .footer-brand-text {
         font-size: 1.5rem;
+    }
+
+    .footer-description {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+
+    .btn {
+        text-align: center;
+        padding: 0.9rem 2rem;
+        font-size: 0.95rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .btn-large {
+        padding: 1rem 2.25rem;
+        font-size: 1rem;
+    }
+
+    /* Portfolio page mobile styles */
+    .portfolio-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+
+    .portfolio-card {
+        padding: 1.75rem 1.25rem;
+    }
+
+    /* Services page mobile styles */
+    .service-detail-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .service-detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .service-detail-title {
+        font-size: 1.75rem;
+    }
+
+    /* Solutions page mobile styles */
+    .solution-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+
+    /* Improve text readability on mobile */
+    p {
+        line-height: 1.75;
+    }
+
+    /* Override inline font sizes for better mobile readability */
+    .services p[style*="font-size"],
+    .cta p[style*="font-size"],
+    section p[style*="font-size: 1.1rem"],
+    section p[style*="font-size: 1.15rem"] {
+        font-size: clamp(0.95rem, 3vw, 1.1rem) !important;
+        padding: 0 0.5rem;
+    }
+
+    /* Better spacing for sections */
+    section {
+        scroll-margin-top: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .header {
+        padding: 1rem 0;
+    }
+
+    .nav-link {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .brand-text {
+        font-size: 1.15rem;
+    }
+
+    .hero {
+        padding: 3.5rem 0 3rem;
+    }
+
+    .hero-headline {
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-subheading {
+        margin-bottom: 1.75rem;
+        padding: 0;
+    }
+
+    .section-title {
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
+    }
+
+    .services {
+        padding: 3rem 0;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem;
+    }
+
+    .service-card {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .service-title {
+        font-size: 1.25rem;
+    }
+
+    .service-description {
+        font-size: 0.9rem;
+    }
+
+    .cta {
+        padding: 3.5rem 0;
+    }
+
+    .footer {
+        padding: 3.5rem 0 1.75rem;
+    }
+
+    .footer-logo-img {
+        height: 60px;
+    }
+
+    .footer-brand-text {
+        font-size: 1.4rem;
     }
 
     .logo-brand {
