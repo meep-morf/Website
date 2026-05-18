@@ -1,45 +1,22 @@
-/* Logo preloader — once per browser session */
-(function initPreloader() {
-    const STORAGE_KEY = 'nomadlabz_intro_seen';
+/* Preloader — backup only; inline script in HTML dismisses it first */
+(function initPreloaderBackup() {
     const preloader = document.getElementById('site-preloader');
-    const MIN_DISPLAY_MS = 2000;
-    const FADE_MS = 600;
-
-    /* Content always visible; preloader is overlay only */
-    document.body.classList.add('site-ready');
-    document.body.classList.remove('is-loading');
-
-    function hidePreloader() {
+    if (!preloader) {
         document.body.classList.remove('is-loading');
-        if (!preloader) return;
-        preloader.classList.add('preloader-hidden');
-        setTimeout(function() {
-            preloader.remove();
-        }, FADE_MS);
-    }
-
-    /* Failsafe — never leave preloader stuck */
-    setTimeout(hidePreloader, 3500);
-
-    if (!preloader || sessionStorage.getItem(STORAGE_KEY)) {
-        hidePreloader();
         return;
     }
 
-    sessionStorage.setItem(STORAGE_KEY, '1');
-    const startedAt = Date.now();
-
-    function startHide() {
-        const elapsed = Date.now() - startedAt;
-        const delay = Math.max(0, MIN_DISPLAY_MS - elapsed);
-        setTimeout(hidePreloader, delay);
+    function dismissPreloader() {
+        document.body.classList.remove('is-loading');
+        if (!preloader.parentNode) return;
+        preloader.classList.add('preloader-hidden');
+        setTimeout(function() {
+            if (preloader.parentNode) preloader.remove();
+        }, 500);
     }
 
-    if (document.readyState === 'complete') {
-        startHide();
-    } else {
-        window.addEventListener('load', startHide);
-    }
+    /* Hard failsafe if inline script did not run */
+    setTimeout(dismissPreloader, 4000);
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
