@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <a href="./index.html" class="logo-brand">
-                    <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="logo-img" loading="eager" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';" style="background: transparent;">
+                    <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="logo-img" loading="eager" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
                     <span class="brand-text">Nomad Labz</span>
                 </a>
                 <button class="menu-toggle" aria-label="Toggle menu">
@@ -34,162 +33,166 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero glow-bg">
         <div class="container">
             <div class="hero-content">
+                <span class="eyebrow">Case Studies</span>
                 <h1 class="hero-headline">Our Portfolio</h1>
-                <p class="hero-subheading">Real projects delivering real results. Explore how we've helped businesses transform their operations, improve efficiency, and achieve their goals through intelligent software solutions.</p>
+                <p class="hero-subheading">Real projects delivering real results. Explore how we've helped businesses transform operations, improve efficiency, and achieve ambitious goals through intelligent software.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="section-divider"></div>
 
-    <!-- Portfolio Section -->
     <section class="services">
         <div class="container">
-            <div class="portfolio-grid">
-                <!-- Project 1 - VYN Services -->
-                <div class="portfolio-card portfolio-card-green">
-                    <span class="portfolio-industry">Insurance & Registration Services</span>
-                    <h3 class="portfolio-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">VYN Insurance & Registration Services</h3>
-                    <div class="portfolio-section">
-                        <h4>The Challenge</h4>
-                        <p>A Los Angeles-based insurance and vehicle registration agency needed a modern, professional website to showcase their services, build trust with clients, and enable online appointment booking. They required a clean, accessible design that works across all devices.</p>
-                    </div>
-                    <div class="portfolio-section">
-                        <h4>What We Built</h4>
-                        <p>Developed a comprehensive, responsive website featuring service pages for auto insurance, home insurance, vehicle registration, title services, and business insurance. Implemented an appointment booking system, customer reviews section, bilingual support (EN/ES), and seamless navigation across all service areas.</p>
-                    </div>
-                    <div class="portfolio-outcome">
-                        <h4>Results</h4>
-                        <p>Created a professional online presence that enhances brand credibility and client trust. The website effectively communicates services, streamlines client engagement, and provides easy access to appointment booking. The agency saw increased online inquiries and improved conversion rates from website visitors to booked appointments.</p>
-                        <p class="portfolio-link"><a href="https://www.vynservices.com/" target="_blank" rel="noopener noreferrer">View Website →</a></p>
-                    </div>
-                </div>
+            <div class="section-header">
+                <span class="section-kicker">Selected Work</span>
+                <h2 class="section-title gradient-text">Client Success Stories</h2>
+                <p class="section-intro">Each project below represents a partnership built on clarity, craft, and measurable outcomes.</p>
+            </div>
 
-                <!-- Project 2 -->
-                <div class="portfolio-card portfolio-card-purple">
-                    <span class="portfolio-industry">Healthcare</span>
-                    <h3 class="portfolio-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Telemedicine Platform</h3>
-                    <div class="portfolio-section">
+            <div class="case-study-grid">
+                <!-- VYN -->
+                <article class="case-study-card case-study-card--green">
+                    <span class="portfolio-industry">Insurance &amp; Registration</span>
+                    <h2 class="case-study-title">VYN Insurance &amp; Registration Services</h2>
+                    <div class="case-study-block">
                         <h4>The Challenge</h4>
-                        <p>A healthcare network needed to expand access to care, especially for patients in remote areas. They required a secure, HIPAA-compliant platform for virtual consultations. Patients in rural communities were traveling long distances for routine appointments, and the network wanted to improve access while maintaining the highest standards of patient privacy and security.</p>
+                        <p>A Los Angeles-based insurance and vehicle registration agency needed a modern, professional website to showcase services, build trust, and enable online appointment booking across all devices.</p>
                     </div>
-                    <div class="portfolio-section">
-                        <h4>What We Built</h4>
-                        <p>Built a comprehensive telemedicine web application with video conferencing, appointment scheduling, secure messaging, and integration with their EHR system. Implemented end-to-end encryption and HIPAA compliance measures. The platform includes patient portals, provider dashboards, automated appointment reminders, prescription management, and seamless billing integration. All communication channels are encrypted, and the system maintains detailed audit logs for compliance.</p>
+                    <div class="case-study-block">
+                        <h4>Our Solution</h4>
+                        <p>We built a comprehensive responsive website with service pages for auto, home, and business insurance, vehicle registration, title services, appointment booking, customer reviews, and bilingual EN/ES support.</p>
                     </div>
-                    <div class="portfolio-outcome">
+                    <div class="case-study-results">
                         <h4>Results</h4>
-                        <p>Enabled 5,000+ virtual consultations in the first year, improving patient access and satisfaction. The platform reduced no-show rates by 25% and expanded the network's reach to underserved communities. Patient satisfaction scores increased substantially, and the network was able to serve patients who previously couldn't access care due to geographic barriers.</p>
+                        <p>Increased online inquiries and improved conversion from visitors to booked appointments. A professional presence that enhances brand credibility and streamlines client engagement.</p>
+                        <a href="https://www.vynservices.com/" target="_blank" rel="noopener noreferrer" class="portfolio-link-btn">View Live Site →</a>
                     </div>
-                </div>
+                </article>
 
-                <!-- Project 3 -->
-                <div class="portfolio-card portfolio-card-green">
+                <!-- Telemedicine -->
+                <article class="case-study-card case-study-card--purple">
+                    <span class="portfolio-industry badge--purple">Healthcare</span>
+                    <h2 class="case-study-title">Telemedicine Platform</h2>
+                    <div class="case-study-block">
+                        <h4>The Challenge</h4>
+                        <p>A healthcare network needed HIPAA-compliant virtual consultations to expand access—especially for patients in remote areas facing long travel for routine appointments.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h4>Our Solution</h4>
+                        <p>Full telemedicine web app with video conferencing, scheduling, secure messaging, EHR integration, patient portals, provider dashboards, and end-to-end encryption with audit logging.</p>
+                    </div>
+                    <div class="case-study-results">
+                        <h4>Results</h4>
+                        <p>5,000+ virtual consultations in year one, 25% fewer no-shows, and expanded reach to underserved communities with substantially higher patient satisfaction.</p>
+                    </div>
+                </article>
+
+                <!-- Banking -->
+                <article class="case-study-card case-study-card--green">
                     <span class="portfolio-industry">Financial Services</span>
-                    <h3 class="portfolio-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Mobile Banking App</h3>
-                    <div class="portfolio-section">
+                    <h2 class="case-study-title">Mobile Banking App</h2>
+                    <div class="case-study-block">
                         <h4>The Challenge</h4>
-                        <p>A regional bank's mobile app was outdated, slow, and losing users to competitors. They needed a modern, secure app that could handle complex transactions while providing an excellent user experience. The existing app had poor performance, limited functionality, and security concerns that were driving customers away.</p>
+                        <p>A regional bank's mobile app was outdated and losing users. They needed modern, secure native apps handling complex transactions with an exceptional user experience.</p>
                     </div>
-                    <div class="portfolio-section">
-                        <h4>What We Built</h4>
-                        <p>Developed a native iOS and Android mobile banking app with biometric authentication, real-time transaction processing, bill pay, mobile check deposit, and AI-powered fraud detection. Built with security as the foundation, implementing bank-level encryption, secure API communication, and comprehensive fraud prevention systems. The app features intuitive navigation, personalized dashboards, and seamless integration with their core banking systems.</p>
+                    <div class="case-study-block">
+                        <h4>Our Solution</h4>
+                        <p>Native iOS and Android apps with biometric auth, real-time transactions, bill pay, mobile check deposit, AI fraud detection, and bank-level encryption integrated with core banking systems.</p>
                     </div>
-                    <div class="portfolio-outcome">
+                    <div class="case-study-results">
                         <h4>Results</h4>
-                        <p>Increased mobile app usage by 150% within six months. User satisfaction scores improved significantly, and the app now processes over 100,000 transactions monthly with zero security incidents. Customer retention improved, and the bank gained a competitive advantage in digital banking services that sets them apart from competitors.</p>
+                        <p>150% increase in mobile usage within six months, 100,000+ monthly transactions, zero security incidents, and a competitive edge in digital banking.</p>
                     </div>
-                </div>
+                </article>
 
-                <!-- Project 4 -->
-                <div class="portfolio-card portfolio-card-green">
+                <!-- SaaS MVP -->
+                <article class="case-study-card case-study-card--green">
                     <span class="portfolio-industry">Startup</span>
-                    <h3 class="portfolio-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">SaaS Platform MVP</h3>
-                    <div class="portfolio-section">
+                    <h2 class="case-study-title">SaaS Platform MVP</h2>
+                    <div class="case-study-block">
                         <h4>The Challenge</h4>
-                        <p>A startup needed to launch their SaaS product quickly to validate market fit and secure funding. They required a scalable MVP that could grow with their user base without requiring a complete rebuild. Time-to-market was critical, but they couldn't sacrifice quality or scalability, needing a solution that could handle initial users while being architected for rapid growth.</p>
+                        <p>A startup needed to launch quickly to validate market fit and secure funding—a scalable MVP without sacrificing quality or future growth potential.</p>
                     </div>
-                    <div class="portfolio-section">
-                        <h4>What We Built</h4>
-                        <p>Developed a cloud-native SaaS platform with user authentication, subscription management, core features, and admin dashboard. Built with scalable architecture and modern tech stack, deployed on AWS with CI/CD pipelines. The platform includes multi-tenant architecture, automated billing, comprehensive analytics, API integrations, and a white-label solution that allows the startup to customize branding for enterprise clients.</p>
+                    <div class="case-study-block">
+                        <h4>Our Solution</h4>
+                        <p>Cloud-native SaaS with authentication, subscriptions, admin dashboard, multi-tenant architecture, automated billing, analytics, and AWS deployment with CI/CD pipelines.</p>
                     </div>
-                    <div class="portfolio-outcome">
+                    <div class="case-study-results">
                         <h4>Results</h4>
-                        <p>Launched the MVP in 12 weeks, acquired first 500 paying customers within 3 months, and secured Series A funding. The platform now handles 10,000+ active users with room to scale further. The startup successfully validated their product-market fit and is expanding to serve enterprise customers with the scalable foundation we built.</p>
+                        <p>MVP launched in 12 weeks, 500 paying customers in 3 months, Series A secured, and 10,000+ active users on a platform built to scale.</p>
                     </div>
-                </div>
+                </article>
 
-                <!-- Project 5 -->
-                <div class="portfolio-card portfolio-card-purple">
-                    <span class="portfolio-industry">Enterprise</span>
-                    <h3 class="portfolio-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">API Integration Hub</h3>
-                    <div class="portfolio-section">
+                <!-- API Hub -->
+                <article class="case-study-card case-study-card--purple">
+                    <span class="portfolio-industry badge--purple">Enterprise</span>
+                    <h2 class="case-study-title">API Integration Hub</h2>
+                    <div class="case-study-block">
                         <h4>The Challenge</h4>
-                        <p>A large enterprise had disconnected systems that required manual data entry between platforms. This created errors, delays, and inefficient workflows across multiple departments. Teams were spending countless hours transferring data between systems, leading to inconsistencies, duplicate work, and missed opportunities for real-time insights.</p>
+                        <p>Disconnected enterprise systems required manual data entry—creating errors, delays, and inefficient workflows across multiple departments.</p>
                     </div>
-                    <div class="portfolio-section">
-                        <h4>What We Built</h4>
-                        <p>Created a centralized API integration platform connecting CRM, ERP, inventory, accounting, and shipping systems. Built robust APIs, data transformation layers, and real-time synchronization with error handling and monitoring. The platform includes automated workflows, data validation, comprehensive logging, and a management dashboard for monitoring integration health and performance across all connected systems.</p>
+                    <div class="case-study-block">
+                        <h4>Our Solution</h4>
+                        <p>Centralized integration platform connecting CRM, ERP, inventory, accounting, and shipping with real-time sync, data transformation, error handling, and a health monitoring dashboard.</p>
                     </div>
-                    <div class="portfolio-outcome">
+                    <div class="case-study-results">
                         <h4>Results</h4>
-                        <p>Eliminated 40 hours of manual data entry per week across the organization. Data accuracy improved to 99.9%, and the unified system enabled faster decision-making with real-time visibility across departments. The integration reduced operational costs and enabled new capabilities including automated reporting and cross-system analytics that drive business insights.</p>
+                        <p>40 hours of manual entry eliminated weekly, 99.9% data accuracy, and real-time visibility enabling faster cross-department decision-making.</p>
                     </div>
-                </div>
+                </article>
 
-                <!-- Project 6 -->
-                <div class="portfolio-card portfolio-card-green">
+                <!-- LMS -->
+                <article class="case-study-card case-study-card--green">
                     <span class="portfolio-industry">Education</span>
-                    <h3 class="portfolio-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Learning Management System</h3>
-                    <div class="portfolio-section">
+                    <h2 class="case-study-title">Learning Management System</h2>
+                    <div class="case-study-block">
                         <h4>The Challenge</h4>
-                        <p>An educational institution needed a modern LMS to support hybrid learning. Their existing system was difficult to use, lacked mobile support, and couldn't provide meaningful analytics on student progress. Faculty struggled with complex interfaces, students couldn't access content on mobile devices, and administrators had no visibility into learning outcomes or engagement metrics.</p>
+                        <p>An institution needed a modern LMS for hybrid learning—the legacy system lacked mobile support and meaningful analytics on student progress.</p>
                     </div>
-                    <div class="portfolio-section">
-                        <h4>What We Built</h4>
-                        <p>Built a comprehensive learning management system with course creation tools, student portals, assignment submission, grading, video integration, discussion forums, and AI-powered analytics dashboards for educators. The platform features responsive design for all devices, accessibility compliance, automated grading for certain assignment types, and real-time collaboration tools that enhance both synchronous and asynchronous learning experiences.</p>
+                    <div class="case-study-block">
+                        <h4>Our Solution</h4>
+                        <p>Full LMS with course tools, student portals, assignments, grading, video integration, forums, AI analytics dashboards, and accessibility-compliant responsive design.</p>
                     </div>
-                    <div class="portfolio-outcome">
+                    <div class="case-study-results">
                         <h4>Results</h4>
-                        <p>Increased student engagement by 45% and improved course completion rates. Educators gained valuable insights through analytics, and the platform successfully supports both in-person and remote learning seamlessly. The institution saw improved student satisfaction scores and faculty reported significant time savings in administrative tasks that allowed them to focus more on teaching.</p>
+                        <p>45% higher student engagement, improved completion rates, and faculty time savings on administrative tasks—supporting in-person and remote learning seamlessly.</p>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="section-divider"></div>
 
-    <!-- Call-to-Action Section -->
-    <section class="cta">
+    <section class="cta glow-bg">
         <div class="container">
             <div class="cta-content">
+                <span class="eyebrow eyebrow--purple">Your Turn</span>
                 <h2 class="cta-title">Ready to Start Your Project?</h2>
-                <p class="cta-text">Every great project starts with a conversation. Let's discuss how we can help you achieve similar results for your business. We'd love to hear about your vision and explore how we can bring it to life.</p>
+                <p class="cta-text">Every great project starts with a conversation. Let's discuss how we can help you achieve similar results—we'd love to hear your vision.</p>
                 <a href="./contact.html" class="btn btn-primary btn-large">Get Started Today</a>
+                <p class="cta-email">
+                    <a href="mailto:projects@nomadlabz.com" class="contact-email-link">projects@nomadlabz.com</a>
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Section Divider -->
-    <div class="section-divider"></div>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo-brand">
-                        <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                        <div class="logo-mark">
+                            <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                        </div>
                         <span class="footer-brand-text">Nomad Labz</span>
                     </div>
-                    <p class="footer-description">Premium software solutions powered by AI and modern engineering practices. Transforming businesses through intelligent automation and cutting-edge technology.</p>
+                    <p class="footer-description">Premium software solutions powered by AI and modern engineering. Transforming businesses through intelligent automation.</p>
                     <p class="footer-email"><a href="mailto:projects@nomadlabz.com">projects@nomadlabz.com</a></p>
                 </div>
                 <div class="footer-column">
@@ -210,7 +213,7 @@
                         <a href="./services.html#web-applications" class="footer-link">Web Applications</a>
                         <a href="./services.html#mobile-apps" class="footer-link">Mobile Apps</a>
                         <a href="./services.html#api-integrations" class="footer-link">API Integrations</a>
-                        <a href="./services.html#cloud-deployment" class="footer-link">Cloud & Deployment</a>
+                        <a href="./services.html#cloud-deployment" class="footer-link">Cloud &amp; Deployment</a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -229,4 +232,3 @@
     <script src="./main.js" defer></script>
 </body>
 </html>
-

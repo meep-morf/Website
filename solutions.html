@@ -7,78 +7,6 @@
     <link rel="icon" type="image/svg+xml" href="./Images/NomadLabz.svg">
     <link rel="icon" type="image/png" href="./Images/NomadLabz.png">
     <link rel="stylesheet" href="./style.css">
-    <style>
-        .solution-card {
-            background-color: var(--card-bg);
-            padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            margin-bottom: 3rem;
-            transition: all 0.3s ease;
-        }
-        .solution-card:hover {
-            background-color: var(--card-hover);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-        }
-        .solution-header {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .solution-icon {
-            font-size: 4rem;
-            filter: grayscale(0.3);
-        }
-        .solution-title {
-            font-size: 2rem;
-            margin: 0;
-        }
-        .solution-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-        .solution-section h4 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        .solution-section p {
-            color: var(--text-secondary);
-            line-height: 1.9;
-            margin-bottom: 1.5rem;
-        }
-        .solution-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .solution-list li {
-            color: var(--text-secondary);
-            padding: 0.75rem 0;
-            padding-left: 2rem;
-            position: relative;
-            line-height: 1.7;
-        }
-        .solution-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent-purple);
-            font-weight: bold;
-        }
-        @media (max-width: 768px) {
-            .solution-content {
-                grid-template-columns: 1fr;
-            }
-            .solution-header {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
@@ -107,9 +35,10 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero glow-bg">
         <div class="container">
             <div class="hero-content">
+                <span class="eyebrow">Solutions</span>
                 <h1 class="hero-headline">Industry Solutions</h1>
                 <p class="hero-subheading">Tailored software solutions designed to address the unique challenges and opportunities in your industry. We understand that each sector has specific needs, and we build accordingly.</p>
             </div>
@@ -162,13 +91,13 @@
     <div class="section-divider"></div>
 
     <!-- Detailed Solutions -->
-    <section class="services" style="padding-top: 3rem;">
+    <section class="services services--detail">
         <div class="container">
             <!-- Startups -->
             <div class="solution-card">
                 <div class="solution-header">
                     <div class="solution-icon">🚀</div>
-                    <h2 class="solution-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Startups</h2>
+                    <h2 class="solution-title gradient-text">Startups</h2>
                 </div>
                 <div class="solution-content">
                     <div class="solution-section">
@@ -200,7 +129,7 @@
             <div class="solution-card">
                 <div class="solution-header">
                     <div class="solution-icon">🏢</div>
-                    <h2 class="solution-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Enterprises</h2>
+                    <h2 class="solution-title gradient-text--purple">Enterprises</h2>
                 </div>
                 <div class="solution-content">
                     <div class="solution-section">
@@ -232,7 +161,7 @@
             <div class="solution-card">
                 <div class="solution-header">
                     <div class="solution-icon">🛒</div>
-                    <h2 class="solution-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">E-commerce</h2>
+                    <h2 class="solution-title gradient-text">E-commerce</h2>
                 </div>
                 <div class="solution-content">
                     <div class="solution-section">
@@ -264,7 +193,7 @@
             <div class="solution-card">
                 <div class="solution-header">
                     <div class="solution-icon">🎓</div>
-                    <h2 class="solution-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Education</h2>
+                    <h2 class="solution-title gradient-text--purple">Education</h2>
                 </div>
                 <div class="solution-content">
                     <div class="solution-section">
@@ -296,7 +225,7 @@
             <div class="solution-card">
                 <div class="solution-header">
                     <div class="solution-icon">🏥</div>
-                    <h2 class="solution-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Healthcare</h2>
+                    <h2 class="solution-title gradient-text">Healthcare</h2>
                 </div>
                 <div class="solution-content">
                     <div class="solution-section">
@@ -328,7 +257,7 @@
             <div class="solution-card">
                 <div class="solution-header">
                     <div class="solution-icon">💰</div>
-                    <h2 class="solution-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Financial Services</h2>
+                    <h2 class="solution-title gradient-text--purple">Financial Services</h2>
                 </div>
                 <div class="solution-content">
                     <div class="solution-section">
@@ -381,10 +310,12 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo-brand">
-                        <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                        <div class="logo-mark">
+                            <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                        </div>
                         <span class="footer-brand-text">Nomad Labz</span>
                     </div>
-                    <p class="footer-description">Premium software solutions powered by AI and modern engineering practices. Transforming businesses through intelligent automation and cutting-edge technology.</p>
+                    <p class="footer-description">Premium software solutions powered by AI and modern engineering. Transforming businesses through intelligent automation.</p>
                     <p class="footer-email"><a href="mailto:projects@nomadlabz.com">projects@nomadlabz.com</a></p>
                 </div>
                 <div class="footer-column">
