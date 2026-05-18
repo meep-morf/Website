@@ -1994,15 +1994,17 @@ body.is-loading .site-content {
     gap: 2rem !important;
     row-gap: 2rem !important;
     column-gap: 2rem !important;
+    align-items: stretch !important;
 }
 
 .why-grid,
 .premium-grid.why-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.75rem !important;
     row-gap: 1.75rem !important;
     column-gap: 1.75rem !important;
     margin-bottom: 0.5rem;
+    align-items: stretch !important;
 }
 
 .card-icon {
@@ -2038,10 +2040,12 @@ body.is-loading .site-content {
     overflow: hidden;
 }
 
-/* Why Us — compact cards */
+/* Why Us — compact equal-height cards */
 .why-grid .glass-card.service-card {
-    min-height: unset;
+    height: 100%;
+    min-height: 200px;
     padding: 1.35rem 1.25rem;
+    box-sizing: border-box;
 }
 
 .why-grid .card-icon {
@@ -2170,13 +2174,14 @@ body.is-loading .site-content {
     color: var(--text-primary);
 }
 
-/* Featured work cards */
+/* Featured work cards — equal height */
 .featured-card {
     padding: 1.5rem 1.35rem;
     display: flex;
     flex-direction: column;
-    min-height: unset;
+    min-height: 300px;
     height: 100%;
+    box-sizing: border-box;
     position: relative;
 }
 
@@ -2209,11 +2214,19 @@ body.is-loading .site-content {
     font-size: 0.92rem;
     line-height: 1.7;
     flex-grow: 1;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
 }
 
-.featured-card .portfolio-link {
+.featured-card .portfolio-link,
+.featured-card .card-foot-spacer {
     margin-top: auto;
+    flex-shrink: 0;
+}
+
+.card-foot-spacer {
+    display: block;
+    min-height: 2.85rem;
+    width: 100%;
 }
 
 /* Portfolio / project links */
@@ -2342,11 +2355,17 @@ body.is-loading .site-content {
     display: none;
 }
 
+@media (max-width: 1199px) {
+    .why-grid,
+    .premium-grid.why-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
 @media (max-width: 1023px) {
     .premium-grid.services-grid,
     .services-grid,
-    .featured-grid,
-    .why-grid {
+    .featured-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 

@@ -16,8 +16,11 @@
         .hero-headline { color: #f0f0f2; }
         .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 720px; margin: 3rem auto 0; }
         .stat-card { padding: 1.25rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; background: rgba(28,28,36,0.8); text-align: center; }
-        .premium-grid, .premium-grid.services-grid, .premium-grid.featured-grid, .premium-grid.why-grid { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 1.75rem !important; row-gap: 1.75rem !important; column-gap: 1.75rem !important; align-items: start; }
-        .premium-grid.featured-grid { gap: 2rem !important; row-gap: 2rem !important; column-gap: 2rem !important; }
+        .premium-grid, .premium-grid.services-grid { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 1.75rem !important; row-gap: 1.75rem !important; column-gap: 1.75rem !important; }
+        .premium-grid.featured-grid { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 2rem !important; align-items: stretch !important; }
+        .premium-grid.why-grid { display: grid !important; grid-template-columns: repeat(4, 1fr); gap: 1.75rem !important; align-items: stretch !important; }
+        .featured-card, .why-grid .glass-card.service-card { height: 100%; display: flex; flex-direction: column; box-sizing: border-box; }
+        .featured-card { min-height: 300px; }
         .glass-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; background: rgba(24,24,30,0.85); padding: 2rem; }
         .process-section .process-timeline { display: flex; align-items: flex-start; justify-content: space-between; gap: 0; flex-wrap: nowrap; }
         .section-cta-wrap { margin-top: 3.5rem !important; padding-top: 1.25rem !important; }
@@ -219,11 +222,13 @@
                         <span class="pill badge--purple">Healthcare</span>
                         <h3 class="featured-title">Telemedicine Platform</h3>
                         <p class="featured-text">HIPAA-compliant virtual care—5,000+ consultations, 25% fewer no-shows, expanded rural access.</p>
+                        <span class="card-foot-spacer" aria-hidden="true"></span>
                     </article>
                     <article class="featured-card glass-card accent-green">
                         <span class="pill">Fintech</span>
                         <h3 class="featured-title">Mobile Banking App</h3>
                         <p class="featured-text">Biometric auth and AI fraud detection—150% more mobile usage, 100k+ monthly transactions.</p>
+                        <span class="card-foot-spacer" aria-hidden="true"></span>
                     </article>
                 </div>
                 <div class="section-cta-wrap">
@@ -237,20 +242,25 @@
                 <header class="section-header">
                     <span class="section-kicker">Why Us</span>
                     <h2 class="section-title gradient-text">Why Nomad Labz?</h2>
-                    <p class="section-intro">AI meets proven engineering—custom software built for your goals, not generic templates.</p>
+                    <p class="section-intro">AI meets proven engineering—with deep experience in business applications and custom software built for your goals.</p>
                 </header>
                 <div class="premium-grid why-grid">
                     <article class="glass-card service-card service-card-green">
                         <div class="card-icon">🏆</div>
                         <h3 class="card-title">Proven Expertise</h3>
-                        <p class="card-text">From startups to enterprises across diverse industries.</p>
+                        <p class="card-text">From startups to enterprises across insurance, healthcare, fintech, and more.</p>
                     </article>
                     <article class="glass-card service-card service-card-purple">
+                        <div class="card-icon">💼</div>
+                        <h3 class="card-title">Business Applications</h3>
+                        <p class="card-text">ERPs, CRMs, workflows, and internal tools that streamline how teams run day to day.</p>
+                    </article>
+                    <article class="glass-card service-card service-card-green">
                         <div class="card-icon">⚡</div>
                         <h3 class="card-title">Modern Stack</h3>
                         <p class="card-text">Scalable, maintainable, and future-proof technology.</p>
                     </article>
-                    <article class="glass-card service-card service-card-green">
+                    <article class="glass-card service-card service-card-purple">
                         <div class="card-icon">🤝</div>
                         <h3 class="card-title">Transparent Process</h3>
                         <p class="card-text">You're informed and involved at every step.</p>
