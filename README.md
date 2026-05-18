@@ -17,7 +17,7 @@ Static website for NomadLabz - Deployable on Vercel
 ├── portfolio.html
 ├── services.html
 ├── solutions.html
-├── style.css
+├── style.css (includes critical layout rules)
 └── vercel.json
 ```
 

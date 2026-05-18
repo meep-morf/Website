@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style id="critical-inline">
+html,body{margin:0;background:#08080a;color:#f0f0f2;font-family:system-ui,-apple-system,sans-serif}
+.site-content{opacity:1!important;visibility:visible!important}
+#site-preloader.preloader-hidden{display:none!important;opacity:0!important;visibility:hidden!important}
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - NomadLabz</title>
-    <link rel="icon" type="image/svg+xml" href="./Images/NomadLabz.svg">
-    <link rel="icon" type="image/png" href="./Images/NomadLabz.png">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./critical.css">
-
+    <link rel="icon" type="image/svg+xml" href="/Images/NomadLabz.svg">
+    <link rel="icon" type="image/png" href="/Images/NomadLabz.png">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body class="is-loading">
     <div id="site-preloader" aria-hidden="true">
         <div class="preloader-glow"></div>
-        <img src="./Images/NomadLabz.png" alt="Nomad Labz" class="preloader-logo" width="200" height="200" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+        <img src="/Images/NomadLabz.png" alt="Nomad Labz" class="preloader-logo" width="200" height="200" onerror="this.onerror=null; this.src='/Images/NomadLabz.png';">
     </div>
     <script>
     (function () {
@@ -35,8 +38,8 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="./index.html" class="logo-brand">
-                    <img src="./Images/NomadLabz.png" alt="NomadLabz" class="logo-img" width="48" height="48" loading="eager" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';" style="background: transparent;">
+                <a href="/" class="logo-brand">
+                    <img src="/Images/NomadLabz.png" alt="NomadLabz" class="logo-img" width="48" height="48" loading="eager" onerror="this.onerror=null; this.src='/Images/NomadLabz.png';" style="background: transparent;">
                     <span class="brand-text">Nomad Labz</span>
                 </a>
                 <button class="menu-toggle" aria-label="Toggle menu">
@@ -45,12 +48,12 @@
                     <span></span>
                 </button>
                 <nav class="nav">
-                    <a href="./index.html" class="nav-link">Home</a>
-                    <a href="./about.html" class="nav-link">About</a>
-                    <a href="./services.html" class="nav-link">Services</a>
-                    <a href="./solutions.html" class="nav-link">Solutions</a>
-                    <a href="./portfolio.html" class="nav-link">Portfolio</a>
-                    <a href="./contact.html" class="nav-link">Contact</a>
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about" class="nav-link">About</a>
+                    <a href="/services" class="nav-link">Services</a>
+                    <a href="/solutions" class="nav-link">Solutions</a>
+                    <a href="/portfolio" class="nav-link">Portfolio</a>
+                    <a href="/contact" class="nav-link">Contact</a>
                 </nav>
             </div>
         </div>
@@ -270,8 +273,8 @@
             <h2 class="cta-title">Ready to Get Started?</h2>
             <p class="cta-text">Let's discuss how our services can transform your business operations and drive innovation.</p>
             <div class="hero-buttons">
-                <a href="./contact.html" class="btn btn-primary btn-large">Contact Us Today</a>
-                <a href="./portfolio.html" class="btn btn-secondary btn-large">View Our Work</a>
+                <a href="/contact" class="btn btn-primary btn-large">Contact Us Today</a>
+                <a href="/portfolio" class="btn btn-secondary btn-large">View Our Work</a>
             </div>
         </div>
     </div>
@@ -283,7 +286,7 @@
                     <div class="footer-brand">
                         <div class="footer-logo-brand">
                             <div class="logo-mark">
-                                <img src="./Images/NomadLabz.png" alt="NomadLabz" class="footer-logo-img" width="40" height="40" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                                <img src="/Images/NomadLabz.png" alt="NomadLabz" class="footer-logo-img" width="40" height="40" onerror="this.onerror=null; this.src='/Images/NomadLabz.png';">
                             </div>
                             <span class="footer-brand-text">Nomad Labz</span>
                         </div>
@@ -292,22 +295,22 @@
                     <div class="footer-column">
                         <h4 class="footer-title">Quick Links</h4>
                         <nav class="footer-links">
-                            <a href="./index.html" class="footer-link">Home</a>
-                            <a href="./about.html" class="footer-link">About</a>
-                            <a href="./services.html" class="footer-link">Services</a>
-                            <a href="./solutions.html" class="footer-link">Solutions</a>
-                            <a href="./portfolio.html" class="footer-link">Portfolio</a>
-                            <a href="./contact.html" class="footer-link">Contact</a>
+                            <a href="/" class="footer-link">Home</a>
+                            <a href="/about" class="footer-link">About</a>
+                            <a href="/services" class="footer-link">Services</a>
+                            <a href="/solutions" class="footer-link">Solutions</a>
+                            <a href="/portfolio" class="footer-link">Portfolio</a>
+                            <a href="/contact" class="footer-link">Contact</a>
                         </nav>
                     </div>
                     <div class="footer-column">
                         <h4 class="footer-title">Services</h4>
                         <nav class="footer-links">
-                            <a href="./services.html#ai-automations" class="footer-link">AI Automations</a>
-                            <a href="./services.html#web-applications" class="footer-link">Web Applications</a>
-                            <a href="./services.html#mobile-apps" class="footer-link">Mobile Apps</a>
-                            <a href="./services.html#api-integrations" class="footer-link">API Integrations</a>
-                            <a href="./services.html#cloud-deployment" class="footer-link">Cloud &amp; Deployment</a>
+                            <a href="/services#ai-automations" class="footer-link">AI Automations</a>
+                            <a href="/services#web-applications" class="footer-link">Web Applications</a>
+                            <a href="/services#mobile-apps" class="footer-link">Mobile Apps</a>
+                            <a href="/services#api-integrations" class="footer-link">API Integrations</a>
+                            <a href="/services#cloud-deployment" class="footer-link">Cloud &amp; Deployment</a>
                         </nav>
                     </div>
                     <div class="footer-column footer-column--cta">
@@ -316,7 +319,7 @@
                         <p class="footer-email">
                             <a href="mailto:projects@nomadlabz.com" class="footer-email-link">projects@nomadlabz.com</a>
                         </p>
-                        <a href="./contact.html" class="btn btn-footer">Contact Us</a>
+                        <a href="/contact" class="btn btn-footer">Contact Us</a>
                     </div>
                 </div>
                 <div class="footer-bottom">
@@ -327,6 +330,6 @@
 
     </main>
 
-    <script src="./main.js" defer></script>
+    <script src="/main.js" defer></script>
 </body>
 </html>

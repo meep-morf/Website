@@ -20,21 +20,24 @@
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
-    let currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    let currentPage = pathParts[pathParts.length - 1] || '';
 
-    if (currentPage === '' || currentPage === '/') {
-        currentPage = 'index.html';
+    if (currentPage === '' || currentPage === 'index.html') {
+        currentPage = 'index';
     }
     const currentPageNormalized = currentPage.replace(/\.html$/, '');
 
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(function(link) {
-        const linkPath = link.getAttribute('href').split('/').pop();
+        const href = link.getAttribute('href') || '';
+        let linkPath = href.split('/').filter(Boolean).pop() || '';
+        if (href === '/' || linkPath === '') {
+            linkPath = 'index';
+        }
         const linkPathNormalized = linkPath.replace(/\.html$/, '');
 
-        if (linkPathNormalized === currentPageNormalized ||
-            (currentPageNormalized === 'index' && linkPathNormalized === 'index') ||
-            (currentPage === '' && linkPath === 'index.html')) {
+        if (linkPathNormalized === currentPageNormalized) {
             link.classList.add('active');
         }
     });
