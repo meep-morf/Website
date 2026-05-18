@@ -1,90 +1,116 @@
-// Wait for DOM to be fully loaded
+/* Logo preloader — once per browser session */
+(function initPreloader() {
+    const STORAGE_KEY = 'nomadlabz_intro_seen';
+    const preloader = document.getElementById('site-preloader');
+    const MIN_DISPLAY_MS = 2000;
+    const FADE_MS = 600;
+
+    function revealSite() {
+        document.body.classList.remove('is-loading');
+        document.body.classList.add('site-ready');
+
+        if (!preloader) return;
+
+        preloader.classList.add('preloader-hidden');
+        setTimeout(function() {
+            preloader.remove();
+        }, FADE_MS);
+    }
+
+    if (!preloader || sessionStorage.getItem(STORAGE_KEY)) {
+        document.body.classList.remove('is-loading');
+        document.body.classList.add('site-ready');
+        if (preloader) preloader.remove();
+        return;
+    }
+
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    const startedAt = Date.now();
+
+    function startReveal() {
+        const elapsed = Date.now() - startedAt;
+        const delay = Math.max(0, MIN_DISPLAY_MS - elapsed);
+        setTimeout(revealSite, delay);
+    }
+
+    if (document.readyState === 'complete') {
+        startReveal();
+    } else {
+        window.addEventListener('load', startReveal);
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Set active nav link based on current page
-    // Handle both clean URLs (/about) and .html extensions (/about.html)
     let currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // Normalize: remove .html extension for comparison and handle root path
+
     if (currentPage === '' || currentPage === '/') {
         currentPage = 'index.html';
     }
     const currentPageNormalized = currentPage.replace(/\.html$/, '');
-    
+
     const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
+    navLinks.forEach(function(link) {
         const linkPath = link.getAttribute('href').split('/').pop();
         const linkPathNormalized = linkPath.replace(/\.html$/, '');
-        
-        // Match if normalized paths are the same, or if current page is root/index
-        if (linkPathNormalized === currentPageNormalized || 
+
+        if (linkPathNormalized === currentPageNormalized ||
             (currentPageNormalized === 'index' && linkPathNormalized === 'index') ||
             (currentPage === '' && linkPath === 'index.html')) {
             link.classList.add('active');
         }
     });
 
-    // Simple fade-in on scroll functionality
-    const observerOptions = {
-        threshold: 0.05,
-        rootMargin: '0px 0px -30px 0px'
-    };
-
     const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
-    }, observerOptions);
+    }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+    });
 
-    // Observe service cards for fade-in effect
-    const animatedCards = document.querySelectorAll('.service-card, .portfolio-card, .value-card, .case-study-card, .process-step, .info-card, .service-detail-card, .solution-card');
-    animatedCards.forEach(card => {
+    document.querySelectorAll(
+        '.glass-card, .service-card, .featured-card, .value-card, .case-study-card, .process-step, .info-card, .service-detail-card, .solution-card, .stat-card'
+    ).forEach(function(card) {
         card.classList.add('fade-in');
         observer.observe(card);
     });
 
-    // Smooth scroll for anchor links (if needed in future)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             if (href !== '#') {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }
         });
     });
 
-    // Mobile hamburger menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.nav');
-    
+
     if (menuToggle && nav) {
-        // Toggle menu on button click
         menuToggle.addEventListener('click', function() {
             menuToggle.classList.toggle('active');
             nav.classList.toggle('active');
         });
 
-        // Close menu when clicking on a nav link (mobile)
-        navLinks.forEach(link => {
+        navLinks.forEach(function(link) {
             link.addEventListener('click', function() {
                 menuToggle.classList.remove('active');
                 nav.classList.remove('active');
             });
         });
 
-        // Close menu when clicking outside (mobile)
         document.addEventListener('click', function(event) {
             const isClickInsideNav = nav.contains(event.target);
             const isClickOnToggle = menuToggle.contains(event.target);
-            
+
             if (!isClickInsideNav && !isClickOnToggle && nav.classList.contains('active')) {
                 menuToggle.classList.remove('active');
                 nav.classList.remove('active');
@@ -92,4 +118,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-

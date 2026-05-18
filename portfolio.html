@@ -8,8 +8,15 @@
     <link rel="icon" type="image/png" href="./Images/NomadLabz.png">
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
-    <header class="header">
+<body class="is-loading">
+    <div id="site-preloader" aria-hidden="true">
+        <div class="preloader-glow"></div>
+        <img src="./Images/NomadLabz.svg" alt="Nomad Labz" class="preloader-logo" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+    </div>
+
+    <main id="site-content" class="site-content">
+
+<header class="header">
         <div class="container">
             <div class="header-content">
                 <a href="./index.html" class="logo-brand">
@@ -55,7 +62,7 @@
 
             <div class="case-study-grid">
                 <!-- VYN -->
-                <article class="case-study-card case-study-card--green">
+                <article class="case-study-card glass-card case-study-card--green">
                     <span class="portfolio-industry">Insurance &amp; Registration</span>
                     <h2 class="case-study-title">VYN Insurance &amp; Registration Services</h2>
                     <div class="case-study-block">
@@ -63,18 +70,18 @@
                         <p>A Los Angeles-based insurance and vehicle registration agency needed a modern, professional website to showcase services, build trust, and enable online appointment booking across all devices.</p>
                     </div>
                     <div class="case-study-block">
-                        <h4>Our Solution</h4>
+                        <h4>What We Built</h4>
                         <p>We built a comprehensive responsive website with service pages for auto, home, and business insurance, vehicle registration, title services, appointment booking, customer reviews, and bilingual EN/ES support.</p>
                     </div>
                     <div class="case-study-results">
                         <h4>Results</h4>
                         <p>Increased online inquiries and improved conversion from visitors to booked appointments. A professional presence that enhances brand credibility and streamlines client engagement.</p>
-                        <a href="https://www.vynservices.com/" target="_blank" rel="noopener noreferrer" class="portfolio-link-btn">View Live Site →</a>
+                        <a href="https://www.vynservices.com/" target="_blank" rel="noopener noreferrer" class="portfolio-link">View Live Site →</a>
                     </div>
                 </article>
 
                 <!-- Telemedicine -->
-                <article class="case-study-card case-study-card--purple">
+                <article class="case-study-card glass-card case-study-card--purple">
                     <span class="portfolio-industry badge--purple">Healthcare</span>
                     <h2 class="case-study-title">Telemedicine Platform</h2>
                     <div class="case-study-block">
@@ -82,7 +89,7 @@
                         <p>A healthcare network needed HIPAA-compliant virtual consultations to expand access—especially for patients in remote areas facing long travel for routine appointments.</p>
                     </div>
                     <div class="case-study-block">
-                        <h4>Our Solution</h4>
+                        <h4>What We Built</h4>
                         <p>Full telemedicine web app with video conferencing, scheduling, secure messaging, EHR integration, patient portals, provider dashboards, and end-to-end encryption with audit logging.</p>
                     </div>
                     <div class="case-study-results">
@@ -92,7 +99,7 @@
                 </article>
 
                 <!-- Banking -->
-                <article class="case-study-card case-study-card--green">
+                <article class="case-study-card glass-card case-study-card--green">
                     <span class="portfolio-industry">Financial Services</span>
                     <h2 class="case-study-title">Mobile Banking App</h2>
                     <div class="case-study-block">
@@ -100,7 +107,7 @@
                         <p>A regional bank's mobile app was outdated and losing users. They needed modern, secure native apps handling complex transactions with an exceptional user experience.</p>
                     </div>
                     <div class="case-study-block">
-                        <h4>Our Solution</h4>
+                        <h4>What We Built</h4>
                         <p>Native iOS and Android apps with biometric auth, real-time transactions, bill pay, mobile check deposit, AI fraud detection, and bank-level encryption integrated with core banking systems.</p>
                     </div>
                     <div class="case-study-results">
@@ -110,7 +117,7 @@
                 </article>
 
                 <!-- SaaS MVP -->
-                <article class="case-study-card case-study-card--green">
+                <article class="case-study-card glass-card case-study-card--green">
                     <span class="portfolio-industry">Startup</span>
                     <h2 class="case-study-title">SaaS Platform MVP</h2>
                     <div class="case-study-block">
@@ -118,7 +125,7 @@
                         <p>A startup needed to launch quickly to validate market fit and secure funding—a scalable MVP without sacrificing quality or future growth potential.</p>
                     </div>
                     <div class="case-study-block">
-                        <h4>Our Solution</h4>
+                        <h4>What We Built</h4>
                         <p>Cloud-native SaaS with authentication, subscriptions, admin dashboard, multi-tenant architecture, automated billing, analytics, and AWS deployment with CI/CD pipelines.</p>
                     </div>
                     <div class="case-study-results">
@@ -128,7 +135,7 @@
                 </article>
 
                 <!-- API Hub -->
-                <article class="case-study-card case-study-card--purple">
+                <article class="case-study-card glass-card case-study-card--purple">
                     <span class="portfolio-industry badge--purple">Enterprise</span>
                     <h2 class="case-study-title">API Integration Hub</h2>
                     <div class="case-study-block">
@@ -136,7 +143,7 @@
                         <p>Disconnected enterprise systems required manual data entry—creating errors, delays, and inefficient workflows across multiple departments.</p>
                     </div>
                     <div class="case-study-block">
-                        <h4>Our Solution</h4>
+                        <h4>What We Built</h4>
                         <p>Centralized integration platform connecting CRM, ERP, inventory, accounting, and shipping with real-time sync, data transformation, error handling, and a health monitoring dashboard.</p>
                     </div>
                     <div class="case-study-results">
@@ -146,7 +153,7 @@
                 </article>
 
                 <!-- LMS -->
-                <article class="case-study-card case-study-card--green">
+                <article class="case-study-card glass-card case-study-card--green">
                     <span class="portfolio-industry">Education</span>
                     <h2 class="case-study-title">Learning Management System</h2>
                     <div class="case-study-block">
@@ -154,7 +161,7 @@
                         <p>An institution needed a modern LMS for hybrid learning—the legacy system lacked mobile support and meaningful analytics on student progress.</p>
                     </div>
                     <div class="case-study-block">
-                        <h4>Our Solution</h4>
+                        <h4>What We Built</h4>
                         <p>Full LMS with course tools, student portals, assignments, grading, video integration, forums, AI analytics dashboards, and accessibility-compliant responsive design.</p>
                     </div>
                     <div class="case-study-results">
@@ -175,9 +182,6 @@
                 <h2 class="cta-title">Ready to Start Your Project?</h2>
                 <p class="cta-text">Every great project starts with a conversation. Let's discuss how we can help you achieve similar results—we'd love to hear your vision.</p>
                 <a href="./contact.html" class="btn btn-primary btn-large">Get Started Today</a>
-                <p class="cta-email">
-                    <a href="mailto:projects@nomadlabz.com" class="contact-email-link">projects@nomadlabz.com</a>
-                </p>
             </div>
         </div>
     </section>
@@ -185,49 +189,52 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="footer-logo-brand">
-                        <div class="logo-mark">
-                            <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                    <div class="footer-brand">
+                        <div class="footer-logo-brand">
+                            <div class="logo-mark">
+                                <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                            </div>
+                            <span class="footer-brand-text">Nomad Labz</span>
                         </div>
-                        <span class="footer-brand-text">Nomad Labz</span>
+                        <p class="footer-description">Premium AI-powered software solutions. Intelligent automation and modern engineering for ambitious teams.</p>
                     </div>
-                    <p class="footer-description">Premium software solutions powered by AI and modern engineering. Transforming businesses through intelligent automation.</p>
-                    <p class="footer-email"><a href="mailto:projects@nomadlabz.com">projects@nomadlabz.com</a></p>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">Quick Links</h4>
-                    <div class="footer-links">
-                        <a href="./index.html" class="footer-link">Home</a>
-                        <a href="./about.html" class="footer-link">About</a>
-                        <a href="./services.html" class="footer-link">Services</a>
-                        <a href="./solutions.html" class="footer-link">Solutions</a>
-                        <a href="./portfolio.html" class="footer-link">Portfolio</a>
-                        <a href="./contact.html" class="footer-link">Contact</a>
+                    <div class="footer-column">
+                        <h4 class="footer-title">Quick Links</h4>
+                        <nav class="footer-links">
+                            <a href="./index.html" class="footer-link">Home</a>
+                            <a href="./about.html" class="footer-link">About</a>
+                            <a href="./services.html" class="footer-link">Services</a>
+                            <a href="./solutions.html" class="footer-link">Solutions</a>
+                            <a href="./portfolio.html" class="footer-link">Portfolio</a>
+                            <a href="./contact.html" class="footer-link">Contact</a>
+                        </nav>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-title">Services</h4>
+                        <nav class="footer-links">
+                            <a href="./services.html#ai-automations" class="footer-link">AI Automations</a>
+                            <a href="./services.html#web-applications" class="footer-link">Web Applications</a>
+                            <a href="./services.html#mobile-apps" class="footer-link">Mobile Apps</a>
+                            <a href="./services.html#api-integrations" class="footer-link">API Integrations</a>
+                            <a href="./services.html#cloud-deployment" class="footer-link">Cloud &amp; Deployment</a>
+                        </nav>
+                    </div>
+                    <div class="footer-column footer-column--cta">
+                        <h4 class="footer-title">Get Started</h4>
+                        <p class="footer-cta-text">Ready to build something exceptional?</p>
+                        <p class="footer-email">
+                            <a href="mailto:projects@nomadlabz.com" class="footer-email-link">projects@nomadlabz.com</a>
+                        </p>
+                        <a href="./contact.html" class="btn btn-footer">Contact Us</a>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">Services</h4>
-                    <div class="footer-links">
-                        <a href="./services.html#ai-automations" class="footer-link">AI Automations</a>
-                        <a href="./services.html#web-applications" class="footer-link">Web Applications</a>
-                        <a href="./services.html#mobile-apps" class="footer-link">Mobile Apps</a>
-                        <a href="./services.html#api-integrations" class="footer-link">API Integrations</a>
-                        <a href="./services.html#cloud-deployment" class="footer-link">Cloud &amp; Deployment</a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">Get Started</h4>
-                    <p class="footer-cta-text">Ready to transform your business?</p>
-                    <p class="footer-email"><a href="mailto:projects@nomadlabz.com">projects@nomadlabz.com</a></p>
-                    <a href="./contact.html" class="btn btn-footer">Contact Us</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
+                <div class="footer-bottom">
                 <p class="copyright">&copy; 2026 NomadLabz. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    </main>
 
     <script src="./main.js" defer></script>
 </body>

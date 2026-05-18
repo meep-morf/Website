@@ -8,278 +8,274 @@
     <link rel="icon" type="image/png" href="./Images/NomadLabz.png">
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="./index.html" class="logo-brand">
-                    <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="logo-img" loading="eager" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
-                    <span class="brand-text">Nomad Labz</span>
-                </a>
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <nav class="nav">
-                    <a href="./index.html" class="nav-link">Home</a>
-                    <a href="./about.html" class="nav-link">About</a>
-                    <a href="./services.html" class="nav-link">Services</a>
-                    <a href="./solutions.html" class="nav-link">Solutions</a>
-                    <a href="./portfolio.html" class="nav-link">Portfolio</a>
-                    <a href="./contact.html" class="nav-link">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+<body class="is-loading">
+    <div id="site-preloader" aria-hidden="true">
+        <div class="preloader-glow"></div>
+        <img src="./Images/NomadLabz.svg" alt="Nomad Labz" class="preloader-logo" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+    </div>
 
-    <section class="hero glow-bg">
-        <div class="container">
-            <div class="hero-content">
-                <span class="eyebrow">Premium AI &amp; Software Engineering</span>
-                <h1 class="hero-headline">AI-Powered Software Solutions</h1>
-                <p class="hero-subheading">End-to-end digital solutions leveraging AI, automation, and modern engineering. Transform your business with intelligent technology built for scale, security, and lasting impact.</p>
-                <div class="hero-buttons">
-                    <a href="./contact.html" class="btn btn-primary">Get Started</a>
-                    <a href="./portfolio.html" class="btn btn-secondary">View Our Work</a>
+    <main id="site-content" class="site-content">
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <a href="./index.html" class="logo-brand">
+                        <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                        <span class="brand-text">Nomad Labz</span>
+                    </a>
+                    <button class="menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <nav class="nav">
+                        <a href="./index.html" class="nav-link">Home</a>
+                        <a href="./about.html" class="nav-link">About</a>
+                        <a href="./services.html" class="nav-link">Services</a>
+                        <a href="./solutions.html" class="nav-link">Solutions</a>
+                        <a href="./portfolio.html" class="nav-link">Portfolio</a>
+                        <a href="./contact.html" class="nav-link">Contact</a>
+                    </nav>
                 </div>
-                <p class="hero-contact">
-                    Or email us at <a href="mailto:projects@nomadlabz.com" class="contact-email-link">projects@nomadlabz.com</a>
-                </p>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">6+</div>
-                        <div class="hero-stat-label">Core Services</div>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <span class="eyebrow">Premium AI &amp; Software Engineering</span>
+                    <h1 class="hero-headline">AI-Powered Software Solutions</h1>
+                    <p class="hero-subheading">End-to-end digital products leveraging AI, automation, and modern engineering—built to scale, secure, and deliver lasting business impact.</p>
+                    <div class="hero-buttons">
+                        <a href="./contact.html" class="btn btn-primary">Get Started</a>
+                        <a href="./portfolio.html" class="btn btn-secondary">View Our Work</a>
                     </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">AI</div>
-                        <div class="hero-stat-label">First Approach</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">24h</div>
-                        <div class="hero-stat-label">Response Time</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section class="services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-kicker">What We Do</span>
-                <h2 class="section-title gradient-text">Our Services</h2>
-                <p class="section-intro">Comprehensive software solutions across six core areas—each designed to solve real business challenges and deliver measurable results.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card service-card-green">
-                    <div class="service-icon">🤖</div>
-                    <h3 class="service-title">AI Automations</h3>
-                    <p class="service-description">Intelligent automation that streamlines workflows—from chatbots to predictive analytics that learn and adapt to your business.</p>
-                </div>
-                <div class="service-card service-card-purple">
-                    <div class="service-icon">🌐</div>
-                    <h3 class="service-title">Web Applications</h3>
-                    <p class="service-description">Modern, responsive web apps built with cutting-edge tech—scalable, secure, and flawless across every device.</p>
-                </div>
-                <div class="service-card service-card-green">
-                    <div class="service-icon">📱</div>
-                    <h3 class="service-title">Mobile Apps</h3>
-                    <p class="service-description">Native and cross-platform iOS &amp; Android apps where beautiful design meets powerful functionality.</p>
-                </div>
-                <div class="service-card service-card-purple">
-                    <div class="service-icon">🔗</div>
-                    <h3 class="service-title">API Integrations</h3>
-                    <p class="service-description">Robust APIs and seamless third-party connections that unify your systems into efficient workflows.</p>
-                </div>
-                <div class="service-card service-card-green">
-                    <div class="service-icon">☁️</div>
-                    <h3 class="service-title">Cloud &amp; Deployment</h3>
-                    <p class="service-description">Scalable cloud infrastructure—reliable, secure, and cost-effective environments that grow with you.</p>
-                </div>
-                <div class="service-card service-card-purple">
-                    <div class="service-icon">💡</div>
-                    <h3 class="service-title">Consulting &amp; Strategy</h3>
-                    <p class="service-description">Expert guidance on architecture, digital transformation, and technology decisions aligned with your goals.</p>
-                </div>
-            </div>
-            <div class="section-cta-wrap">
-                <a href="./services.html" class="btn btn-secondary">Explore All Services</a>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section class="process-section glow-bg">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-kicker">Our Process</span>
-                <h2 class="section-title gradient-text">How We Work</h2>
-                <p class="section-intro">A proven four-step process with transparency and collaboration at every stage—so your project delivers real value from day one.</p>
-            </div>
-            <div class="process-timeline">
-                <div class="process-step">
-                    <div class="process-step-number">01</div>
-                    <h3 class="process-step-title">Discovery</h3>
-                    <p class="process-step-desc">We understand your business, goals, and challenges—defining success metrics together.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-step-number">02</div>
-                    <h3 class="process-step-title">Design &amp; Planning</h3>
-                    <p class="process-step-desc">Technical specs and mockups where every feature serves a clear purpose.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-step-number">03</div>
-                    <h3 class="process-step-title">Development</h3>
-                    <p class="process-step-desc">Agile sprints with regular updates—you stay informed and in control throughout.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-step-number">04</div>
-                    <h3 class="process-step-title">Launch &amp; Support</h3>
-                    <p class="process-step-desc">Deployment, testing, launch, and ongoing optimization for long-term success.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section class="services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-kicker">Case Studies</span>
-                <h2 class="section-title gradient-text">Featured Work</h2>
-                <p class="section-intro">Real projects delivering measurable results across insurance, healthcare, fintech, and more.</p>
-            </div>
-            <div class="services-grid">
-                <div class="portfolio-card service-card-green">
-                    <span class="portfolio-industry">Insurance</span>
-                    <h3 class="portfolio-title gradient-text">VYN Insurance &amp; Registration</h3>
-                    <div class="portfolio-section">
-                        <p>Bilingual website with appointment booking—increased online inquiries and conversion for a Los Angeles agency.</p>
-                    </div>
-                    <p class="portfolio-link">
-                        <a href="https://www.vynservices.com/" target="_blank" rel="noopener noreferrer" class="portfolio-link-btn">View Live Site →</a>
-                    </p>
-                </div>
-                <div class="portfolio-card service-card-purple">
-                    <span class="portfolio-industry badge--purple">Healthcare</span>
-                    <h3 class="portfolio-title gradient-text--purple">Telemedicine Platform</h3>
-                    <div class="portfolio-section">
-                        <p>HIPAA-compliant virtual care—5,000+ consultations in year one, 25% fewer no-shows, expanded rural access.</p>
-                    </div>
-                </div>
-                <div class="portfolio-card service-card-green">
-                    <span class="portfolio-industry">Fintech</span>
-                    <h3 class="portfolio-title gradient-text">Mobile Banking App</h3>
-                    <div class="portfolio-section">
-                        <p>Native iOS &amp; Android with biometric auth and AI fraud detection—150% more mobile usage, 100k+ monthly transactions.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="section-cta-wrap">
-                <a href="./portfolio.html" class="btn btn-secondary">View Full Portfolio</a>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section class="services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-kicker">Why Us</span>
-                <h2 class="section-title gradient-text">Why Nomad Labz?</h2>
-                <p class="section-intro">Cutting-edge AI meets proven engineering—not generic templates, but software built for your goals.</p>
-            </div>
-            <div class="why-strip">
-                <div class="service-card service-card-green">
-                    <div class="service-icon">🏆</div>
-                    <h3 class="service-title">Proven Expertise</h3>
-                    <p class="service-description">Successful projects across diverse industries—from startups to enterprises.</p>
-                </div>
-                <div class="service-card service-card-purple">
-                    <div class="service-icon">⚡</div>
-                    <h3 class="service-title">Modern Stack</h3>
-                    <p class="service-description">Latest technologies and best practices—scalable, maintainable, future-proof.</p>
-                </div>
-                <div class="service-card service-card-green">
-                    <div class="service-icon">🤝</div>
-                    <h3 class="service-title">Transparent Process</h3>
-                    <p class="service-description">Clear communication and collaborative decisions—you're informed every step.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section class="cta glow-bg">
-        <div class="container">
-            <div class="cta-content">
-                <span class="eyebrow eyebrow--purple">Start Your Project</span>
-                <h2 class="cta-title">Ready to Transform Your Business?</h2>
-                <p class="cta-text">From initial concept to successful launch—we guide your digital transformation with AI-powered solutions built for lasting impact.</p>
-                <div class="hero-buttons">
-                    <a href="./contact.html" class="btn btn-primary btn-large">Get Started Today</a>
-                    <a href="./portfolio.html" class="btn btn-secondary btn-large">View Portfolio</a>
-                </div>
-                <p class="cta-email">
-                    <a href="mailto:projects@nomadlabz.com" class="contact-email-link">projects@nomadlabz.com</a>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="footer-logo-brand">
-                        <div class="logo-mark">
-                            <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                    <div class="stats-row">
+                        <div class="stat-card glass-card">
+                            <span class="stat-value">6+</span>
+                            <span class="stat-label">Core Services</span>
                         </div>
-                        <span class="footer-brand-text">Nomad Labz</span>
+                        <div class="stat-card glass-card">
+                            <span class="stat-value">AI</span>
+                            <span class="stat-label">First Approach</span>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <span class="stat-value">24h</span>
+                            <span class="stat-label">Response Time</span>
+                        </div>
                     </div>
-                    <p class="footer-description">Premium software solutions powered by AI and modern engineering. Transforming businesses through intelligent automation.</p>
-                    <p class="footer-email"><a href="mailto:projects@nomadlabz.com">projects@nomadlabz.com</a></p>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">Quick Links</h4>
-                    <div class="footer-links">
-                        <a href="./index.html" class="footer-link">Home</a>
-                        <a href="./about.html" class="footer-link">About</a>
-                        <a href="./services.html" class="footer-link">Services</a>
-                        <a href="./solutions.html" class="footer-link">Solutions</a>
-                        <a href="./portfolio.html" class="footer-link">Portfolio</a>
-                        <a href="./contact.html" class="footer-link">Contact</a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">Services</h4>
-                    <div class="footer-links">
-                        <a href="./services.html#ai-automations" class="footer-link">AI Automations</a>
-                        <a href="./services.html#web-applications" class="footer-link">Web Applications</a>
-                        <a href="./services.html#mobile-apps" class="footer-link">Mobile Apps</a>
-                        <a href="./services.html#api-integrations" class="footer-link">API Integrations</a>
-                        <a href="./services.html#cloud-deployment" class="footer-link">Cloud &amp; Deployment</a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h4 class="footer-title">Get Started</h4>
-                    <p class="footer-cta-text">Ready to transform your business?</p>
-                    <p class="footer-email"><a href="mailto:projects@nomadlabz.com">projects@nomadlabz.com</a></p>
-                    <a href="./contact.html" class="btn btn-footer">Contact Us</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p class="copyright">&copy; 2026 NomadLabz. All rights reserved.</p>
+        </section>
+
+        <section class="section-block">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-kicker">What We Do</span>
+                    <h2 class="section-title gradient-text">Our Services</h2>
+                    <p class="section-intro">Six core capabilities—each engineered to solve real challenges and drive measurable outcomes.</p>
+                </header>
+                <div class="premium-grid services-grid">
+                    <article class="glass-card service-card service-card-green">
+                        <div class="card-icon">🤖</div>
+                        <h3 class="card-title">AI Automations</h3>
+                        <p class="card-text">Intelligent workflows—from chatbots to predictive analytics that adapt to your business.</p>
+                    </article>
+                    <article class="glass-card service-card service-card-purple">
+                        <div class="card-icon">🌐</div>
+                        <h3 class="card-title">Web Applications</h3>
+                        <p class="card-text">Modern, responsive apps—scalable, secure, and flawless on every device.</p>
+                    </article>
+                    <article class="glass-card service-card service-card-green">
+                        <div class="card-icon">📱</div>
+                        <h3 class="card-title">Mobile Apps</h3>
+                        <p class="card-text">Native and cross-platform iOS &amp; Android experiences users love.</p>
+                    </article>
+                    <article class="glass-card service-card service-card-purple">
+                        <div class="card-icon">🔗</div>
+                        <h3 class="card-title">API Integrations</h3>
+                        <p class="card-text">Robust connections that unify your tools into seamless workflows.</p>
+                    </article>
+                    <article class="glass-card service-card service-card-green">
+                        <div class="card-icon">☁️</div>
+                        <h3 class="card-title">Cloud &amp; Deployment</h3>
+                        <p class="card-text">Reliable infrastructure that grows with your business.</p>
+                    </article>
+                    <article class="glass-card service-card service-card-purple">
+                        <div class="card-icon">💡</div>
+                        <h3 class="card-title">Consulting &amp; Strategy</h3>
+                        <p class="card-text">Expert guidance on architecture and digital transformation.</p>
+                    </article>
+                </div>
+                <div class="section-cta-wrap">
+                    <a href="./services.html" class="btn btn-secondary">Explore All Services</a>
+                </div>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <section class="section-block section-block--alt process-section">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-kicker">Our Process</span>
+                    <h2 class="section-title gradient-text">How We Work</h2>
+                    <p class="section-intro">A proven four-step journey—transparent, collaborative, and built for results from day one.</p>
+                </header>
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="process-step-number">01</div>
+                        <div class="process-step-card glass-card">
+                            <h3 class="process-step-title">Discovery</h3>
+                            <p class="process-step-desc">We map your goals, challenges, and success metrics together.</p>
+                        </div>
+                    </div>
+                    <div class="process-connector" aria-hidden="true"></div>
+                    <div class="process-step">
+                        <div class="process-step-number">02</div>
+                        <div class="process-step-card glass-card">
+                            <h3 class="process-step-title">Design &amp; Planning</h3>
+                            <p class="process-step-desc">Specs and mockups where every feature has purpose.</p>
+                        </div>
+                    </div>
+                    <div class="process-connector" aria-hidden="true"></div>
+                    <div class="process-step">
+                        <div class="process-step-number">03</div>
+                        <div class="process-step-card glass-card">
+                            <h3 class="process-step-title">Development</h3>
+                            <p class="process-step-desc">Agile sprints with regular updates—you stay in control.</p>
+                        </div>
+                    </div>
+                    <div class="process-connector" aria-hidden="true"></div>
+                    <div class="process-step">
+                        <div class="process-step-number">04</div>
+                        <div class="process-step-card glass-card">
+                            <h3 class="process-step-title">Launch &amp; Support</h3>
+                            <p class="process-step-desc">Deploy, optimize, and support for long-term success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-kicker">Case Studies</span>
+                    <h2 class="section-title gradient-text">Featured Work</h2>
+                    <p class="section-intro">Selected projects delivering measurable impact across insurance, healthcare, and fintech.</p>
+                </header>
+                <div class="premium-grid featured-grid">
+                    <article class="featured-card glass-card accent-green">
+                        <span class="pill">Insurance</span>
+                        <h3 class="featured-title">VYN Insurance &amp; Registration</h3>
+                        <p class="featured-text">Bilingual site with appointment booking—higher inquiries and conversion for a Los Angeles agency.</p>
+                        <a href="https://www.vynservices.com/" target="_blank" rel="noopener noreferrer" class="portfolio-link">View Live Site →</a>
+                    </article>
+                    <article class="featured-card glass-card accent-purple">
+                        <span class="pill badge--purple">Healthcare</span>
+                        <h3 class="featured-title">Telemedicine Platform</h3>
+                        <p class="featured-text">HIPAA-compliant virtual care—5,000+ consultations, 25% fewer no-shows, expanded rural access.</p>
+                    </article>
+                    <article class="featured-card glass-card accent-green">
+                        <span class="pill">Fintech</span>
+                        <h3 class="featured-title">Mobile Banking App</h3>
+                        <p class="featured-text">Biometric auth and AI fraud detection—150% more mobile usage, 100k+ monthly transactions.</p>
+                    </article>
+                </div>
+                <div class="section-cta-wrap">
+                    <a href="./portfolio.html" class="btn btn-primary">View Full Portfolio</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block section-block--alt">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-kicker">Why Us</span>
+                    <h2 class="section-title gradient-text">Why Nomad Labz?</h2>
+                    <p class="section-intro">AI meets proven engineering—custom software built for your goals, not generic templates.</p>
+                </header>
+                <div class="premium-grid why-grid">
+                    <article class="glass-card service-card service-card-green">
+                        <div class="card-icon">🏆</div>
+                        <h3 class="card-title">Proven Expertise</h3>
+                        <p class="card-text">From startups to enterprises across diverse industries.</p>
+                    </article>
+                    <article class="glass-card service-card service-card-purple">
+                        <div class="card-icon">⚡</div>
+                        <h3 class="card-title">Modern Stack</h3>
+                        <p class="card-text">Scalable, maintainable, and future-proof technology.</p>
+                    </article>
+                    <article class="glass-card service-card service-card-green">
+                        <div class="card-icon">🤝</div>
+                        <h3 class="card-title">Transparent Process</h3>
+                        <p class="card-text">You're informed and involved at every step.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-panel glass-card">
+                    <span class="eyebrow eyebrow--purple">Start Your Project</span>
+                    <h2 class="cta-title">Ready to Transform Your Business?</h2>
+                    <p class="cta-text">From concept to launch—we guide your digital transformation with AI-powered solutions built to last.</p>
+                    <div class="hero-buttons">
+                        <a href="./contact.html" class="btn btn-primary btn-large">Get Started Today</a>
+                        <a href="./portfolio.html" class="btn btn-secondary btn-large">View Portfolio</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-logo-brand">
+                            <div class="logo-mark">
+                                <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                            </div>
+                            <span class="footer-brand-text">Nomad Labz</span>
+                        </div>
+                        <p class="footer-description">Premium AI-powered software solutions. Intelligent automation and modern engineering for ambitious teams.</p>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-title">Quick Links</h4>
+                        <nav class="footer-links">
+                            <a href="./index.html" class="footer-link">Home</a>
+                            <a href="./about.html" class="footer-link">About</a>
+                            <a href="./services.html" class="footer-link">Services</a>
+                            <a href="./solutions.html" class="footer-link">Solutions</a>
+                            <a href="./portfolio.html" class="footer-link">Portfolio</a>
+                            <a href="./contact.html" class="footer-link">Contact</a>
+                        </nav>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-title">Services</h4>
+                        <nav class="footer-links">
+                            <a href="./services.html#ai-automations" class="footer-link">AI Automations</a>
+                            <a href="./services.html#web-applications" class="footer-link">Web Applications</a>
+                            <a href="./services.html#mobile-apps" class="footer-link">Mobile Apps</a>
+                            <a href="./services.html#api-integrations" class="footer-link">API Integrations</a>
+                            <a href="./services.html#cloud-deployment" class="footer-link">Cloud &amp; Deployment</a>
+                        </nav>
+                    </div>
+                    <div class="footer-column footer-column--cta">
+                        <h4 class="footer-title">Get Started</h4>
+                        <p class="footer-cta-text">Ready to build something exceptional?</p>
+                        <p class="footer-email">
+                            <a href="mailto:projects@nomadlabz.com" class="footer-email-link">projects@nomadlabz.com</a>
+                        </p>
+                        <a href="./contact.html" class="btn btn-footer">Contact Us</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="copyright">&copy; 2026 NomadLabz. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
 
     <script src="./main.js" defer></script>
 </body>
