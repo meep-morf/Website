@@ -705,7 +705,8 @@ a:focus-visible {
 
 .section-cta-wrap {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 2.5rem;
+    padding-top: 0.5rem;
 }
 
 /* ==========================================================================
@@ -1980,9 +1981,20 @@ body.is-loading .site-content {
     grid-template-columns: repeat(3, 1fr);
 }
 
-.featured-grid,
+.featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    align-items: start;
+}
+
 .why-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+    align-items: start;
 }
 
 .card-icon {
@@ -2016,6 +2028,27 @@ body.is-loading .site-content {
     min-height: 260px;
     position: relative;
     overflow: hidden;
+}
+
+/* Why Us — compact cards */
+.why-grid .glass-card.service-card {
+    min-height: unset;
+    padding: 1.35rem 1.25rem;
+}
+
+.why-grid .card-icon {
+    font-size: 1.65rem;
+    margin-bottom: 0.5rem;
+}
+
+.why-grid .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+}
+
+.why-grid .card-text {
+    font-size: 0.88rem;
+    line-height: 1.6;
 }
 
 .glass-card.service-card::before {
@@ -2131,10 +2164,11 @@ body.is-loading .site-content {
 
 /* Featured work cards */
 .featured-card {
-    padding: 2rem;
+    padding: 1.5rem 1.35rem;
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+    min-height: unset;
+    height: 100%;
     position: relative;
 }
 
@@ -2293,6 +2327,17 @@ body.is-loading .site-content {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .featured-grid {
+        gap: 1.75rem;
+        column-gap: 1.75rem;
+        row-gap: 1.75rem;
+    }
+
+    .why-grid {
+        gap: 1.25rem;
+        row-gap: 1.25rem;
+    }
+
     .process-section .process-timeline {
         flex-wrap: wrap;
         gap: 1.5rem;
@@ -2321,6 +2366,16 @@ body.is-loading .site-content {
     .why-grid,
     .case-study-grid {
         grid-template-columns: 1fr;
+    }
+
+    .featured-grid {
+        gap: 1.5rem;
+        row-gap: 1.5rem;
+    }
+
+    .why-grid {
+        gap: 1.25rem;
+        row-gap: 1.25rem;
     }
 
     .process-section .process-timeline {

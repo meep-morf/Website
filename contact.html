@@ -15,7 +15,11 @@
         .logo-img { height: 48px; width: auto; max-width: 140px; object-fit: contain; }
         .site-content { opacity: 1 !important; }
         .hero-headline { color: #f0f0f2; }
-        .premium-grid.services-grid, .featured-grid, .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .premium-grid.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .premium-grid.featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; column-gap: 2rem; row-gap: 2rem; align-items: start; }
+        .premium-grid.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
+        .why-grid .glass-card.service-card { min-height: unset; padding: 1.35rem 1.25rem; }
+        .featured-card { padding: 1.5rem 1.35rem; min-height: unset; }
         .case-study-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
         .glass-card, .case-study-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; background: rgba(24,24,30,0.85); }
         .process-section .process-timeline { display: flex; align-items: flex-start; justify-content: space-between; }
