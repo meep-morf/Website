@@ -62,8 +62,10 @@ a:not(.btn):not(.portfolio-link) { color: #4ade80; text-decoration: none; }
     .premium-grid.services-grid, .services-grid, .values-grid, .featured-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .premium-grid.why-grid, .why-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
-.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 720px; margin: 3rem auto 0; }
-.stat-card { padding: 1.25rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; background: rgba(28,28,36,0.8); text-align: center; }
+.stats-row { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 1rem !important; max-width: 720px !important; width: 100% !important; margin: 3rem auto 0 !important; }
+.stat-card { padding: 1.25rem 1rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; background: rgba(28,28,36,0.9); text-align: center; box-sizing: border-box; }
+.stat-value { display: block; font-size: 1.65rem; font-weight: 800; color: #4ade80 !important; -webkit-text-fill-color: #4ade80 !important; margin-bottom: 0.35rem; line-height: 1.2; }
+.stat-label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6b78 !important; -webkit-text-fill-color: #6b6b78 !important; }
 .featured-card { padding: 1.5rem 1.35rem; min-height: 300px; }
 .process-section .process-timeline { display: flex; align-items: flex-start; justify-content: space-between; }
 .mission-grid .glass-card.service-card { padding: 1.75rem 1.5rem; min-height: 220px; }
@@ -2189,17 +2191,10 @@ body.is-loading .site-content {
     font-size: 1.65rem;
     font-weight: 800;
     letter-spacing: -0.02em;
-    color: var(--accent-green);
-    background: var(--gradient-green-purple);
-    -webkit-background-clip: text;
-    background-clip: text;
+    color: var(--accent-green) !important;
+    -webkit-text-fill-color: var(--accent-green) !important;
     margin-bottom: 0.35rem;
-}
-
-@supports (-webkit-background-clip: text) {
-    .stat-value {
-        -webkit-text-fill-color: transparent;
-    }
+    line-height: 1.2;
 }
 
 .stat-label {
