@@ -5,38 +5,40 @@
     const MIN_DISPLAY_MS = 2000;
     const FADE_MS = 600;
 
-    function revealSite() {
+    /* Content always visible; preloader is overlay only */
+    document.body.classList.add('site-ready');
+    document.body.classList.remove('is-loading');
+
+    function hidePreloader() {
         document.body.classList.remove('is-loading');
-        document.body.classList.add('site-ready');
-
         if (!preloader) return;
-
         preloader.classList.add('preloader-hidden');
         setTimeout(function() {
             preloader.remove();
         }, FADE_MS);
     }
 
+    /* Failsafe — never leave preloader stuck */
+    setTimeout(hidePreloader, 3500);
+
     if (!preloader || sessionStorage.getItem(STORAGE_KEY)) {
-        document.body.classList.remove('is-loading');
-        document.body.classList.add('site-ready');
-        if (preloader) preloader.remove();
+        hidePreloader();
         return;
     }
 
     sessionStorage.setItem(STORAGE_KEY, '1');
     const startedAt = Date.now();
 
-    function startReveal() {
+    function startHide() {
         const elapsed = Date.now() - startedAt;
         const delay = Math.max(0, MIN_DISPLAY_MS - elapsed);
-        setTimeout(revealSite, delay);
+        setTimeout(hidePreloader, delay);
     }
 
     if (document.readyState === 'complete') {
-        startReveal();
+        startHide();
     } else {
-        window.addEventListener('load', startReveal);
+        window.addEventListener('load', startHide);
     }
 })();
 
@@ -67,12 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -20px 0px'
     });
 
     document.querySelectorAll(
-        '.glass-card, .service-card, .featured-card, .value-card, .case-study-card, .process-step, .info-card, .service-detail-card, .solution-card, .stat-card'
+        '.glass-card, .service-card, .featured-card, .value-card, .case-study-card, .process-step, .info-card, .stat-card'
     ).forEach(function(card) {
         card.classList.add('fade-in');
         observer.observe(card);

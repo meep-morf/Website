@@ -62,6 +62,79 @@ body.is-loading {
     overflow: hidden;
 }
 
+/* Critical fixes — prevent broken layout if later rules fail */
+.logo-img {
+    height: 48px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    display: block;
+}
+
+.preloader-logo {
+    width: min(200px, 50vw);
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    display: block;
+}
+
+.footer-logo-img {
+    height: 40px;
+    width: auto;
+    max-width: 48px;
+    object-fit: contain;
+}
+
+#site-preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #08080a;
+}
+
+.site-content {
+    opacity: 1;
+    min-height: 100vh;
+}
+
+.hero-headline {
+    color: var(--text-primary);
+}
+
+.hero-headline,
+.gradient-text,
+.section-title.gradient-text {
+    background: var(--gradient-green-purple);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@supports (-webkit-background-clip: text) {
+    .hero-headline,
+    .gradient-text,
+    .section-title.gradient-text {
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.footer-email-link,
+.contact-email-link {
+    color: var(--accent-green) !important;
+    -webkit-text-fill-color: var(--accent-green) !important;
+    background: none !important;
+    font-weight: 600;
+}
+
+.footer-email-link:hover,
+.contact-email-link:hover {
+    color: var(--accent-purple) !important;
+    -webkit-text-fill-color: var(--accent-purple) !important;
+}
+
 /* Global link reset — no browser defaults */
 a,
 a:link,
@@ -217,16 +290,13 @@ a:focus-visible {
     font-size: 1.05rem;
     font-weight: 600;
     color: var(--accent-green) !important;
-    background: linear-gradient(135deg, var(--accent-green), var(--accent-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    transition: opacity var(--transition), filter var(--transition);
+    -webkit-text-fill-color: var(--accent-green) !important;
+    transition: color var(--transition);
 }
 
 .contact-email-link:hover {
-    opacity: 0.85;
-    filter: brightness(1.15);
+    color: var(--accent-purple) !important;
+    -webkit-text-fill-color: var(--accent-purple) !important;
 }
 
 .contact-email-link:visited {
@@ -460,10 +530,6 @@ a:focus-visible {
     margin-bottom: 1.5rem;
     line-height: 1.08;
     letter-spacing: -0.03em;
-    background: var(--gradient-green-purple);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .hero-subheading {
@@ -855,24 +921,9 @@ a:focus-visible {
     pointer-events: none;
 }
 
-.process-timeline {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    position: relative;
-    margin-top: 2rem;
-}
-
-.process-timeline::before {
-    content: '';
-    position: absolute;
-    top: 2rem;
-    left: 12.5%;
-    right: 12.5%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent-green), var(--accent-purple), var(--accent-green));
-    opacity: 0.35;
-    z-index: 0;
+/* Legacy process grid disabled — use flex timeline in process-section */
+.process-timeline:not(.process-section .process-timeline) {
+    display: block;
 }
 
 .process-step {
@@ -923,18 +974,18 @@ a:focus-visible {
 }
 
 @media (max-width: 1023px) {
-    .process-timeline {
+    .process-timeline:not(.process-section .process-timeline) {
         grid-template-columns: repeat(2, 1fr);
         gap: 2.5rem 1.5rem;
     }
 
-    .process-timeline::before {
+    .process-timeline:not(.process-section .process-timeline)::before {
         display: none;
     }
 }
 
 @media (max-width: 767px) {
-    .process-timeline {
+    .process-timeline:not(.process-section .process-timeline) {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
@@ -1559,15 +1610,14 @@ h1, h2, h3, h4 {
     line-height: 1.2;
 }
 
-/* Fade-in animation */
+/* Fade-in animation — never hide content */
 .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    transform: translateY(16px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .fade-in.visible {
-    opacity: 1;
     transform: translateY(0);
 }
 
@@ -1758,12 +1808,12 @@ h1, h2, h3, h4 {
 }
 
 .site-content {
-    opacity: 0;
-    transition: opacity 0.7s ease 0.1s;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
-body.site-ready .site-content {
-    opacity: 1;
+body.is-loading .site-content {
+    visibility: visible;
 }
 
 /* ==========================================================================
@@ -1843,11 +1893,17 @@ body.site-ready .site-content {
     font-size: 1.65rem;
     font-weight: 800;
     letter-spacing: -0.02em;
+    color: var(--accent-green);
     background: var(--gradient-green-purple);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 0.35rem;
+}
+
+@supports (-webkit-background-clip: text) {
+    .stat-value {
+        -webkit-text-fill-color: transparent;
+    }
 }
 
 .stat-label {
@@ -2086,26 +2142,7 @@ body.site-ready .site-content {
     color: var(--bg-deep) !important;
 }
 
-/* Email links */
-.contact-email-link,
-.footer-email-link {
-    color: var(--accent-green) !important;
-    font-weight: 600;
-    background: linear-gradient(135deg, var(--accent-green), var(--accent-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.contact-email-link:hover,
-.footer-email-link:hover {
-    opacity: 0.85;
-}
-
-.contact-email-link:visited,
-.footer-email-link:visited {
-    color: var(--accent-green) !important;
-}
+/* Email links — solid brand colors, no gradient text */
 
 .text-link {
     color: var(--accent-green) !important;
@@ -2136,10 +2173,16 @@ body.site-ready .site-content {
 .cta-panel .cta-title {
     font-size: clamp(1.85rem, 4vw, 2.5rem);
     margin-bottom: 1rem;
+    color: var(--text-primary);
     background: var(--gradient-purple-green);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+@supports (-webkit-background-clip: text) {
+    .cta-panel .cta-title {
+        -webkit-text-fill-color: transparent;
+    }
 }
 
 .cta-panel .cta-text {

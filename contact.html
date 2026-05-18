@@ -7,11 +7,26 @@
     <link rel="icon" type="image/svg+xml" href="./Images/NomadLabz.svg">
     <link rel="icon" type="image/png" href="./Images/NomadLabz.png">
     <link rel="stylesheet" href="./style.css">
+    <style>
+        #site-preloader { position: fixed; inset: 0; z-index: 100000; display: flex; align-items: center; justify-content: center; background: #08080a; }
+        .preloader-logo { width: min(200px, 50vw); height: auto; max-height: 180px; object-fit: contain; }
+        .logo-img { height: 48px; width: auto; max-width: 140px; object-fit: contain; }
+        .site-content { opacity: 1 !important; }
+        .hero-headline { color: #f0f0f2; }
+        .premium-grid.services-grid, .featured-grid, .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .case-study-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .glass-card, .case-study-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; background: rgba(24,24,30,0.85); }
+        .process-section .process-timeline { display: flex; align-items: flex-start; justify-content: space-between; }
+        a, a:visited { color: #4ade80; text-decoration: none; }
+        .footer-email-link { color: #4ade80 !important; }
+        .portfolio-link { color: #0c0c0f !important; background: linear-gradient(135deg, #4ade80, #a78bfa); padding: 0.6rem 1rem; border-radius: 8px; display: inline-flex; font-weight: 600; }
+    </style>
+
 </head>
 <body class="is-loading">
     <div id="site-preloader" aria-hidden="true">
         <div class="preloader-glow"></div>
-        <img src="./Images/NomadLabz.svg" alt="Nomad Labz" class="preloader-logo" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+        <img src="./Images/NomadLabz.png" alt="Nomad Labz" class="preloader-logo" width="200" height="200" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
     </div>
 
     <main id="site-content" class="site-content">
@@ -21,7 +36,7 @@
         <div class="container">
             <div class="header-content">
                 <a href="./index.html" class="logo-brand">
-                    <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="logo-img" loading="eager" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';" style="background: transparent;">
+                    <img src="./Images/NomadLabz.png" alt="NomadLabz" class="logo-img" width="48" height="48" loading="eager" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';" style="background: transparent;">
                     <span class="brand-text">Nomad Labz</span>
                 </a>
                 <button class="menu-toggle" aria-label="Toggle menu">
@@ -169,7 +184,7 @@
                     <div class="footer-brand">
                         <div class="footer-logo-brand">
                             <div class="logo-mark">
-                                <img src="./Images/NomadLabz.svg" alt="NomadLabz" class="footer-logo-img" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
+                                <img src="./Images/NomadLabz.png" alt="NomadLabz" class="footer-logo-img" width="40" height="40" onerror="this.onerror=null; this.src='./Images/NomadLabz.png';">
                             </div>
                             <span class="footer-brand-text">Nomad Labz</span>
                         </div>
