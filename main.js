@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
 
     // Observe service cards for fade-in effect
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
+    const animatedCards = document.querySelectorAll('.service-card, .portfolio-card, .value-card');
+    animatedCards.forEach(card => {
         card.classList.add('fade-in');
         observer.observe(card);
     });

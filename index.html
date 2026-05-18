@@ -44,42 +44,50 @@
                     <a href="./contact.html" class="btn btn-primary">Get Started</a>
                     <a href="./portfolio.html" class="btn btn-secondary">View Our Work</a>
                 </div>
+                <p class="hero-contact" style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.95rem;">
+                    Or email us at <a href="mailto:projects@nomadlabz.com" class="contact-email-link">projects@nomadlabz.com</a>
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="section-divider"></div>
 
     <!-- Services Section -->
     <section class="services">
         <div class="container">
             <h2 class="section-title">Our Services</h2>
-            <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto 3.5rem; line-height: 1.8;">
-                We deliver comprehensive software solutions across five core areas, each designed to solve real business challenges and drive measurable results.
+            <p class="section-intro">
+                We deliver comprehensive software solutions across six core areas, each designed to solve real business challenges and drive measurable results.
             </p>
             <div class="services-grid">
                 <div class="service-card service-card-green">
+                    <div class="service-icon">🤖</div>
                     <h3 class="service-title">AI Automations</h3>
                     <p class="service-description">Intelligent automation solutions that streamline workflows and enhance productivity. From intelligent chatbots to predictive analytics systems, we build AI that learns and adapts to your business needs.</p>
                 </div>
                 <div class="service-card service-card-purple">
+                    <div class="service-icon">🌐</div>
                     <h3 class="service-title">Web Applications</h3>
                     <p class="service-description">Modern, responsive web applications built with cutting-edge technologies. We create scalable, secure platforms that perform flawlessly across all devices and browsers.</p>
                 </div>
                 <div class="service-card service-card-green">
+                    <div class="service-icon">📱</div>
                     <h3 class="service-title">Mobile Apps</h3>
                     <p class="service-description">Native and cross-platform mobile applications for iOS and Android. Beautiful design meets powerful functionality to create apps that users love and businesses rely on.</p>
                 </div>
                 <div class="service-card service-card-purple">
+                    <div class="service-icon">🔗</div>
                     <h3 class="service-title">API Integrations</h3>
                     <p class="service-description">Seamless integrations connecting your systems with third-party services. We build robust APIs and connect platforms to create unified, efficient workflows.</p>
                 </div>
                 <div class="service-card service-card-green">
+                    <div class="service-icon">☁️</div>
                     <h3 class="service-title">Cloud & Deployment</h3>
                     <p class="service-description">Scalable cloud infrastructure and deployment solutions for your applications. Reliable, secure, and cost-effective cloud environments that grow with your business.</p>
                 </div>
                 <div class="service-card service-card-purple">
+                    <div class="service-icon">💡</div>
                     <h3 class="service-title">Consulting & Strategy</h3>
                     <p class="service-description">Expert guidance on technology strategy, architecture decisions, and digital transformation. We help you make informed choices that align with your business goals.</p>
                 </div>
@@ -90,17 +98,16 @@
         </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="section-divider"></div>
 
     <!-- How We Work Section -->
     <section class="cta" style="background: linear-gradient(135deg, var(--bg-gray) 0%, var(--bg-dark) 100%);">
         <div class="container">
             <h2 class="section-title" style="margin-bottom: 1rem;">How We Work</h2>
-            <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto 3.5rem; line-height: 1.8;">
+            <p class="section-intro">
                 Our proven process ensures your project delivers real value from day one, with transparency and collaboration at every step.
             </p>
-            <div class="services-grid" style="max-width: 1000px; margin: 0 auto;">
+            <div class="services-grid services-grid--cols-2">
                 <div class="service-card service-card-green">
                     <h3 class="service-title">Discovery</h3>
                     <p class="service-description">We start by understanding your business, goals, and challenges. Through detailed consultations, we identify opportunities and define success metrics.</p>
@@ -121,36 +128,74 @@
         </div>
     </section>
 
-    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Featured Work -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Featured Work</h2>
+            <p class="section-intro">
+                Real projects delivering measurable results for clients across insurance, healthcare, fintech, and more.
+            </p>
+            <div class="portfolio-grid">
+                <div class="portfolio-card portfolio-card-green">
+                    <span class="portfolio-industry">Insurance & Registration</span>
+                    <h3 class="portfolio-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">VYN Insurance & Registration Services</h3>
+                    <div class="portfolio-section">
+                        <p>A modern, bilingual website with appointment booking that increased online inquiries and conversion rates for a Los Angeles agency.</p>
+                    </div>
+                    <p class="portfolio-link"><a href="https://www.vynservices.com/" target="_blank" rel="noopener noreferrer">View live site →</a></p>
+                </div>
+                <div class="portfolio-card portfolio-card-purple">
+                    <span class="portfolio-industry">Healthcare</span>
+                    <h3 class="portfolio-title" style="background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Telemedicine Platform</h3>
+                    <div class="portfolio-section">
+                        <p>HIPAA-compliant virtual care platform enabling 5,000+ consultations in year one, with 25% fewer no-shows and expanded rural access.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card portfolio-card-green">
+                    <span class="portfolio-industry">Financial Services</span>
+                    <h3 class="portfolio-title" style="background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Mobile Banking App</h3>
+                    <div class="portfolio-section">
+                        <p>Native iOS and Android banking with biometric auth and AI fraud detection—150% more mobile usage and 100k+ monthly transactions.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="./portfolio.html" class="btn btn-secondary">View Full Portfolio</a>
+            </div>
+        </div>
+    </section>
+
     <div class="section-divider"></div>
 
     <!-- Why Nomad Labz Section -->
     <section class="services">
         <div class="container">
             <h2 class="section-title">Why Nomad Labz?</h2>
-            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-                <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.9; margin-bottom: 3.5rem;">
-                    We combine cutting-edge AI technology with proven engineering practices to deliver solutions that drive real business value. Our team is dedicated to understanding your unique challenges and crafting software that not only meets but exceeds your expectations.
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left;">
-                    <div>
-                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Proven Expertise</h3>
-                        <p style="color: var(--text-secondary); line-height: 1.8;">Years of experience delivering successful projects across diverse industries, from startups to enterprises.</p>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; background: var(--gradient-purple-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Modern Stack</h3>
-                        <p style="color: var(--text-secondary); line-height: 1.8;">We use the latest technologies and best practices, ensuring your solution is scalable, maintainable, and future-proof.</p>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; background: var(--gradient-green-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Transparent Process</h3>
-                        <p style="color: var(--text-secondary); line-height: 1.8;">Clear communication, regular updates, and collaborative decision-making keep you informed every step of the way.</p>
-                    </div>
+            <p class="section-intro">
+                We combine cutting-edge AI technology with proven engineering practices to deliver solutions that drive real business value—not generic templates, but software built for your goals.
+            </p>
+            <div class="services-grid">
+                <div class="service-card service-card-green">
+                    <div class="service-icon">🏆</div>
+                    <h3 class="service-title">Proven Expertise</h3>
+                    <p class="service-description">Years of experience delivering successful projects across diverse industries, from startups to enterprises.</p>
+                </div>
+                <div class="service-card service-card-purple">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">Modern Stack</h3>
+                    <p class="service-description">We use the latest technologies and best practices, ensuring your solution is scalable, maintainable, and future-proof.</p>
+                </div>
+                <div class="service-card service-card-green">
+                    <div class="service-icon">🤝</div>
+                    <h3 class="service-title">Transparent Process</h3>
+                    <p class="service-description">Clear communication, regular updates, and collaborative decision-making keep you informed every step of the way.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="section-divider"></div>
 
     <!-- Call-to-Action Section -->
@@ -163,11 +208,13 @@
                     <a href="./contact.html" class="btn btn-primary btn-large">Get Started Today</a>
                     <a href="./portfolio.html" class="btn btn-secondary btn-large">View Portfolio</a>
                 </div>
+                <p style="color: var(--text-secondary); font-size: 1rem; margin-top: 1.5rem;">
+                    <a href="mailto:projects@nomadlabz.com" class="contact-email-link">projects@nomadlabz.com</a>
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="section-divider"></div>
 
     <!-- Footer -->
@@ -180,6 +227,7 @@
                         <span class="footer-brand-text">Nomad Labz</span>
                     </div>
                     <p class="footer-description">Premium software solutions powered by AI and modern engineering practices. Transforming businesses through intelligent automation and cutting-edge technology.</p>
+                    <p class="footer-email"><a href="mailto:projects@nomadlabz.com">projects@nomadlabz.com</a></p>
                 </div>
                 <div class="footer-column">
                     <h4 class="footer-title">Quick Links</h4>
@@ -205,11 +253,12 @@
                 <div class="footer-column">
                     <h4 class="footer-title">Get Started</h4>
                     <p class="footer-cta-text">Ready to transform your business?</p>
+                    <p class="footer-email"><a href="mailto:projects@nomadlabz.com">projects@nomadlabz.com</a></p>
                     <a href="./contact.html" class="btn btn-footer">Contact Us</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="copyright">&copy; 2025 NomadLabz. All rights reserved.</p>
+                <p class="copyright">&copy; 2026 NomadLabz. All rights reserved.</p>
             </div>
         </div>
     </footer>
