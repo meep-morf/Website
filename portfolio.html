@@ -7,39 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="./Images/NomadLabz.svg">
     <link rel="icon" type="image/png" href="./Images/NomadLabz.png">
     <link rel="stylesheet" href="./style.css">
-    <style>
-        #site-preloader { position: fixed; inset: 0; z-index: 100000; display: flex; align-items: center; justify-content: center; background: #08080a; transition: opacity 0.5s ease, visibility 0.5s ease; }
-        #site-preloader.preloader-hidden { opacity: 0; visibility: hidden; pointer-events: none; display: none !important; }
-
-        .preloader-logo { width: min(200px, 50vw); height: auto; max-height: 180px; object-fit: contain; }
-        .logo-img { height: 48px; width: auto; max-width: 140px; object-fit: contain; }
-        .site-content { opacity: 1 !important; }
-        .hero-headline { color: #f0f0f2; }
-        .premium-grid.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .premium-grid.featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; column-gap: 2rem; row-gap: 2rem; align-items: start; }
-        .premium-grid.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
-        .why-grid .glass-card.service-card { min-height: unset; padding: 1.35rem 1.25rem; }
-        .featured-card { padding: 1.5rem 1.35rem; min-height: unset; }
-        .case-study-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-        .glass-card, .case-study-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; background: rgba(24,24,30,0.85); }
-        .process-section .process-timeline { display: flex; align-items: flex-start; justify-content: space-between; }
-                .section-header { text-align: center; max-width: 760px; margin: 0 auto 3rem; display: flex; flex-direction: column; align-items: center; }
-        .section-kicker, .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 1.05rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4ade80 !important; -webkit-text-fill-color: #4ade80 !important; background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.35); border-radius: 999px; margin-bottom: 1rem; }
-        .section-kicker::before, .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 10px #4ade80; }
-        .eyebrow--purple { color: #a78bfa !important; -webkit-text-fill-color: #a78bfa !important; background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.35); }
-        .section-intro { text-align: center !important; color: #a8a8b3 !important; -webkit-text-fill-color: #a8a8b3 !important; font-size: 1.1rem; max-width: 640px; margin: 0 auto 3rem; line-height: 1.85; }
-        .section-title { text-align: center; width: 100%; }
-        a:not(.btn):not(.portfolio-link) { color: #4ade80; text-decoration: none; }
-        .btn.btn-primary, .btn.btn-primary:visited { color: #08080a !important; -webkit-text-fill-color: #08080a !important; }
-        .btn.btn-secondary, .btn.btn-secondary:visited { color: #f0f0f2 !important; -webkit-text-fill-color: #f0f0f2 !important; }
-        .footer-email-link { color: #4ade80 !important; }
-        .portfolio-link { color: #0c0c0f !important; background: linear-gradient(135deg, #4ade80, #a78bfa); padding: 0.6rem 1rem; border-radius: 8px; display: inline-flex; font-weight: 600; }
-        .premium-grid, .premium-grid.services-grid, .premium-grid.featured-grid, .premium-grid.why-grid { display: grid !important; gap: 1.75rem !important; row-gap: 1.75rem !important; column-gap: 1.75rem !important; }
-        .premium-grid.featured-grid { gap: 2rem !important; row-gap: 2rem !important; column-gap: 2rem !important; }
-        .section-cta-wrap { margin-top: 3.5rem !important; padding-top: 1.25rem !important; }
-        .cta-section { padding-top: 5.5rem !important; margin-top: 1.5rem !important; }
-        .portfolio-link { margin-top: 1.25rem !important; }
-    </style>
+    <link rel="stylesheet" href="./critical.css">
 
 </head>
 <body class="is-loading">
@@ -87,7 +55,7 @@
         </div>
     </header>
 
-    <section class="hero glow-bg">
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <span class="eyebrow">Case Studies</span>
@@ -96,10 +64,7 @@
             </div>
         </div>
     </section>
-
-    <div class="section-divider"></div>
-
-    <section class="services">
+<section class="section-block">
         <div class="container">
             <div class="section-header">
                 <span class="section-kicker">Selected Work</span>
@@ -219,19 +184,19 @@
             </div>
         </div>
     </section>
-
-    <div class="section-divider"></div>
-
-    <section class="cta glow-bg">
-        <div class="container">
-            <div class="cta-content">
-                <span class="eyebrow eyebrow--purple">Your Turn</span>
-                <h2 class="cta-title">Ready to Start Your Project?</h2>
-                <p class="cta-text">Every great project starts with a conversation. Let's discuss how we can help you achieve similar results—we'd love to hear your vision.</p>
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-panel glass-card">
+            <span class="eyebrow eyebrow--purple">Your Turn</span>
+            <h2 class="cta-title">Ready to Start Your Project?</h2>
+            <p class="cta-text">Every great project starts with a conversation. Let's discuss how we can help you achieve similar results.</p>
+            <div class="hero-buttons">
                 <a href="./contact.html" class="btn btn-primary btn-large">Get Started Today</a>
+                <a href="./services.html" class="btn btn-secondary btn-large">Our Services</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <footer class="footer">
         <div class="container">
