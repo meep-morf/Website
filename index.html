@@ -16,11 +16,13 @@
         .hero-headline { color: #f0f0f2; }
         .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 720px; margin: 3rem auto 0; }
         .stat-card { padding: 1.25rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; background: rgba(28,28,36,0.8); text-align: center; }
-        .premium-grid.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .premium-grid, .premium-grid.services-grid, .premium-grid.featured-grid, .premium-grid.why-grid { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 1.75rem !important; row-gap: 1.75rem !important; column-gap: 1.75rem !important; align-items: start; }
+        .premium-grid.featured-grid { gap: 2rem !important; row-gap: 2rem !important; column-gap: 2rem !important; }
         .glass-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; background: rgba(24,24,30,0.85); padding: 2rem; }
         .process-section .process-timeline { display: flex; align-items: flex-start; justify-content: space-between; gap: 0; flex-wrap: nowrap; }
-        .premium-grid.featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; column-gap: 2rem; row-gap: 2rem; align-items: start; }
-        .premium-grid.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
+        .section-cta-wrap { margin-top: 3.5rem !important; padding-top: 1.25rem !important; }
+        .cta-section { padding-top: 5.5rem !important; margin-top: 1.5rem !important; }
+        .portfolio-link { margin-top: 1.25rem !important; }
         .why-grid .glass-card.service-card { min-height: unset; padding: 1.35rem 1.25rem; }
         .why-grid .card-icon { font-size: 1.65rem; margin-bottom: 0.5rem; }
         .featured-card { padding: 1.5rem 1.35rem; min-height: unset; }
