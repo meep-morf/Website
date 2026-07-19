@@ -7,8 +7,9 @@ Static website for NomadLabz - Deployable on Vercel
 ```
 .
 ├── Images/
-│   ├── NomadLabz.png
-│   └── NomadLabz.svg
+│   ├── NomadLabz.png        (full lockup — nav, footer, preloader)
+│   ├── NomadLabz-icon.png   (NL monogram — favicon PNG)
+│   └── NomadLabz.svg        (NL monogram — favicon SVG)
 ├── about.html
 ├── contact.html
 ├── index.html
