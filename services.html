@@ -57,18 +57,17 @@ html,body{margin:0;background:#08080a;color:#f0f0f2;font-family:system-ui,-apple
     <title>Services - NomadLabz</title>
     <link rel="icon" type="image/svg+xml" href="/Images/nomadlabz-mark-v4.svg">
     <link rel="icon" type="image/png" href="/Images/nomadlabz-mark-v4.png">
-    <link rel="stylesheet" href="/style.css?v=20260721b">
+    <link rel="stylesheet" href="/style.css?v=20260721c">
 </head>
 <body class="is-loading">
     <div id="site-preloader" aria-hidden="true">
         <div class="preloader-glow"></div>
         <img src="/Images/nomadlabz-logo-v4.png" alt="Nomad Labz" class="preloader-logo" width="320" height="213" onerror="this.onerror=null; this.src='/Images/nomadlabz-logo-v4.png';">
     </div>
-    <script>
+        <script>
     (function () {
-        var STORAGE_KEY = 'nomadlabz_intro_seen';
         var preloader = document.getElementById('site-preloader');
-        var MIN_DISPLAY_MS = 2000;
+        var MIN_DISPLAY_MS = 2200;
         var FADE_MS = 600;
         var done = false;
         function revealSite() {
@@ -80,13 +79,11 @@ html,body{margin:0;background:#08080a;color:#f0f0f2;font-family:system-ui,-apple
             preloader.classList.add('preloader-hidden');
             setTimeout(function () { if (preloader.parentNode) preloader.remove(); }, FADE_MS);
         }
-        if (!preloader || sessionStorage.getItem(STORAGE_KEY)) {
+        if (!preloader) {
             document.body.classList.remove('is-loading');
             document.body.classList.add('site-ready');
-            if (preloader) preloader.remove();
             return;
         }
-        sessionStorage.setItem(STORAGE_KEY, '1');
         var startedAt = Date.now();
         function startReveal() {
             var delay = Math.max(0, MIN_DISPLAY_MS - (Date.now() - startedAt));
@@ -94,7 +91,7 @@ html,body{margin:0;background:#08080a;color:#f0f0f2;font-family:system-ui,-apple
         }
         if (document.readyState === 'complete') startReveal();
         else window.addEventListener('load', startReveal);
-        setTimeout(revealSite, 4500);
+        setTimeout(revealSite, 5000);
     })();
     </script>
 
@@ -396,6 +393,6 @@ html,body{margin:0;background:#08080a;color:#f0f0f2;font-family:system-ui,-apple
 
     </main>
 
-    <script src="/main.js?v=20260721b" defer></script>
+    <script src="/main.js?v=20260721c" defer></script>
 </body>
 </html>

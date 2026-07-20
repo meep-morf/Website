@@ -1,11 +1,13 @@
-/* Logo preloader — once per browser session */
+/* Logo preloader — plays on every page load */
 (function initPreloader() {
-    const STORAGE_KEY = 'nomadlabz_intro_seen';
     const preloader = document.getElementById('site-preloader');
-    const MIN_DISPLAY_MS = 2000;
+    const MIN_DISPLAY_MS = 2200;
     const FADE_MS = 600;
+    let done = false;
 
     function revealSite() {
+        if (done) return;
+        done = true;
         document.body.classList.remove('is-loading');
         document.body.classList.add('site-ready');
 
@@ -17,14 +19,12 @@
         }, FADE_MS);
     }
 
-    if (!preloader || sessionStorage.getItem(STORAGE_KEY)) {
+    if (!preloader) {
         document.body.classList.remove('is-loading');
         document.body.classList.add('site-ready');
-        if (preloader) preloader.remove();
         return;
     }
 
-    sessionStorage.setItem(STORAGE_KEY, '1');
     const startedAt = Date.now();
 
     function startReveal() {
@@ -40,7 +40,7 @@
     }
 
     /* Failsafe */
-    setTimeout(revealSite, 4500);
+    setTimeout(revealSite, 5000);
 })();
 
 document.addEventListener('DOMContentLoaded', function () {
