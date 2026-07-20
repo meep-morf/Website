@@ -1,25 +1,49 @@
-/* Preloader — backup only; inline script in HTML dismisses it first */
-(function initPreloaderBackup() {
+/* Logo preloader — once per browser session */
+(function initPreloader() {
+    const STORAGE_KEY = 'nomadlabz_intro_seen';
     const preloader = document.getElementById('site-preloader');
-    if (!preloader) {
+    const MIN_DISPLAY_MS = 2000;
+    const FADE_MS = 600;
+
+    function revealSite() {
         document.body.classList.remove('is-loading');
+        document.body.classList.add('site-ready');
+
+        if (!preloader) return;
+
+        preloader.classList.add('preloader-hidden');
+        setTimeout(function () {
+            if (preloader.parentNode) preloader.remove();
+        }, FADE_MS);
+    }
+
+    if (!preloader || sessionStorage.getItem(STORAGE_KEY)) {
+        document.body.classList.remove('is-loading');
+        document.body.classList.add('site-ready');
+        if (preloader) preloader.remove();
         return;
     }
 
-    function dismissPreloader() {
-        document.body.classList.remove('is-loading');
-        if (!preloader.parentNode) return;
-        preloader.classList.add('preloader-hidden');
-        setTimeout(function() {
-            if (preloader.parentNode) preloader.remove();
-        }, 500);
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    const startedAt = Date.now();
+
+    function startReveal() {
+        const elapsed = Date.now() - startedAt;
+        const delay = Math.max(0, MIN_DISPLAY_MS - elapsed);
+        setTimeout(revealSite, delay);
     }
 
-    /* Hard failsafe if inline script did not run */
-    setTimeout(dismissPreloader, 4000);
+    if (document.readyState === 'complete') {
+        startReveal();
+    } else {
+        window.addEventListener('load', startReveal);
+    }
+
+    /* Failsafe */
+    setTimeout(revealSite, 4500);
 })();
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const pathParts = window.location.pathname.split('/').filter(Boolean);
     let currentPage = pathParts[pathParts.length - 1] || '';
 
@@ -29,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPageNormalized = currentPage.replace(/\.html$/, '');
 
     const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(function(link) {
+    navLinks.forEach(function (link) {
         const href = link.getAttribute('href') || '';
         let linkPath = href.split('/').filter(Boolean).pop() || '';
         if (href === '/' || linkPath === '') {
@@ -42,26 +66,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
     }, {
-        threshold: 0.05,
-        rootMargin: '0px 0px -20px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
     });
 
     document.querySelectorAll(
-        '.glass-card, .service-card, .featured-card, .value-card, .case-study-card, .process-step, .info-card, .stat-card'
-    ).forEach(function(card) {
+        '.glass-card, .service-card, .featured-card, .value-card, .case-study-card, .process-step, .info-card, .service-detail-card, .solution-card, .stat-card'
+    ).forEach(function (card) {
         card.classList.add('fade-in');
         observer.observe(card);
     });
 
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href !== '#') {
                 e.preventDefault();
@@ -77,19 +101,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('.nav');
 
     if (menuToggle && nav) {
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', function () {
             menuToggle.classList.toggle('active');
             nav.classList.toggle('active');
         });
 
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
+        navLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
                 menuToggle.classList.remove('active');
                 nav.classList.remove('active');
             });
         });
 
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const isClickInsideNav = nav.contains(event.target);
             const isClickOnToggle = menuToggle.contains(event.target);
 

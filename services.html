@@ -4,9 +4,9 @@
     <style id="critical-inline">
 /* Inlined in every page <head> — survives cache/CDN issues */
 html,body{margin:0;background:#08080a;color:#f0f0f2;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
-.site-content{opacity:1!important;visibility:visible!important}
-#site-preloader{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;background:#08080a}
-#site-preloader.preloader-hidden{display:none!important;opacity:0!important;visibility:hidden!important}
+.site-content{opacity:0;visibility:visible;transition:opacity .7s ease .1s}body.site-ready .site-content{opacity:1}
+#site-preloader{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;background:#08080a;transition:opacity .6s ease,visibility .6s ease}
+#site-preloader.preloader-hidden{opacity:0;visibility:hidden;pointer-events:none}
 .container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
 .header{background:rgba(8,8,10,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:1.25rem 0;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,.06)}
 .header-content{display:flex;justify-content:space-between;align-items:center}
@@ -55,26 +55,46 @@ html,body{margin:0;background:#08080a;color:#f0f0f2;font-family:system-ui,-apple
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - NomadLabz</title>
-    <link rel="icon" type="image/svg+xml" href="/Images/nomadlabz-mark-v3.svg">
-    <link rel="icon" type="image/png" href="/Images/nomadlabz-mark-v3.png">
-    <link rel="stylesheet" href="/style.css?v=20260721a">
+    <link rel="icon" type="image/svg+xml" href="/Images/nomadlabz-mark-v4.svg">
+    <link rel="icon" type="image/png" href="/Images/nomadlabz-mark-v4.png">
+    <link rel="stylesheet" href="/style.css?v=20260721b">
 </head>
 <body class="is-loading">
     <div id="site-preloader" aria-hidden="true">
         <div class="preloader-glow"></div>
-        <img src="/Images/nomadlabz-logo-v3.png" alt="Nomad Labz" class="preloader-logo" width="320" height="213" onerror="this.onerror=null; this.src='/Images/nomadlabz-logo-v3.png';">
+        <img src="/Images/nomadlabz-logo-v4.png" alt="Nomad Labz" class="preloader-logo" width="320" height="213" onerror="this.onerror=null; this.src='/Images/nomadlabz-logo-v4.png';">
     </div>
     <script>
     (function () {
+        var STORAGE_KEY = 'nomadlabz_intro_seen';
         var preloader = document.getElementById('site-preloader');
-        function dismissPreloader() {
+        var MIN_DISPLAY_MS = 2000;
+        var FADE_MS = 600;
+        var done = false;
+        function revealSite() {
+            if (done) return;
+            done = true;
             document.body.classList.remove('is-loading');
+            document.body.classList.add('site-ready');
             if (!preloader) return;
             preloader.classList.add('preloader-hidden');
-            setTimeout(function () { preloader.remove(); }, 500);
+            setTimeout(function () { if (preloader.parentNode) preloader.remove(); }, FADE_MS);
         }
-        setTimeout(dismissPreloader, 2200);
-        window.addEventListener('load', function () { setTimeout(dismissPreloader, 300); });
+        if (!preloader || sessionStorage.getItem(STORAGE_KEY)) {
+            document.body.classList.remove('is-loading');
+            document.body.classList.add('site-ready');
+            if (preloader) preloader.remove();
+            return;
+        }
+        sessionStorage.setItem(STORAGE_KEY, '1');
+        var startedAt = Date.now();
+        function startReveal() {
+            var delay = Math.max(0, MIN_DISPLAY_MS - (Date.now() - startedAt));
+            setTimeout(revealSite, delay);
+        }
+        if (document.readyState === 'complete') startReveal();
+        else window.addEventListener('load', startReveal);
+        setTimeout(revealSite, 4500);
     })();
     </script>
 
@@ -85,7 +105,7 @@ html,body{margin:0;background:#08080a;color:#f0f0f2;font-family:system-ui,-apple
         <div class="container">
             <div class="header-content">
                 <a href="/" class="logo-brand">
-                    <img src="/Images/nomadlabz-logo-v3.png" alt="NomadLabz" class="logo-img" width="200" height="56" loading="eager" onerror="this.onerror=null; this.src='/Images/nomadlabz-logo-v3.png';" style="background: transparent;">
+                    <img src="/Images/nomadlabz-logo-v4.png" alt="NomadLabz" class="logo-img" width="200" height="56" loading="eager" onerror="this.onerror=null; this.src='/Images/nomadlabz-logo-v4.png';" style="background: transparent;">
                     <span class="brand-text">Nomad Labz</span>
                 </a>
                 <button class="menu-toggle" aria-label="Toggle menu">
@@ -332,7 +352,7 @@ html,body{margin:0;background:#08080a;color:#f0f0f2;font-family:system-ui,-apple
                     <div class="footer-brand">
                         <div class="footer-logo-brand">
                             <div class="logo-mark">
-                                <img src="/Images/nomadlabz-logo-v3.png" alt="NomadLabz" class="footer-logo-img" width="220" height="72" onerror="this.onerror=null; this.src='/Images/nomadlabz-logo-v3.png';">
+                                <img src="/Images/nomadlabz-logo-v4.png" alt="NomadLabz" class="footer-logo-img" width="220" height="72" onerror="this.onerror=null; this.src='/Images/nomadlabz-logo-v4.png';">
                             </div>
                             <span class="footer-brand-text">Nomad Labz</span>
                         </div>
@@ -376,6 +396,6 @@ html,body{margin:0;background:#08080a;color:#f0f0f2;font-family:system-ui,-apple
 
     </main>
 
-    <script src="/main.js" defer></script>
+    <script src="/main.js?v=20260721b" defer></script>
 </body>
 </html>
