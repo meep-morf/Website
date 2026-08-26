@@ -27,8 +27,9 @@ export const metadata: Metadata = {
   ...buildMetadata(),
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/brand/nomadlabz-mark.svg", type: "image/svg+xml" },
-      { url: "/brand/nomadlabz-mark.png", type: "image/png" },
+      { url: "/brand/nomadlabz-mark.png", type: "image/png", sizes: "512x512" },
     ],
     apple: "/brand/nomadlabz-mark.png",
   },

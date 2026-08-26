@@ -87,9 +87,14 @@ Official logos live in `public/brand/` (copied from the original `Images/` locku
 ## Deploy (Vercel)
 
 1. Push to the GitHub remote connected to Vercel (this repo’s `origin`).
-2. Framework preset: **Next.js** (auto-detected).
+2. Confirm **Build & Development Settings** in the Vercel dashboard:
+   - **Framework Preset:** Next.js (also forced in `vercel.json` — do **not** leave this as “Other” from the old static site)
+   - **Root Directory:** empty / `.` (repo root — do not point at a nested folder)
+   - **Build Command / Output Directory:** leave defaults (or clear overrides). Do not set a static `outputDirectory`.
 3. Set env vars above in the Vercel project.
-4. Deploy — Vercel builds with `next build`.
+4. Redeploy Production after settings changes — Vercel runs `next build`.
+
+This project used to be a static HTML site on Vercel with Framework **Other**. After the Next.js rebuild, that preset (or an empty Output Directory override) serves no `index.html` and yields platform `404: NOT_FOUND`. `vercel.json` sets `"framework": "nextjs"` to override that.
 
 Security headers (CSP, HSTS, frame denial, etc.) are applied via `next.config.ts` and reinforced in `vercel.json`.
 
