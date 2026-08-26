@@ -1,77 +1,111 @@
 # NomadLabz Website
 
-Static website for NomadLabz - Deployable on Vercel
+Premium Next.js website for **NomadLabz** — software engineering and cybersecurity under the creative direction *The Invisible Operating Layer*.
 
-## Files Structure
+## Stack
+
+- Next.js App Router (React + TypeScript strict)
+- Tailwind CSS v4
+- Motion for React
+- next/font + next/image
+- Zod + Resend (contact API)
+- Playwright e2e
+- ESLint + Prettier
+
+## Routes
+
+| Path | Page |
+|------|------|
+| `/` | Home |
+| `/services` | Capabilities |
+| `/cybersecurity` | Cybersecurity |
+| `/solutions` | Industry solutions |
+| `/portfolio` | Work index |
+| `/portfolio/[slug]` | Case detail |
+| `/about` | Company |
+| `/contact` | Contact + form |
+
+Permanent redirects from legacy `*.html` paths are configured in `next.config.ts`.
+
+## Local development
+
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Serve production build |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript `--noEmit` |
+| `npm run test` | typecheck + lint |
+| `npm run test:e2e` | Playwright smoke tests (requires build first) |
+| `npm run check:links` | Link integrity (starts `next start` on :4310) |
+| `npm run format` | Prettier write |
+
+Recommended verification sequence:
+
+```bash
+npm run build
+npm run test
+npx playwright install chromium
+npm run test:e2e
+npm run check:links
+```
+
+## Environment variables
+
+Set these in Vercel (Production / Preview) and locally in `.env.local`:
+
+| Variable | Required | Notes |
+|----------|----------|-------|
+| `NEXT_PUBLIC_SITE_URL` | Yes | Canonical site URL (no trailing slash), e.g. `https://nomadlabz.com` |
+| `RESEND_API_KEY` | For live email | From [Resend](https://resend.com) |
+| `CONTACT_TO_EMAIL` | Recommended | Defaults to `projects@nomadlabz.com` |
+| `CONTACT_FROM_EMAIL` | For live email | Must be a verified Resend sender, e.g. `NomadLabz <hello@yourdomain.com>` |
+
+If Resend is not configured, the contact API returns an honest **fallback** instructing users to email `projects@nomadlabz.com`.
+
+## Brand assets
+
+Official logos live in `public/brand/` (copied from the original `Images/` lockups). Do not recolor or redraw them.
+
+## Content integrity
+
+- Portfolio external links are verified live URLs only.
+- Confidential projects are listed without client identifiers or invented metrics.
+- About page does not invent team size, office addresses, or founding years.
+
+## Deploy (Vercel)
+
+1. Push to the GitHub remote connected to Vercel (this repo’s `origin`).
+2. Framework preset: **Next.js** (auto-detected).
+3. Set env vars above in the Vercel project.
+4. Deploy — Vercel builds with `next build`.
+
+Security headers (CSP, HSTS, frame denial, etc.) are applied via `next.config.ts` and reinforced in `vercel.json`.
+
+## Project structure
 
 ```
-.
-├── Images/
-│   ├── nomadlabz-logo-v4.png   (4K transparent lockup, lighter NOMAD)
-│   ├── nomadlabz-mark-v4.png   (NL monogram — favicon PNG)
-│   └── nomadlabz-mark-v4.svg   (NL monogram — favicon SVG)
-├── about.html
-├── contact.html
-├── index.html
-├── main.js
-├── package.json
-├── portfolio.html
-├── services.html
-├── solutions.html
-├── style.css (includes critical layout rules)
-└── vercel.json
+src/app/           # routes, API, sitemap, robots, OG image
+src/components/    # layout, sections, hero field, forms, motion
+src/content/       # services, projects, industries, site copy
+src/lib/           # validation, metadata, security, rate limit
+src/styles/        # globals.css design tokens
+public/brand/      # official logos
+tests/             # Playwright
+scripts/           # check-links.mjs
 ```
 
-## Deployment Instructions
+## Contact
 
-### Step 1: Push to GitHub
-
-1. Create a new repository on GitHub:
-   - Go to https://github.com/new
-   - Repository name: `nomadlabz-website` (or any name you prefer)
-   - Make it **Public** or **Private** (your choice)
-   - **DO NOT** initialize with README, .gitignore, or license
-   - Click "Create repository"
-
-2. Push this code to GitHub:
-   ```bash
-   git add .
-   git commit -m "Initial commit - Clean website files"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/nomadlabz-website.git
-   git push -u origin main
-   ```
-   (Replace `YOUR_USERNAME` with your GitHub username)
-
-### Step 2: Deploy to Vercel
-
-1. Go to https://vercel.com
-2. Sign in with your GitHub account
-3. Click **"Add New..."** → **"Project"**
-4. Import your repository:
-   - Find `nomadlabz-website` (or whatever you named it)
-   - Click **"Import"**
-5. Configure Project Settings:
-   - **Framework Preset:** Select **"Other"**
-   - **Root Directory:** Leave as **`./`** (root)
-   - **Build Command:** Leave **EMPTY**
-   - **Output Directory:** Leave **EMPTY**
-   - **Install Command:** Leave **EMPTY**
-6. Click **"Deploy"**
-7. Wait 1-2 minutes for deployment
-8. Your site will be live at: `https://nomadlabz-website.vercel.app` (or similar)
-
-### Step 3: Verify Deployment
-
-- Visit your deployment URL
-- Check that `index.html` loads correctly
-- Test navigation links
-
-## Troubleshooting
-
-If you see a 404 error:
-1. Check Vercel dashboard → Settings → General → Root Directory is `/`
-2. Check Build & Development Settings → Framework is "Other"
-3. Check that all files are in the root directory (not in a subfolder)
-4. Trigger a new deployment from the Deployments tab
-
+`projects@nomadlabz.com`
