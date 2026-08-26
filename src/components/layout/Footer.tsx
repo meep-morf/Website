@@ -3,6 +3,10 @@ import Link from "next/link";
 import { navItems, siteConfig } from "@/content/site";
 import { services } from "@/content/services";
 
+function serviceHref(slug: string) {
+  return slug === "cybersecurity" ? "/cybersecurity" : `/services#${slug}`;
+}
+
 export function Footer() {
   return (
     <footer className="border-t border-border-subtle bg-[#060708]">
@@ -41,12 +45,12 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="mono-label mb-4">Capabilities</p>
+            <p className="mono-label mb-4">Services</p>
             <ul className="space-y-2.5">
-              {services.slice(0, 5).map((service) => (
+              {services.map((service) => (
                 <li key={service.slug}>
                   <Link
-                    href={`/services#${service.slug}`}
+                    href={serviceHref(service.slug)}
                     className="cursor-pointer text-sm text-muted transition-colors hover:text-accent"
                   >
                     {service.title}

@@ -81,7 +81,7 @@ export function ContactForm() {
             type="text"
             required
             autoComplete="name"
-            className="w-full rounded-sm border border-border bg-bg px-3 py-3 text-sm text-text outline-none transition-colors focus:border-accent"
+            className="w-full rounded-sm border border-border bg-bg px-3 py-3 text-sm text-text transition-colors focus-visible:border-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-focus"
           />
         </div>
 
@@ -95,7 +95,7 @@ export function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            className="w-full rounded-sm border border-border bg-bg px-3 py-3 text-sm text-text outline-none transition-colors focus:border-accent"
+            className="w-full rounded-sm border border-border bg-bg px-3 py-3 text-sm text-text transition-colors focus-visible:border-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-focus"
           />
         </div>
 
@@ -108,7 +108,7 @@ export function ContactForm() {
             name="company"
             type="text"
             autoComplete="organization"
-            className="w-full rounded-sm border border-border bg-bg px-3 py-3 text-sm text-text outline-none transition-colors focus:border-accent"
+            className="w-full rounded-sm border border-border bg-bg px-3 py-3 text-sm text-text transition-colors focus-visible:border-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-focus"
           />
         </div>
 
@@ -121,7 +121,7 @@ export function ContactForm() {
             name="message"
             required
             rows={6}
-            className="w-full resize-y rounded-sm border border-border bg-bg px-3 py-3 text-sm text-text outline-none transition-colors focus:border-accent"
+            className="w-full resize-y rounded-sm border border-border bg-bg px-3 py-3 text-sm text-text transition-colors focus-visible:border-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-focus"
           />
         </div>
 

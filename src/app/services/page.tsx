@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -5,7 +6,7 @@ import { services } from "@/content/services";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
-  title: "Capabilities",
+  title: "Services",
   description:
     "Software engineering, automation, mobile, cloud delivery, cybersecurity, and consulting from NomadLabz.",
   path: "/services",
@@ -19,8 +20,8 @@ export default function ServicesPage() {
           <FadeIn>
             <SectionHeader
               as="h1"
-              kicker="Capabilities"
-              title="Capabilities that form the operating layer"
+              kicker="Services"
+              title="Services that form the operating layer"
               description="End-to-end software and security work — connected by design so products, data, and controls move together."
             />
           </FadeIn>
@@ -45,6 +46,16 @@ export default function ServicesPage() {
                     <span className="mono-label !normal-case !tracking-normal">For: </span>
                     {service.audience}
                   </p>
+                  {service.slug === "cybersecurity" && (
+                    <p className="mt-5">
+                      <Link
+                        href="/cybersecurity"
+                        className="cursor-pointer text-sm font-medium text-accent transition-colors hover:text-focus"
+                      >
+                        Explore the cybersecurity practice →
+                      </Link>
+                    </p>
+                  )}
                 </div>
                 <div className="grid gap-8 sm:grid-cols-2">
                   <div>
@@ -75,7 +86,7 @@ export default function ServicesPage() {
       </section>
 
       <FinalCta
-        title="Need a capability mapped to your stack?"
+        title="Need a service mapped to your stack?"
         description="Share your constraints and goals. We will recommend a practical path — build, harden, integrate, or advise."
       />
     </>

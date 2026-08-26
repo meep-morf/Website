@@ -4,22 +4,26 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { services } from "@/content/services";
 
+function serviceHref(slug: string) {
+  return slug === "cybersecurity" ? "/cybersecurity" : `/services#${slug}`;
+}
+
 export function CapabilitiesPreview() {
   return (
     <section className="section-pad border-b border-border-subtle">
       <div className="container-page">
         <FadeIn>
           <SectionHeader
-            kicker="Capabilities"
+            kicker="Services"
             title="Engineering that compounds into an operating advantage"
-            description="Six capabilities that connect product surfaces to the systems, data, and security underneath."
+            description="Six services that connect product surfaces to the systems, data, and security underneath."
           />
         </FadeIn>
         <div className="mt-12 divide-y divide-border-subtle border-y border-border-subtle">
           {services.map((service, index) => (
             <FadeIn key={service.slug} delay={index * 0.04}>
               <Link
-                href={`/services#${service.slug}`}
+                href={serviceHref(service.slug)}
                 className="group grid cursor-pointer gap-3 py-7 transition-colors duration-200 hover:bg-surface/40 md:grid-cols-[8rem_1fr_auto] md:items-baseline md:gap-8 md:px-2"
               >
                 <span className="font-mono text-xs text-faint">
@@ -42,7 +46,7 @@ export function CapabilitiesPreview() {
         </div>
         <div className="mt-10">
           <ButtonLink href="/services" variant="secondary">
-            All Capabilities
+            All Services
           </ButtonLink>
         </div>
       </div>

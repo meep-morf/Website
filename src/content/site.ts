@@ -12,13 +12,19 @@ export const siteConfig = {
 } as const;
 
 export const navItems = [
-  { href: "/services", label: "Capabilities" },
-  { href: "/cybersecurity", label: "Cybersecurity" },
+  { href: "/services", label: "Services" },
   { href: "/solutions", label: "Solutions" },
   { href: "/portfolio", label: "Work" },
   { href: "/about", label: "Company" },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+/** Primary-nav active state — /cybersecurity belongs under Services. */
+export function isNavItemActive(pathname: string, href: string) {
+  if (pathname === href || pathname.startsWith(`${href}/`)) return true;
+  if (href === "/services" && pathname.startsWith("/cybersecurity")) return true;
+  return false;
+}
 
 export const ctaPrimary = {
   href: "/contact",

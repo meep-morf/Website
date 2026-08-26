@@ -3,13 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { ctaPrimary, navItems, siteConfig } from "@/content/site";
+import { useEffect, useId, useRef, useState } from "react";
+import { ctaPrimary, isNavItemActive, navItems, siteConfig } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const menuId = useId();
+  const headerRef = useRef<HTMLElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  // Close the drawer when the route changes (e.g. browser back while open).
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (pathname !== menuPath) {
+    setMenuPath(pathname);
+    if (open) setOpen(false);
+  }
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -18,14 +28,44 @@ export function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+
+    const onPointerDown = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node | null;
+      if (target && headerRef.current && !headerRef.current.contains(target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("touchstart", onPointerDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("touchstart", onPointerDown);
+    };
+  }, [open]);
+
   const closeMenu = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border-subtle bg-[rgba(7,8,9,0.88)] backdrop-blur-md">
-      <div className="container-page flex h-[4.25rem] items-center justify-between gap-4 md:h-[4.75rem]">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-50 border-b border-border-subtle bg-[rgba(7,8,9,0.88)] backdrop-blur-md"
+    >
+      <div className="container-page flex h-16 items-center justify-between gap-6 md:h-[4.5rem]">
         <Link
           href="/"
-          className="group flex shrink-0 items-center gap-3"
+          className="group flex shrink-0 items-center"
           aria-label={`${siteConfig.name} home`}
           onClick={closeMenu}
         >
@@ -34,42 +74,49 @@ export function Header() {
             alt=""
             width={180}
             height={50}
-            className="h-10 w-auto md:h-12"
+            className="h-9 w-auto md:h-10"
             priority
             aria-hidden
           />
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {navItems.map((item) => {
-            const active =
-              pathname === item.href || pathname.startsWith(`${item.href}/`);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "cursor-pointer text-sm font-medium text-muted transition-colors duration-200 hover:text-accent",
-                  active && "text-accent",
-                )}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+        <nav
+          className="ml-auto hidden items-center lg:flex"
+          aria-label="Primary"
+        >
+          <ul className="flex items-center gap-1">
+            {navItems.map((item) => {
+              const active = isNavItemActive(pathname, item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "cursor-pointer rounded-sm px-3 py-2 text-[0.9375rem] font-medium tracking-wide text-muted transition-colors duration-200 hover:text-text",
+                      active && "text-accent",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
           <Link
             href={ctaPrimary.href}
-            className="cursor-pointer rounded-sm bg-accent px-4 py-2 text-sm font-semibold text-[#06110c] transition-colors duration-200 hover:bg-accent-soft"
+            className="ml-6 cursor-pointer rounded-sm border border-accent-border bg-accent/10 px-3.5 py-2 text-sm font-semibold text-accent transition-colors duration-200 hover:border-accent hover:bg-accent hover:text-[#06110c]"
           >
             {ctaPrimary.label}
           </Link>
         </nav>
 
         <button
+          ref={toggleRef}
           type="button"
-          className="inline-flex cursor-pointer flex-col justify-center gap-1.5 rounded-sm border border-border p-2.5 lg:hidden"
+          className="inline-flex min-h-11 min-w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-sm border border-border p-2.5 lg:hidden"
           aria-expanded={open}
-          aria-controls="mobile-nav"
+          aria-controls={menuId}
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
@@ -95,27 +142,34 @@ export function Header() {
       </div>
 
       <div
-        id="mobile-nav"
+        id={menuId}
         className={cn(
           "border-t border-border-subtle bg-bg-elevated lg:hidden",
           open ? "block" : "hidden",
         )}
       >
         <nav className="container-page flex flex-col gap-1 py-4" aria-label="Mobile">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={closeMenu}
-              className="cursor-pointer rounded-sm px-2 py-3 text-base text-muted transition-colors hover:bg-surface hover:text-accent"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = isNavItemActive(pathname, item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "cursor-pointer rounded-sm px-3 py-3 text-base text-muted transition-colors hover:bg-surface hover:text-accent",
+                  active && "bg-surface text-accent",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <Link
             href={ctaPrimary.href}
             onClick={closeMenu}
-            className="mt-2 cursor-pointer rounded-sm bg-accent px-3 py-3 text-center text-sm font-semibold text-[#06110c]"
+            className="mt-2 cursor-pointer rounded-sm bg-accent px-3 py-3 text-center text-sm font-semibold text-[#06110c] transition-colors hover:bg-accent-soft"
           >
             {ctaPrimary.label}
           </Link>

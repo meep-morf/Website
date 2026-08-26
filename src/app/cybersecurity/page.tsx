@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -42,6 +43,18 @@ export default function CybersecurityPage() {
       <section className="section-pad border-b border-border-subtle">
         <div className="container-page max-w-4xl">
           <FadeIn>
+            <p className="mb-4 text-sm text-faint">
+              <Link
+                href="/services"
+                className="cursor-pointer transition-colors hover:text-accent"
+              >
+                Services
+              </Link>
+              <span className="mx-2 text-border" aria-hidden>
+                /
+              </span>
+              <span className="text-muted">Cybersecurity</span>
+            </p>
             <SectionHeader
               as="h1"
               kicker="Cybersecurity"
