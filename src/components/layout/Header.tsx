@@ -62,19 +62,19 @@ export function Header() {
       ref={headerRef}
       className="sticky top-0 z-50 border-b border-border-subtle bg-[rgba(7,8,9,0.88)] backdrop-blur-md"
     >
-      <div className="container-page flex h-16 items-center justify-between gap-6 md:h-[4.5rem]">
+      <div className="container-page flex h-16 items-center justify-between gap-6 py-2 md:h-[4.5rem] md:py-2.5">
         <Link
           href="/"
-          className="group flex shrink-0 items-center"
+          className="group flex h-8 shrink-0 items-center md:h-9"
           aria-label={`${siteConfig.name} home`}
           onClick={closeMenu}
         >
           <Image
             src="/brand/nomadlabz-logo.png"
             alt=""
-            width={180}
-            height={50}
-            className="h-9 w-auto md:h-10"
+            width={148}
+            height={90}
+            className="h-8 w-auto max-h-8 object-contain object-left md:h-9 md:max-h-9"
             priority
             aria-hidden
           />
