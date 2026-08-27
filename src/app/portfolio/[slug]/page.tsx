@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { ExternalLinkButton } from "@/components/ui/ExternalLinkButton";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { getProject, projects } from "@/content/projects";
 import { buildMetadata } from "@/lib/metadata";
@@ -41,9 +42,15 @@ export default async function ProjectPage({ params }: Props) {
                 {project.status === "live" ? "Public / Live" : "Confidential"}
               </span>
               {project.url ? (
-                <ButtonLink href={project.url} variant="secondary" external>
-                  Visit Live Site
-                </ButtonLink>
+                <>
+                  <ButtonLink href={project.url} variant="secondary" external>
+                    Visit Live Site
+                  </ButtonLink>
+                  <ExternalLinkButton
+                    href={project.url}
+                    ariaLabel={`Open ${project.title} in a new tab`}
+                  />
+                </>
               ) : null}
             </div>
           </FadeIn>

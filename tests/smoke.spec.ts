@@ -24,6 +24,7 @@ test.describe("NomadLabz site", () => {
 
   test("home hero brand and CTAs", async ({ page }) => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
+    await expect(page.getByRole("link", { name: "Home" }).first()).toBeVisible();
     await expect(page.locator("h1")).toContainText(
       "Software that moves business. Security that protects it.",
     );

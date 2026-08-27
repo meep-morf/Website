@@ -1,6 +1,7 @@
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { MailButton } from "@/components/ui/MailButton";
 import { siteConfig } from "@/content/site";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -61,12 +62,15 @@ export default function ContactPage() {
                 <p className="text-sm text-muted">
                   For project inquiries, collaborations, or confidential assessments:
                 </p>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="mt-3 inline-block cursor-pointer text-lg font-medium text-accent hover:text-focus"
-                >
-                  {siteConfig.email}
-                </a>
+                <div className="mt-3 flex flex-wrap items-center gap-3">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="inline-block cursor-pointer text-lg font-medium text-accent hover:text-focus"
+                  >
+                    {siteConfig.email}
+                  </a>
+                  <MailButton email={siteConfig.email} />
+                </div>
               </div>
               <div>
                 <h2 className="mono-label mb-4">What happens next</h2>

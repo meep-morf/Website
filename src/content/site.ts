@@ -12,6 +12,7 @@ export const siteConfig = {
 } as const;
 
 export const navItems = [
+  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/solutions", label: "Solutions" },
   { href: "/portfolio", label: "Work" },
@@ -21,6 +22,7 @@ export const navItems = [
 
 /** Primary-nav active state — /cybersecurity belongs under Services. */
 export function isNavItemActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
   if (pathname === href || pathname.startsWith(`${href}/`)) return true;
   if (href === "/services" && pathname.startsWith("/cybersecurity")) return true;
   return false;

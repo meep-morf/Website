@@ -170,3 +170,72 @@
 .skip-link:focus {
   top: 1rem;
 }
+
+.hero-scan-fallback {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 40%, rgba(45, 184, 138, 0.12), transparent 60%),
+    linear-gradient(180deg, #0a0c0e 0%, #070809 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-scan-fallback::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(45, 184, 138, 0.55), transparent);
+  animation: hero-scan-line 4s ease-in-out infinite;
+}
+
+@keyframes hero-scan-line {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes hero-fade-in-keyframes {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade-in {
+  animation: hero-fade-in-keyframes 0.55s ease forwards;
+}
+
+.hero-fade-in-subtitle {
+  animation: hero-fade-in-keyframes 0.65s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scan-fallback::after {
+    animation: none;
+    top: 50%;
+    opacity: 0.35;
+  }
+
+  .hero-fade-in,
+  .hero-fade-in-subtitle {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

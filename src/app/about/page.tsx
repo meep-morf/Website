@@ -1,5 +1,6 @@
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { GlobeStudyLazy } from "@/components/ui/globe-study-lazy";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -87,6 +88,23 @@ export default function AboutPage() {
               </FadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-pad border-b border-border-subtle">
+        <div className="container-page grid items-center gap-12 lg:grid-cols-2">
+          <FadeIn>
+            <SectionHeader
+              kicker="Global reach"
+              title="Systems without borders"
+              description="NomadLabz partners with teams across regions — building software and security capabilities that travel with the business, not against it."
+            />
+          </FadeIn>
+          <FadeIn delay={0.06}>
+            <div className="relative aspect-square max-h-[min(72vw,420px)] w-full overflow-hidden rounded-sm border border-border-subtle bg-bg-elevated lg:max-h-[480px] lg:justify-self-end">
+              <GlobeStudyLazy mode="dark" opacity={0.95} />
+            </div>
+          </FadeIn>
         </div>
       </section>
 

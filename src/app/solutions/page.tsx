@@ -1,5 +1,6 @@
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { GlobeStudyLazy } from "@/components/ui/globe-study-lazy";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { industries } from "@/content/industries";
 import { buildMetadata } from "@/lib/metadata";
@@ -15,7 +16,7 @@ export default function SolutionsPage() {
   return (
     <>
       <section className="section-pad border-b border-border-subtle">
-        <div className="container-page">
+        <div className="container-page grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <FadeIn>
             <SectionHeader
               as="h1"
@@ -23,6 +24,11 @@ export default function SolutionsPage() {
               title="Industry context. Same operating discipline."
               description="We adapt software and security work to the constraints of your sector — without inventing domain credentials we do not have."
             />
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <div className="relative aspect-square max-h-[min(68vw,360px)] w-full overflow-hidden rounded-sm border border-border-subtle bg-bg-elevated lg:max-h-[400px] lg:justify-self-end">
+              <GlobeStudyLazy mode="dark" opacity={0.9} scale={0.95} />
+            </div>
           </FadeIn>
         </div>
       </section>

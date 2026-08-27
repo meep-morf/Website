@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { HeroFuturisticLazy } from "@/components/ui/hero-futuristic-lazy";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -40,8 +41,15 @@ const principles = [
 export default function CybersecurityPage() {
   return (
     <>
-      <section className="section-pad border-b border-border-subtle">
-        <div className="container-page max-w-4xl">
+      <section className="relative overflow-hidden border-b border-border-subtle">
+        <div className="absolute inset-0">
+          <HeroFuturisticLazy
+            titleWords="Security that protects software in motion"
+            subtitle="Continuous assessment across your operating layer."
+            heightClassName="h-full min-h-[320px]"
+          />
+        </div>
+        <div className="container-page relative z-10 max-w-4xl section-pad">
           <FadeIn>
             <p className="mb-4 text-sm text-faint">
               <Link

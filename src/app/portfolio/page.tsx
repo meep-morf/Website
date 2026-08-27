@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { HeroFuturisticLazy } from "@/components/ui/hero-futuristic-lazy";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { projects } from "@/content/projects";
 import { buildMetadata } from "@/lib/metadata";
@@ -15,8 +16,15 @@ export const metadata = buildMetadata({
 export default function PortfolioPage() {
   return (
     <>
-      <section className="section-pad border-b border-border-subtle">
-        <div className="container-page">
+      <section className="relative overflow-hidden border-b border-border-subtle">
+        <div className="absolute inset-0 opacity-50">
+          <HeroFuturisticLazy
+            titleWords="Selected projects"
+            subtitle="Verified work. Honest descriptions."
+            heightClassName="h-full min-h-[240px]"
+          />
+        </div>
+        <div className="container-page relative z-10 section-pad">
           <FadeIn>
             <SectionHeader
               as="h1"
