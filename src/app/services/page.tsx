@@ -1,8 +1,9 @@
 import { FadeIn } from "@/components/motion/FadeIn";
-import { ScanAccent } from "@/components/motion/ScanAccent";
 import { ServicePanel } from "@/components/motion/CapabilityRow";
 import { ServiceConnector } from "@/components/motion/ServiceConnector";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { InteractiveSynapseNetworkLazy } from "@/components/ui/interactive-synapse-network-lazy";
+import { NOMAD_SYNAPSE_THEME } from "@/components/ui/interactive-synapse-network";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { services } from "@/content/services";
 import { buildMetadata } from "@/lib/metadata";
@@ -17,25 +18,27 @@ export const metadata = buildMetadata({
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative overflow-hidden section-pad border-b border-border-subtle">
-        <ScanAccent />
-        <div
-          className="pointer-events-none absolute inset-0 opacity-40"
-          style={{
-            backgroundImage:
-              "linear-gradient(var(--border-subtle) 1px, transparent 1px), linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-          aria-hidden
-        />
-        <div className="container-page relative">
+      <section className="relative min-h-[min(72vh,560px)] overflow-hidden border-b border-border-subtle">
+        <div className="absolute inset-0">
+          <InteractiveSynapseNetworkLazy
+            {...NOMAD_SYNAPSE_THEME}
+            nodeCount={55}
+            connectionRadius={160}
+            trailOpacity={0.18}
+            className="h-full w-full"
+            ariaLabel="Animated capability network background"
+          />
+        </div>
+        <div className="container-page relative z-10 flex min-h-[min(72vh,560px)] items-center section-pad">
           <FadeIn>
-            <SectionHeader
-              as="h1"
-              kicker="Services"
-              title="Capabilities that form the operating layer"
-              description="End-to-end software and security work — connected by design so products, data, and controls move together instead of drifting apart."
-            />
+            <div className="max-w-3xl rounded-sm border border-border-subtle bg-bg/85 p-8 backdrop-blur-md md:p-10">
+              <SectionHeader
+                as="h1"
+                kicker="Services"
+                title="Capabilities that form the operating layer"
+                description="End-to-end software and security work — connected by design so products, data, and controls move together instead of drifting apart."
+              />
+            </div>
           </FadeIn>
         </div>
       </section>

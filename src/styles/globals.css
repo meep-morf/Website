@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  --network-bg: #08090a;
   --bg: #08090a;
   --bg-elevated: #141820;
   --surface: #1a1f28;
@@ -62,6 +63,7 @@
   --color-teal: var(--teal);
   --color-teal-muted: var(--teal-muted);
   --color-teal-border: var(--teal-border);
+  --color-network-bg: var(--network-bg);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
