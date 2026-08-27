@@ -1,4 +1,5 @@
 import { FadeIn } from "@/components/motion/FadeIn";
+import { ContactGridPulse } from "@/components/motion/ContactAmbient";
 import { ContactStepsTimeline } from "@/components/motion/ProcessTimeline";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -35,8 +36,9 @@ const steps = [
 export default function ContactPage() {
   return (
     <>
-      <section className="section-pad border-b border-border-subtle">
-        <div className="container-page">
+      <section className="relative overflow-hidden section-pad border-b border-border-subtle">
+        <ContactGridPulse />
+        <div className="container-page relative">
           <FadeIn>
             <SectionHeader
               as="h1"
@@ -48,10 +50,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section-pad border-b border-border-subtle">
-        <div className="container-page grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="relative overflow-hidden section-pad border-b border-border-subtle">
+        <ContactGridPulse />
+        <div className="container-page relative grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
           <FadeIn>
-            <div className="relative">
+            <div className="relative rounded-sm border border-border-subtle bg-bg/80 p-6 backdrop-blur-sm md:p-8">
               <h2 className="mb-6 text-2xl font-semibold tracking-tight">Send a message</h2>
               <ContactForm />
             </div>
@@ -73,7 +76,7 @@ export default function ContactPage() {
                   <MailButton email={siteConfig.email} />
                 </div>
               </div>
-              <div>
+              <div className="rounded-sm border border-border-subtle bg-bg-elevated/50 p-6">
                 <h2 className="mono-label mb-4">What happens next</h2>
                 <ContactStepsTimeline steps={steps} />
               </div>

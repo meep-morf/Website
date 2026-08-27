@@ -4,6 +4,7 @@ export type Service = {
   summary: string;
   problems: string[];
   deliverables: string[];
+  outcomes: string[];
   audience: string;
 };
 
@@ -23,6 +24,11 @@ export const services: Service[] = [
       "Admin and operations platforms your team can maintain",
       "Architecture, code quality, and delivery practices that reduce rework",
     ],
+    outcomes: [
+      "Shippable product surfaces your team can extend without vendor lock-in",
+      "Readable codebase and delivery rhythm that survive the next hire",
+      "Consistent UX across roles and devices without duplicate logic",
+    ],
     audience: "Teams shipping products or modernizing core digital systems.",
   },
   {
@@ -39,6 +45,11 @@ export const services: Service[] = [
       "API design and third-party integrations",
       "Workflow automation and orchestration",
       "Data sync, monitoring, and failure handling you can trust",
+    ],
+    outcomes: [
+      "Fewer manual steps between systems that should already talk",
+      "Observable integrations with clear failure signals",
+      "One operational source of truth across departments",
     ],
     audience: "Organizations running multiple tools that must act as one system.",
   },
@@ -57,6 +68,11 @@ export const services: Service[] = [
       "Cross-platform product builds where it makes sense",
       "Mobile-first operational tools tied to real workflows",
     ],
+    outcomes: [
+      "Field-ready apps tied to real workflows, not generic templates",
+      "Shared backend logic so mobile and web stay aligned",
+      "Maintainable release path your team can own",
+    ],
     audience: "Businesses that need field, customer, or workforce access on mobile.",
   },
   {
@@ -73,6 +89,11 @@ export const services: Service[] = [
       "Cloud architecture and environment design",
       "CI/CD pipelines and release discipline",
       "Monitoring, logging, and operational readiness",
+    ],
+    outcomes: [
+      "Predictable releases with rollback paths your team trusts",
+      "Infrastructure that scales without surprise cost spikes",
+      "Production visibility before users report problems",
     ],
     audience: "Teams shipping continuously who need stable production footing.",
   },
@@ -91,6 +112,11 @@ export const services: Service[] = [
       "Secure architecture and application controls",
       "Hardening, monitoring guidance, and response readiness",
     ],
+    outcomes: [
+      "Prioritized risk view with engineering-ready next steps",
+      "Security controls embedded in how systems are built and run",
+      "Remediation sequence stakeholders can fund and track",
+    ],
     audience: "Organizations that need software velocity without unmanaged risk.",
   },
   {
@@ -107,6 +133,11 @@ export const services: Service[] = [
       "Discovery and roadmap sessions with actionable output",
       "Architecture and stack recommendations grounded in constraints",
       "Delivery planning with risk and dependency visibility",
+    ],
+    outcomes: [
+      "Clear build sequence before major engineering spend",
+      "Shared technical direction across stakeholders and engineering",
+      "Documented trade-offs so future decisions are faster",
     ],
     audience: "Leaders who need grounded decisions before large engineering spend.",
   },

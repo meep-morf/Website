@@ -1,6 +1,9 @@
+"use client";
+
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { MailButton } from "@/components/ui/MailButton";
+import { ShinyArrowButton } from "@/components/ui/ShinyArrowButton";
 import { ctaPrimary, ctaSecondary, siteConfig } from "@/content/site";
 
 type FinalCtaProps = {
@@ -30,6 +33,14 @@ export function FinalCta({
               <ButtonLink href={ctaPrimary.href} className="cta-pulse">
                 {ctaPrimary.label}
               </ButtonLink>
+              <ShinyArrowButton
+                direction="right"
+                variant="green"
+                ariaLabel={ctaPrimary.label}
+                onClick={() => {
+                  window.location.href = ctaPrimary.href;
+                }}
+              />
               <ButtonLink href={ctaSecondary.href} variant="secondary">
                 {ctaSecondary.label}
               </ButtonLink>

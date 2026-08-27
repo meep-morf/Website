@@ -1,6 +1,7 @@
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ScanAccent } from "@/components/motion/ScanAccent";
 import { ServicePanel } from "@/components/motion/CapabilityRow";
+import { ServiceConnector } from "@/components/motion/ServiceConnector";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { services } from "@/content/services";
@@ -16,9 +17,18 @@ export const metadata = buildMetadata({
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative section-pad border-b border-border-subtle">
+      <section className="relative overflow-hidden section-pad border-b border-border-subtle">
         <ScanAccent />
-        <div className="container-page">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            backgroundImage:
+              "linear-gradient(var(--border-subtle) 1px, transparent 1px), linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+          aria-hidden
+        />
+        <div className="container-page relative">
           <FadeIn>
             <SectionHeader
               as="h1"
@@ -31,19 +41,22 @@ export default function ServicesPage() {
       </section>
 
       <section className="section-pad">
-        <div className="container-page space-y-20">
+        <div className="container-page">
           {services.map((service, index) => (
-            <ServicePanel
-              key={service.slug}
-              index={index}
-              slug={service.slug}
-              title={service.title}
-              summary={service.summary}
-              audience={service.audience}
-              problems={service.problems}
-              deliverables={service.deliverables}
-              cyberLink={service.slug === "cybersecurity"}
-            />
+            <div key={service.slug}>
+              <ServicePanel
+                index={index}
+                slug={service.slug}
+                title={service.title}
+                summary={service.summary}
+                audience={service.audience}
+                problems={service.problems}
+                deliverables={service.deliverables}
+                outcomes={service.outcomes}
+                cyberLink={service.slug === "cybersecurity"}
+              />
+              {index < services.length - 1 ? <ServiceConnector index={index} /> : null}
+            </div>
           ))}
         </div>
       </section>

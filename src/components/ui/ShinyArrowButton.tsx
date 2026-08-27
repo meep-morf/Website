@@ -10,7 +10,7 @@ type ShinyArrowButtonProps = {
   onClick?: () => void;
   ariaLabel: string;
   className?: string;
-  variant?: "default" | "green" | "indigo" | "red";
+  variant?: "default" | "green" | "indigo" | "amber" | "red";
 };
 
 const icons: Record<Direction, React.ReactNode> = {

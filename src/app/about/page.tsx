@@ -1,7 +1,6 @@
 import { FadeIn } from "@/components/motion/FadeIn";
-import { GlobeStudyLazy } from "@/components/ui/globe-study-lazy";
 import { AboutHeroContent, ValuesGrid } from "@/components/sections/AboutMotion";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { AboutEditorial } from "@/components/sections/AboutEditorial";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -72,29 +71,20 @@ export default function AboutPage() {
       <section className="section-pad border-b border-border-subtle bg-bg-elevated/40">
         <div className="container-page">
           <FadeIn>
-            <SectionHeader
-              kicker="Principles"
-              title="What guides the work"
-              description="A short set of operating principles — not a culture deck."
-            />
+            <p className="mono-label mb-4">Principles</p>
+            <h2 className="display-heading text-3xl md:text-4xl">What guides the work</h2>
+            <p className="mt-4 max-w-2xl text-muted">
+              A short set of operating principles — not a culture deck.
+            </p>
           </FadeIn>
           <ValuesGrid values={values} />
         </div>
       </section>
 
       <section className="section-pad border-b border-border-subtle">
-        <div className="container-page grid items-center gap-12 lg:grid-cols-2">
+        <div className="container-page">
           <FadeIn>
-            <SectionHeader
-              kicker="Global reach"
-              title="Systems without borders"
-              description="NomadLabz partners with teams across regions — building software and security capabilities that travel with the business, not against it."
-            />
-          </FadeIn>
-          <FadeIn delay={0.06}>
-            <div className="relative aspect-square max-h-[min(72vw,420px)] w-full overflow-hidden rounded-sm border border-border-subtle bg-bg-elevated lg:max-h-[480px] lg:justify-self-end">
-              <GlobeStudyLazy mode="dark" opacity={0.95} />
-            </div>
+            <AboutEditorial />
           </FadeIn>
         </div>
       </section>

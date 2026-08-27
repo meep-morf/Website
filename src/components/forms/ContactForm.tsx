@@ -7,7 +7,7 @@ import { siteConfig } from "@/content/site";
 type Status = "idle" | "submitting" | "success" | "error" | "fallback";
 
 const fieldClass =
-  "w-full rounded-sm border border-border bg-bg px-3 py-3 text-sm text-text transition-all duration-200 focus-visible:border-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-focus focus-visible:shadow-[0_0_0_3px_rgba(45,184,138,0.12)]";
+  "w-full rounded-sm border border-border bg-bg px-3 py-3 text-sm text-text transition-all duration-200 focus-visible:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus/40 focus-visible:shadow-[0_0_0_4px_rgba(45,184,138,0.15)]";
 
 function FieldWrap({
   children,

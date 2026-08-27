@@ -3,7 +3,7 @@
 import React from "react";
 import clsx from "clsx";
 
-type Variant = "default" | "green" | "indigo" | "red";
+type Variant = "default" | "green" | "indigo" | "amber" | "red";
 
 interface FancyButtonProps {
   icon: React.ReactNode;
@@ -13,31 +13,36 @@ interface FancyButtonProps {
   ariaLabel?: string;
 }
 
-/** Dark-theme NomadLabz: transparent resting state, sea-green / amber / blue / red hover glows. */
+/** Dark-theme NomadLabz: visible ring at rest, sea-green / amber / blue / red hover glows. */
 const variantClasses: Record<Variant, string> = {
   default: `
-    border-transparent bg-transparent text-muted shadow-none
-    hover:border-white/20 hover:bg-white/5
-    hover:shadow-lg hover:shadow-white/10`,
+    border-white/15 bg-white/[0.06] text-muted shadow-[0_0_0_1px_rgba(255,255,255,0.04)]
+    hover:border-white/25 hover:bg-white/10
+    hover:shadow-lg hover:shadow-white/15`,
   green: `
-    border-transparent bg-transparent text-accent shadow-none
-    hover:border-accent-border hover:bg-accent/10
-    hover:shadow-lg hover:shadow-accent/25`,
+    border-accent-border/50 bg-accent/[0.08] text-accent shadow-[0_0_12px_rgba(45,184,138,0.12)]
+    hover:border-accent-border hover:bg-accent/15
+    hover:shadow-lg hover:shadow-accent/30`,
   indigo: `
-    border-transparent bg-transparent text-blue-400 shadow-none
-    hover:border-blue-400/30 hover:bg-blue-400/10
-    hover:shadow-lg hover:shadow-blue-400/25`,
+    border-info-border/50 bg-info-muted text-info shadow-[0_0_12px_rgba(91,141,239,0.1)]
+    hover:border-info-border hover:bg-info-muted
+    hover:shadow-lg hover:shadow-info/25`,
+  amber: `
+    border-amber-border/50 bg-amber-muted text-amber shadow-[0_0_12px_rgba(212,165,116,0.1)]
+    hover:border-amber-border hover:bg-amber-muted
+    hover:shadow-lg hover:shadow-amber/25`,
   red: `
-    border-transparent bg-transparent text-red-400 shadow-none
-    hover:border-red-400/30 hover:bg-red-400/10
-    hover:shadow-lg hover:shadow-red-400/25`,
+    border-danger-border/50 bg-danger-muted text-danger shadow-[0_0_12px_rgba(232,93,108,0.1)]
+    hover:border-danger-border hover:bg-danger-muted
+    hover:shadow-lg hover:shadow-danger/25`,
 };
 
 const glowGradientClasses: Record<Variant, string> = {
-  default: "via-white/20",
-  green: "via-emerald-400/30",
-  indigo: "via-blue-400/25",
-  red: "via-red-400/25",
+  default: "via-white/25",
+  green: "via-emerald-400/35",
+  indigo: "via-blue-400/30",
+  amber: "via-amber-400/30",
+  red: "via-red-400/30",
 };
 
 const FancyButton: React.FC<FancyButtonProps> = ({
@@ -53,8 +58,8 @@ const FancyButton: React.FC<FancyButtonProps> = ({
       onClick={onClick}
       aria-label={ariaLabel}
       className={clsx(
-        "group relative min-h-11 min-w-11 cursor-pointer overflow-hidden rounded-full p-3 backdrop-blur-lg transition-all duration-300 ease-out",
-        "hover:scale-110 hover:rotate-2 hover:shadow-2xl active:scale-95 active:rotate-0",
+        "group relative min-h-11 min-w-11 cursor-pointer overflow-hidden rounded-full border p-3 backdrop-blur-md transition-all duration-300 ease-out",
+        "hover:scale-105 active:scale-95",
         variantClasses[variant],
         className,
       )}

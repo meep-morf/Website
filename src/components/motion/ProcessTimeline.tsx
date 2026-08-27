@@ -91,16 +91,23 @@ export function ContactStepsTimeline({ steps }: ContactStepsTimelineProps) {
   const reduce = useReducedMotion();
 
   return (
-    <ol className="relative space-y-5">
-      <div
-        className="absolute bottom-2 left-[0.95rem] top-2 w-px bg-border-subtle"
-        aria-hidden
-      />
+    <ol className="relative space-y-6">
+      <div className="absolute bottom-3 left-[0.95rem] top-3 w-px bg-border-subtle" aria-hidden />
+      {!reduce ? (
+        <motion.div
+          className="absolute bottom-3 left-[0.95rem] top-3 w-px origin-top bg-gradient-to-b from-accent/70 via-info/40 to-transparent"
+          initial={{ scaleY: 0 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          aria-hidden
+        />
+      ) : null}
       {steps.map((step, index) => (
         <li key={step.title} className="relative grid grid-cols-[2rem_1fr] gap-3">
           {reduce ? (
             <>
-              <span className="relative z-10 font-mono text-sm text-accent">
+              <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-accent-border bg-bg font-mono text-xs text-accent">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <div>
@@ -111,14 +118,20 @@ export function ContactStepsTimeline({ steps }: ContactStepsTimelineProps) {
           ) : (
             <motion.div
               className="contents"
-              initial={{ opacity: 0, x: -8 }}
+              initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.35, delay: index * 0.08 }}
+              transition={{ duration: 0.35, delay: index * 0.1 }}
             >
-              <span className="relative z-10 font-mono text-sm text-accent">
+              <motion.span
+                className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-accent-border bg-bg font-mono text-xs text-accent"
+                initial={{ scale: 0.6 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 + 0.05 }}
+              >
                 {String(index + 1).padStart(2, "0")}
-              </span>
+              </motion.span>
               <div>
                 <h3 className="font-semibold text-text">{step.title}</h3>
                 <p className="mt-1 text-sm text-muted">{step.text}</p>

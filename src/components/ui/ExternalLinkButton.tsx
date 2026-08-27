@@ -13,7 +13,7 @@ export function ExternalLinkButton({ href, ariaLabel, className }: ExternalLinkB
   return (
     <FancyButton
       variant="indigo"
-      icon={<ExternalLink size={20} className="text-blue-400" />}
+      icon={<ExternalLink size={20} className="text-info" />}
       ariaLabel={ariaLabel}
       className={className}
       onClick={() => window.open(href, "_blank", "noopener,noreferrer")}

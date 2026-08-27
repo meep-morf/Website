@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 
 type SectionHeaderProps = {
   kicker?: string;
+  kickerClassName?: string;
   title: string;
   description?: string;
   align?: "left" | "center";
@@ -11,6 +12,7 @@ type SectionHeaderProps = {
 
 export function SectionHeader({
   kicker,
+  kickerClassName,
   title,
   description,
   align = "left",
@@ -27,7 +29,9 @@ export function SectionHeader({
         className,
       )}
     >
-      {kicker ? <p className="mono-label mb-4">{kicker}</p> : null}
+      {kicker ? (
+        <p className={cn("mono-label mb-4", kickerClassName)}>{kicker}</p>
+      ) : null}
       <Heading
         className={cn(
           "display-heading",

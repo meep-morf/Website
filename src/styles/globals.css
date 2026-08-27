@@ -1,21 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #070809;
-  --bg-elevated: #0e1012;
-  --surface: #14171a;
-  --surface-hover: #1a1e22;
-  --border: #2a3036;
-  --border-subtle: #1e2328;
-  --text: #f2f4f5;
-  --text-muted: #9aa3ab;
-  --text-faint: #6b737b;
+  --bg: #08090a;
+  --bg-elevated: #141820;
+  --surface: #1a1f28;
+  --surface-hover: #222832;
+  --border: #2e3540;
+  --border-subtle: #1e2430;
+  --text: #f2f3f5;
+  --text-muted: #9aa3ad;
+  --text-faint: #6b7380;
+  /* Sea-green / mint — primary CTAs & highlights */
   --accent: #2db88a;
-  --accent-soft: #1f8f6b;
+  --accent-soft: #249a74;
   --accent-muted: rgba(45, 184, 138, 0.14);
-  --accent-border: rgba(45, 184, 138, 0.35);
+  --accent-border: rgba(45, 184, 138, 0.38);
   --focus: #3dcea0;
-  --danger: #d96b6b;
+  /* Slate blue — info, links, external actions */
+  --info: #5b8def;
+  --info-muted: rgba(91, 141, 239, 0.12);
+  --info-border: rgba(91, 141, 239, 0.35);
+  /* Warm amber — logistics / secondary accent */
+  --amber: #d4a574;
+  --amber-muted: rgba(212, 165, 116, 0.12);
+  --amber-border: rgba(212, 165, 116, 0.35);
+  /* Soft coral — destructive / errors (sparingly) */
+  --danger: #e85d6c;
+  --danger-muted: rgba(232, 93, 108, 0.12);
+  --danger-border: rgba(232, 93, 108, 0.35);
+  /* Muted teal — cybersecurity sections */
+  --teal: #3d8b7a;
+  --teal-muted: rgba(61, 139, 122, 0.12);
+  --teal-border: rgba(61, 139, 122, 0.35);
   --success: #2db88a;
 }
 
@@ -35,6 +51,17 @@
   --color-accent-border: var(--accent-border);
   --color-focus: var(--focus);
   --color-danger: var(--danger);
+  --color-danger-muted: var(--danger-muted);
+  --color-danger-border: var(--danger-border);
+  --color-info: var(--info);
+  --color-info-muted: var(--info-muted);
+  --color-info-border: var(--info-border);
+  --color-amber: var(--amber);
+  --color-amber-muted: var(--amber-muted);
+  --color-amber-border: var(--amber-border);
+  --color-teal: var(--teal);
+  --color-teal-muted: var(--teal-muted);
+  --color-teal-border: var(--teal-border);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
@@ -71,8 +98,9 @@
     min-height: 100vh;
     overflow-x: clip;
     background:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(45, 184, 138, 0.08), transparent 55%),
-      linear-gradient(180deg, #0a0c0e 0%, var(--bg) 40%, #060708 100%);
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(45, 184, 138, 0.07), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 100% 50%, rgba(91, 141, 239, 0.04), transparent 50%),
+      linear-gradient(180deg, #0c0e12 0%, var(--bg) 40%, #060708 100%);
     background-attachment: fixed;
     color: var(--text);
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;

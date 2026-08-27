@@ -24,9 +24,9 @@ export function CyberTeaser() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="section-pad relative overflow-hidden border-b border-border-subtle bg-bg-elevated/60">
+    <section className="section-pad relative overflow-hidden border-b border-teal-border/30 bg-bg-elevated/60">
       <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(45,184,138,0.04),transparent)]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(61,139,122,0.06),transparent)]"
         aria-hidden
       />
       <div className="container-page relative">
@@ -34,6 +34,7 @@ export function CyberTeaser() {
           <FadeIn>
             <SectionHeader
               kicker="Cybersecurity"
+              kickerClassName="!text-teal"
               title="Security that protects the layer business depends on"
               description="NomadLabz treats cybersecurity as part of how software is designed, shipped, and operated — assessments, hardening, and secure engineering without theatrics."
             />
@@ -42,7 +43,7 @@ export function CyberTeaser() {
             </div>
           </FadeIn>
           <FadeIn delay={0.08}>
-            <ul className="space-y-6 border-l border-accent-border pl-6">
+            <ul className="space-y-6 border-l border-teal-border pl-6">
               {pillars.map((item, index) => (
                 <motion.li
                   key={item.title}

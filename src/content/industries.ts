@@ -4,6 +4,7 @@ export type Industry = {
   summary: string;
   challenges: string[];
   approach: string[];
+  outcomes: string[];
 };
 
 export const industries: Industry[] = [
@@ -22,6 +23,11 @@ export const industries: Industry[] = [
       "Cloud-native delivery and sensible automation",
       "Security basics from day one — not after the next raise",
     ],
+    outcomes: [
+      "A shippable product surface with room to grow without a full rewrite",
+      "Clear technical ownership and documentation your team can extend",
+      "Baseline security controls aligned to actual risk, not theater",
+    ],
   },
   {
     slug: "enterprises",
@@ -37,6 +43,11 @@ export const industries: Industry[] = [
       "Phased modernization with clear system boundaries",
       "API-led integration and operational visibility",
       "Security and delivery controls aligned to actual risk",
+    ],
+    outcomes: [
+      "Modern interfaces and services that coexist with legacy systems",
+      "Integration paths that reduce manual reconciliation and data drift",
+      "Documented controls and remediation priorities stakeholders can act on",
     ],
   },
   {
@@ -54,6 +65,11 @@ export const industries: Industry[] = [
       "Integrations across inventory, fleet, and customer systems",
       "Hardened access, audit-minded design, and dependable uptime",
     ],
+    outcomes: [
+      "Single operational view of fleet, stock, or field status",
+      "Fewer manual handoffs between teams and systems",
+      "Mobile-ready workflows field staff actually adopt",
+    ],
   },
   {
     slug: "professional-services",
@@ -70,6 +86,11 @@ export const industries: Industry[] = [
       "Appointment and inquiry workflows that reduce back-and-forth",
       "Accessible, performant marketing surfaces",
     ],
+    outcomes: [
+      "A credible digital presence that reflects service quality",
+      "Shorter path from inquiry to booked appointment",
+      "Content and UX that work across languages and devices",
+    ],
   },
   {
     slug: "regulated-sensitive",
@@ -85,6 +106,11 @@ export const industries: Industry[] = [
       "Secure design and least-privilege patterns from the start",
       "Assessment and remediation under NDA when required",
       "Honest scoping — no invented compliance claims",
+    ],
+    outcomes: [
+      "Prioritized risk view with engineering-ready remediation steps",
+      "Systems designed for controlled access and auditability",
+      "Delivery under confidentiality with no public metrics theater",
     ],
   },
 ];
