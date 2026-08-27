@@ -34,6 +34,8 @@
   --teal-muted: rgba(61, 139, 122, 0.12);
   --teal-border: rgba(61, 139, 122, 0.35);
   --success: #2db88a;
+  --card: var(--bg-elevated);
+  --card-foreground: var(--text);
 }
 
 @theme inline {
@@ -64,6 +66,8 @@
   --color-teal-muted: var(--teal-muted);
   --color-teal-border: var(--teal-border);
   --color-network-bg: var(--network-bg);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);

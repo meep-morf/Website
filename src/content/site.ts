@@ -35,7 +35,7 @@ export const ctaPrimary = {
 
 export const ctaSecondary = {
   href: "/portfolio",
-  label: "View Our Work",
+  label: "Explore Our Work",
 } as const;
 
 export const processSteps = [
