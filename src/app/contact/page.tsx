@@ -1,4 +1,5 @@
 import { FadeIn } from "@/components/motion/FadeIn";
+import { ContactStepsTimeline } from "@/components/motion/ProcessTimeline";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { MailButton } from "@/components/ui/MailButton";
@@ -74,19 +75,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h2 className="mono-label mb-4">What happens next</h2>
-                <ol className="space-y-5">
-                  {steps.map((step, index) => (
-                    <li key={step.title} className="grid grid-cols-[2rem_1fr] gap-3">
-                      <span className="font-mono text-sm text-accent">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div>
-                        <h3 className="font-semibold text-text">{step.title}</h3>
-                        <p className="mt-1 text-sm text-muted">{step.text}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
+                <ContactStepsTimeline steps={steps} />
               </div>
               <p className="text-sm text-faint">
                 If the form cannot send (missing email provider configuration), use the

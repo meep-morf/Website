@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { RiskTimeline } from "@/components/motion/ProcessTimeline";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { HeroFuturisticLazy } from "@/components/ui/hero-futuristic-lazy";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -8,26 +9,45 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Cybersecurity",
   description:
-    "Practical cybersecurity from NomadLabz — assessments, secure design, hardening, and operational resilience.",
+    "Practical cybersecurity from NomadLabz — scoped assessments, secure design, hardening, and operational resilience without fear marketing.",
   path: "/cybersecurity",
 });
 
 const offerings = [
   {
     title: "Security assessments",
-    body: "Scoped reviews of applications, infrastructure posture, and exposure — with prioritized findings and remediation sequencing.",
+    body: "Scoped reviews of applications, infrastructure posture, and exposure — with prioritized findings and remediation sequencing your engineers can execute.",
   },
   {
     title: "Secure software design",
-    body: "Threat-aware architecture, authentication patterns, data handling guidance, and controls that fit how teams ship.",
+    body: "Threat-aware architecture, authentication patterns, data handling guidance, and controls that fit how your team actually ships.",
   },
   {
     title: "Hardening & readiness",
-    body: "Configuration guidance, monitoring recommendations, and incident-ready practices for systems that must stay available.",
+    body: "Configuration guidance, monitoring recommendations, and incident-ready practices for systems that must stay available under pressure.",
   },
   {
     title: "Confidential engagements",
-    body: "Private assessments and remediation support under NDA. We do not invent scorecards or publish client identifiers.",
+    body: "Private assessments and remediation support under NDA. We do not invent scorecards, publish client identifiers, or dramatize risk.",
+  },
+];
+
+const processPhases = [
+  {
+    title: "Scope & context",
+    body: "We define boundaries, systems in scope, and what success looks like — before any scanning or review begins.",
+  },
+  {
+    title: "Assess & prioritize",
+    body: "Findings are ranked by exploitability and business impact, not vanity severity counts.",
+  },
+  {
+    title: "Remediate & verify",
+    body: "We support fixes with engineering-relevant guidance and confirm closure where agreed.",
+  },
+  {
+    title: "Operate & improve",
+    body: "Controls and monitoring recommendations carry forward so security stays active after the engagement.",
   },
 ];
 
@@ -75,15 +95,15 @@ export default function CybersecurityPage() {
 
       <section className="section-pad border-b border-border-subtle">
         <div className="container-page">
-          <div className="grid gap-10 md:grid-cols-2">
-            {offerings.map((item, index) => (
-              <FadeIn key={item.title} delay={index * 0.04}>
-                <article className="border-t border-border-subtle pt-6">
-                  <h2 className="text-2xl font-semibold tracking-tight">{item.title}</h2>
-                  <p className="mt-3 text-muted">{item.body}</p>
-                </article>
-              </FadeIn>
-            ))}
+          <FadeIn>
+            <SectionHeader
+              kicker="Offerings"
+              title="What we deliver"
+              description="Four practice areas — each scoped to your environment and risk profile."
+            />
+          </FadeIn>
+          <div className="mt-12">
+            <RiskTimeline items={offerings} />
           </div>
         </div>
       </section>
@@ -91,15 +111,29 @@ export default function CybersecurityPage() {
       <section className="section-pad border-b border-border-subtle bg-bg-elevated/50">
         <div className="container-page">
           <FadeIn>
+            <SectionHeader
+              kicker="Process"
+              title="How an engagement runs"
+              description="A clear sequence from scope to sustained improvement — no black-box assessments."
+            />
+          </FadeIn>
+          <div className="mt-12">
+            <RiskTimeline items={processPhases} />
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad border-b border-border-subtle">
+        <div className="container-page">
+          <FadeIn>
             <SectionHeader kicker="Principles" title="How we approach risk" />
             <ul className="mt-10 max-w-3xl space-y-4">
-              {principles.map((item) => (
-                <li
-                  key={item}
-                  className="border-l border-accent-border pl-4 text-base text-muted"
-                >
-                  {item}
-                </li>
+              {principles.map((item, index) => (
+                <FadeIn key={item} delay={index * 0.04}>
+                  <li className="border-l border-accent-border pl-4 text-base text-muted">
+                    {item}
+                  </li>
+                </FadeIn>
               ))}
             </ul>
           </FadeIn>

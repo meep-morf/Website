@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MailButton } from "@/components/ui/MailButton";
 import { navItems, siteConfig } from "@/content/site";
 import { services } from "@/content/services";
 
@@ -23,8 +24,8 @@ export function Footer() {
               />
             </Link>
             <p className="mt-5 max-w-xs text-sm text-muted">
-              Software that moves business. Security that protects it. The invisible
-              operating layer behind ambitious teams.
+              Software that moves business. Security that protects it. NomadLabz builds the
+              invisible operating layer behind ambitious teams.
             </p>
           </div>
 
@@ -62,13 +63,16 @@ export function Footer() {
 
           <div>
             <p className="mono-label mb-4">Contact</p>
-            <p className="text-sm text-muted">Project inquiries</p>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="mt-2 inline-block cursor-pointer text-sm font-medium text-accent transition-colors hover:text-focus"
-            >
-              {siteConfig.email}
-            </a>
+            <p className="text-sm text-muted">Project inquiries and confidential assessments</p>
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="cursor-pointer text-sm font-medium text-accent transition-colors hover:text-focus"
+              >
+                {siteConfig.email}
+              </a>
+              <MailButton email={siteConfig.email} ariaLabel={`Email ${siteConfig.email}`} />
+            </div>
             <Link
               href="/contact"
               className="mt-6 inline-flex cursor-pointer rounded-sm border border-border px-4 py-2 text-sm font-semibold text-text transition-colors hover:border-accent-border hover:text-accent"
@@ -83,7 +87,7 @@ export function Footer() {
             © {siteConfig.copyrightYear} {siteConfig.name}. All rights reserved.
           </p>
           <p className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-faint">
-            Invisible Operating Layer
+            The Invisible Operating Layer
           </p>
         </div>
       </div>

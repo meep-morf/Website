@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "The Invisible Operating Layer",
   headline: "Software that moves business. Security that protects it.",
   description:
-    "NomadLabz designs and builds software systems and cybersecurity capabilities that quietly power operations — from interfaces to infrastructure.",
+    "NomadLabz designs and builds software systems and cybersecurity capabilities that quietly power operations — from customer interfaces to infrastructure and controls.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://nomadlabz.com",
   email: "projects@nomadlabz.com",
   locale: "en_US",
@@ -35,7 +35,7 @@ export const ctaPrimary = {
 
 export const ctaSecondary = {
   href: "/portfolio",
-  label: "Explore Our Work",
+  label: "View Our Work",
 } as const;
 
 export const processSteps = [
@@ -59,9 +59,9 @@ export const processSteps = [
   },
   {
     step: "04",
-    title: "Harden & Support",
+    title: "Launch & Harden",
     description:
-      "We deploy, monitor, and strengthen. Security and reliability stay active after launch.",
+      "We deploy, monitor, and strengthen. Security and reliability stay active after go-live.",
   },
 ] as const;
 

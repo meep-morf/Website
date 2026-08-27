@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { ProjectListItem } from "@/components/motion/ProjectCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { HeroFuturisticLazy } from "@/components/ui/hero-futuristic-lazy";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Work",
   description:
-    "Selected NomadLabz work — verified public projects and confidential engagements described without invented metrics.",
+    "Selected NomadLabz work — verified public projects and confidential engagements described without invented metrics or client names.",
   path: "/portfolio",
 });
 
@@ -30,7 +30,7 @@ export default function PortfolioPage() {
               as="h1"
               kicker="Work"
               title="Selected projects"
-              description="Only verified live URLs are linked. Confidential work is listed without client names, fake stats, or unverifiable claims."
+              description="Only verified live URLs are linked. Confidential work is listed without client names, fabricated stats, or unverifiable claims."
             />
           </FadeIn>
         </div>
@@ -40,31 +40,24 @@ export default function PortfolioPage() {
         <div className="container-page">
           <ul className="divide-y divide-border-subtle border-y border-border-subtle">
             {projects.map((project, index) => (
-              <li key={project.slug}>
-                <FadeIn delay={index * 0.03}>
-                  <Link
-                    href={`/portfolio/${project.slug}`}
-                    className="group grid cursor-pointer gap-3 py-8 transition-colors hover:bg-surface/30 md:grid-cols-[10rem_1fr_8rem] md:items-center md:gap-8 md:px-2"
-                  >
-                    <p className="mono-label !text-faint">{project.industry}</p>
-                    <div>
-                      <h2 className="text-2xl font-semibold tracking-tight transition-colors group-hover:text-accent">
-                        {project.title}
-                      </h2>
-                      <p className="mt-2 max-w-2xl text-sm text-muted">{project.summary}</p>
-                    </div>
-                    <p className="font-mono text-xs uppercase tracking-[0.14em] text-faint md:text-right">
-                      {project.status === "live" ? "Live" : "Confidential"}
-                    </p>
-                  </Link>
-                </FadeIn>
-              </li>
+              <ProjectListItem
+                key={project.slug}
+                slug={project.slug}
+                industry={project.industry}
+                title={project.title}
+                summary={project.summary}
+                status={project.status}
+                index={index}
+              />
             ))}
           </ul>
         </div>
       </section>
 
-      <FinalCta title="Want work like this for your team?" />
+      <FinalCta
+        title="Want work like this for your team?"
+        description="Share your goals and constraints. We will tell you honestly whether NomadLabz is the right fit."
+      />
     </>
   );
 }

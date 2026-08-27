@@ -1,3 +1,6 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -18,9 +21,15 @@ const pillars = [
 ];
 
 export function CyberTeaser() {
+  const reduce = useReducedMotion();
+
   return (
-    <section className="section-pad border-b border-border-subtle bg-bg-elevated/60">
-      <div className="container-page">
+    <section className="section-pad relative overflow-hidden border-b border-border-subtle bg-bg-elevated/60">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(45,184,138,0.04),transparent)]"
+        aria-hidden
+      />
+      <div className="container-page relative">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <FadeIn>
             <SectionHeader
@@ -29,16 +38,22 @@ export function CyberTeaser() {
               description="NomadLabz treats cybersecurity as part of how software is designed, shipped, and operated — assessments, hardening, and secure engineering without theatrics."
             />
             <div className="mt-8">
-              <ButtonLink href="/cybersecurity">Explore Cybersecurity</ButtonLink>
+              <ButtonLink href="/cybersecurity">Review Cybersecurity Services</ButtonLink>
             </div>
           </FadeIn>
           <FadeIn delay={0.08}>
             <ul className="space-y-6 border-l border-accent-border pl-6">
-              {pillars.map((item) => (
-                <li key={item.title}>
+              {pillars.map((item, index) => (
+                <motion.li
+                  key={item.title}
+                  initial={reduce ? false : { opacity: 0, x: -10 }}
+                  whileInView={reduce ? undefined : { opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: index * 0.08 }}
+                >
                   <h3 className="text-lg font-semibold text-text">{item.title}</h3>
                   <p className="mt-1.5 text-sm text-muted">{item.text}</p>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </FadeIn>

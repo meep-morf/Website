@@ -1,4 +1,5 @@
 import { FadeIn } from "@/components/motion/FadeIn";
+import { MaskedReveal } from "@/components/motion/MaskedReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { GlobeStudyLazy } from "@/components/ui/globe-study-lazy";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -8,7 +9,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Solutions",
   description:
-    "Industry solutions from NomadLabz — startups, enterprises, operations, professional services, and sensitive environments.",
+    "Industry solutions from NomadLabz — startups, enterprises, operations, professional services, and sensitive environments. Same discipline, different constraints.",
   path: "/solutions",
 });
 
@@ -36,7 +37,7 @@ export default function SolutionsPage() {
       <section className="section-pad">
         <div className="container-page space-y-16">
           {industries.map((industry, index) => (
-            <FadeIn key={industry.slug}>
+            <MaskedReveal key={industry.slug} delay={index * 0.04}>
               <article
                 id={industry.slug}
                 className="scroll-mt-28 grid gap-8 border-t border-border-subtle pt-12 lg:grid-cols-[0.9fr_1.1fr]"
@@ -73,12 +74,15 @@ export default function SolutionsPage() {
                   </div>
                 </div>
               </article>
-            </FadeIn>
+            </MaskedReveal>
           ))}
         </div>
       </section>
 
-      <FinalCta title="Building for a specific industry context?" />
+      <FinalCta
+        title="Building for a specific industry context?"
+        description="Tell us about your sector constraints. We will outline how the operating layer should adapt — honestly and specifically."
+      />
     </>
   );
 }

@@ -1,13 +1,14 @@
 import { FadeIn } from "@/components/motion/FadeIn";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 import { GlobeStudyLazy } from "@/components/ui/globe-study-lazy";
+import { AboutHeroContent, ValuesGrid } from "@/components/sections/AboutMotion";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
   title: "Company",
   description:
-    "About NomadLabz — software engineering and cybersecurity for the invisible operating layer behind modern businesses.",
+    "About NomadLabz — a software and cybersecurity studio building the invisible operating layer. Honest positioning, no invented credentials.",
   path: "/about",
 });
 
@@ -36,8 +37,7 @@ export default function AboutPage() {
       <section className="section-pad border-b border-border-subtle">
         <div className="container-page max-w-3xl">
           <FadeIn>
-            <SectionHeader
-              as="h1"
+            <AboutHeroContent
               kicker="Company"
               title="NomadLabz builds the invisible operating layer"
               description="We design and ship software systems — and the security practices that protect them — so businesses can move with confidence."
@@ -78,16 +78,7 @@ export default function AboutPage() {
               description="A short set of operating principles — not a culture deck."
             />
           </FadeIn>
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
-            {values.map((value, index) => (
-              <FadeIn key={value.title} delay={index * 0.04}>
-                <article className="border-t border-border-subtle pt-5">
-                  <h3 className="text-xl font-semibold">{value.title}</h3>
-                  <p className="mt-3 text-sm text-muted">{value.text}</p>
-                </article>
-              </FadeIn>
-            ))}
-          </div>
+          <ValuesGrid values={values} />
         </div>
       </section>
 
@@ -108,7 +99,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <FinalCta title="Want to work with NomadLabz?" />
+      <FinalCta
+        title="Want to work with NomadLabz?"
+        description="Tell us what you are building. We will respond with clear next steps — or an honest no if we are not the right fit."
+      />
     </>
   );
 }

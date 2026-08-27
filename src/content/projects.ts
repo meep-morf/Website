@@ -32,7 +32,7 @@ export const projects: Project[] = [
     approach:
       "We designed and built a responsive multi-page site with service architecture, appointment flows, reviews presentation, and bilingual EN/ES support oriented around conversion and clarity.",
     outcome:
-      "A live public site that presents services cleanly and supports online engagement for insurance and registration clients.",
+      "A live public site that presents services clearly, supports bilingual engagement, and gives clients a credible path to book appointments online.",
     status: "live",
     url: "https://www.vynservices.com/",
     featured: true,
@@ -49,7 +49,7 @@ export const projects: Project[] = [
     approach:
       "We delivered a focused marketing site with clear information hierarchy, brand-forward layout, and production deployment.",
     outcome:
-      "A live site at semc-innovations.com representing the company online.",
+      "A live site at semc-innovations.com that presents the company with clear positioning and a maintainable production footprint.",
     status: "live",
     url: "https://www.semc-innovations.com/",
     featured: true,
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     approach:
       "We built a focused Next.js experience with strong visual hierarchy and careful motion — shipped as a live deployment.",
     outcome:
-      "Public demo available at astra-urban.vercel.app.",
+      "Public demo at astra-urban.vercel.app — a performant concept surface with intentional motion and responsive layout.",
     status: "live",
     url: "https://astra-urban.vercel.app/",
     featured: true,

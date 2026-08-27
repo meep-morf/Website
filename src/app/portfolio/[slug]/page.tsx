@@ -1,8 +1,9 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { CaseStudyProgress } from "@/components/motion/CaseStudyProgress";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ExternalLinkButton } from "@/components/ui/ExternalLinkButton";
+import { BackToPortfolio } from "@/components/ui/BackToPortfolio";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { getProject, projects } from "@/content/projects";
 import { buildMetadata } from "@/lib/metadata";
@@ -29,8 +30,15 @@ export default async function ProjectPage({ params }: Props) {
   const project = getProject(slug);
   if (!project) notFound();
 
+  const sections = [
+    { label: "Challenge", content: project.challenge },
+    { label: "Approach", content: project.approach },
+    { label: "Outcome", content: project.outcome },
+  ];
+
   return (
     <>
+      <CaseStudyProgress />
       <section className="section-pad border-b border-border-subtle">
         <div className="container-page max-w-4xl">
           <FadeIn>
@@ -59,24 +67,14 @@ export default async function ProjectPage({ params }: Props) {
 
       <section className="section-pad border-b border-border-subtle">
         <div className="container-page grid max-w-4xl gap-12">
-          <FadeIn>
-            <div>
-              <h2 className="mono-label mb-3">Challenge</h2>
-              <p className="text-muted">{project.challenge}</p>
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.05}>
-            <div>
-              <h2 className="mono-label mb-3">Approach</h2>
-              <p className="text-muted">{project.approach}</p>
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.08}>
-            <div>
-              <h2 className="mono-label mb-3">Outcome</h2>
-              <p className="text-muted">{project.outcome}</p>
-            </div>
-          </FadeIn>
+          {sections.map((section, index) => (
+            <FadeIn key={section.label} delay={index * 0.05}>
+              <div>
+                <h2 className="mono-label mb-3">{section.label}</h2>
+                <p className="text-muted">{section.content}</p>
+              </div>
+            </FadeIn>
+          ))}
           {project.technologies?.length ? (
             <FadeIn delay={0.1}>
               <div>
@@ -94,16 +92,14 @@ export default async function ProjectPage({ params }: Props) {
               </div>
             </FadeIn>
           ) : null}
-          <Link
-            href="/portfolio"
-            className="cursor-pointer font-mono text-xs uppercase tracking-[0.14em] text-accent hover:text-focus"
-          >
-            ← All work
-          </Link>
+          <BackToPortfolio />
         </div>
       </section>
 
-      <FinalCta />
+      <FinalCta
+        title="Interested in similar work?"
+        description="Describe your project. We will respond with an honest assessment of fit and next steps."
+      />
     </>
   );
 }
