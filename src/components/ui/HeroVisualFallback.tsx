@@ -40,10 +40,10 @@ export function HeroVisualFallback({
       ) : (
         <InteractiveSynapseNetworkLazy
           {...NOMAD_SYNAPSE_THEME}
-          nodeCount={42}
-          connectionRadius={130}
-          trailOpacity={0.16}
-          className="absolute inset-0 h-full w-full"
+          nodeCount={48}
+          connectionRadius={145}
+          trailOpacity={0.2}
+          className="absolute inset-0 h-full w-full min-h-[280px]"
           ariaLabel=""
         />
       )}

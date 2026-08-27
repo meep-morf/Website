@@ -44,7 +44,7 @@ test.describe("NomadLabz site", () => {
   test("contact form validation and fallback path", async ({ page }) => {
     await page.goto("/contact", { waitUntil: "domcontentloaded" });
     await page.getByLabel("Name").fill("A");
-    await page.getByLabel("Email").fill("not-an-email");
+    await page.locator("#email").fill("not-an-email");
     await page.getByLabel("Message").fill("short");
     await page.getByRole("button", { name: "Send Message" }).click();
     await expect(page.getByText("Message received")).toHaveCount(0);

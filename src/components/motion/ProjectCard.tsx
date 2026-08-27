@@ -32,10 +32,14 @@ export function ProjectListItem({
     >
       <Link
         href={`/portfolio/${slug}`}
-        className="group relative grid cursor-pointer gap-3 overflow-hidden py-8 transition-colors hover:bg-accent-muted/25 md:grid-cols-[10rem_1fr_8rem] md:items-center md:gap-8 md:px-2"
+        className="group relative grid cursor-pointer gap-3 overflow-hidden border-l-2 border-transparent py-8 transition-all duration-300 hover:border-accent hover:bg-accent-muted/30 hover:pl-3 md:grid-cols-[10rem_1fr_8rem] md:items-center md:gap-8 md:px-2 md:hover:translate-x-1"
       >
         <div
-          className="pointer-events-none absolute inset-0 translate-y-full bg-gradient-to-t from-accent-glow/40 to-transparent transition-transform duration-500 group-hover:translate-y-0"
+          className="pointer-events-none absolute inset-0 translate-y-full bg-gradient-to-t from-accent-glow/55 to-transparent transition-transform duration-500 group-hover:translate-y-0"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-0 shadow-[inset_0_0_24px_rgba(45,184,138,0.12)] transition-opacity duration-300 group-hover:opacity-100"
           aria-hidden
         />
         <p className="relative mono-label !text-faint transition-colors group-hover:text-accent">

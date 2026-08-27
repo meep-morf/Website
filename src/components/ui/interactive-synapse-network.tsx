@@ -165,7 +165,8 @@ const InteractiveSynapseNetwork: React.FC<InteractiveSynapseNetworkProps> = ({
         const target = Math.max(0, 1 - dist / (connectionRadius * 0.8));
         this.activation += (target - this.activation) * 0.1;
 
-        if (this.activation > 0.5 && Math.random() > 0.98) {
+        // Autonomous pulses — visible motion without pointer hover
+        if (Math.random() > 0.992 && this.connections.length > 0) {
           const to =
             this.connections[Math.floor(Math.random() * this.connections.length)];
           if (to) this.pulses.push(new PulseImpl(this, to));
@@ -178,7 +179,7 @@ const InteractiveSynapseNetwork: React.FC<InteractiveSynapseNetworkProps> = ({
       draw() {
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        const alpha = Math.max(0.2, this.activation * 0.75 + 0.25);
+        const alpha = Math.max(0.45, this.activation * 0.55 + 0.45);
         ctx!.fillStyle = rgbaFrom(nodeColor, alpha);
         ctx!.fill();
         this.pulses.forEach((p) => p.draw());
@@ -228,11 +229,12 @@ const InteractiveSynapseNetwork: React.FC<InteractiveSynapseNetworkProps> = ({
 
       nodes.forEach((n1) => {
         n1.connections.forEach((n2) => {
-          const a = Math.max(0.05, n1.activation, n2.activation) * 0.2;
+          const a = Math.max(0.14, n1.activation, n2.activation) * 0.38;
           ctx.beginPath();
           ctx.moveTo(n1.x, n1.y);
           ctx.lineTo(n2.x, n2.y);
           ctx.strokeStyle = rgbaFrom(connectionColor, a);
+          ctx.lineWidth = 1;
           ctx.stroke();
         });
       });

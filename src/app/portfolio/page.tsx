@@ -1,8 +1,6 @@
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ProjectListItem } from "@/components/motion/ProjectCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
-import { HeroVisualFallback } from "@/components/ui/HeroVisualFallback";
 import { NOMAD_SYNAPSE_THEME } from "@/components/ui/interactive-synapse-network";
 import { InteractiveSynapseNetworkLazy } from "@/components/ui/interactive-synapse-network-lazy";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -19,43 +17,29 @@ export const metadata = buildMetadata({
 export default function PortfolioPage() {
   return (
     <>
-      <section className="border-b border-border-subtle bg-bg-subtle/60 section-tint-info">
-        <div className="container-page grid items-center gap-10 section-pad lg:grid-cols-[1.15fr_0.85fr]">
+      <section className="relative min-h-[min(58vh,520px)] overflow-hidden border-b border-border-subtle section-tint-info">
+        <div className="absolute inset-0 z-0" aria-hidden>
+          <InteractiveSynapseNetworkLazy
+            {...NOMAD_SYNAPSE_THEME}
+            nodeCount={56}
+            connectionRadius={165}
+            trailOpacity={0.2}
+            className="h-full w-full"
+            ariaLabel="Portfolio work network visualization"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/65 to-bg/90"
+            aria-hidden
+          />
+        </div>
+        <div className="container-page relative z-10 flex min-h-[min(58vh,520px)] items-center section-pad">
           <FadeIn>
-            <div className="relative rounded-sm border border-border-subtle bg-bg/90 p-8 backdrop-blur-sm md:p-10">
+            <div className="max-w-2xl rounded-sm border border-border-subtle bg-bg/88 p-8 backdrop-blur-md md:p-10">
               <SectionHeader
                 as="h1"
                 kicker="Work"
                 title="Selected projects"
                 description="Verified live URLs where we can share them. Confidential engagements are described without client names, fabricated metrics, or unverifiable claims."
-              />
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.06}>
-            <div
-              className="relative min-h-[220px] overflow-hidden rounded-sm border border-info-border/25 lg:min-h-[280px]"
-              aria-hidden
-            >
-              <ErrorBoundary
-                fallback={
-                  <HeroVisualFallback
-                    className="h-full min-h-[220px] lg:min-h-[280px]"
-                    variant="gradient"
-                  />
-                }
-              >
-                <InteractiveSynapseNetworkLazy
-                  {...NOMAD_SYNAPSE_THEME}
-                  nodeCount={48}
-                  connectionRadius={150}
-                  trailOpacity={0.18}
-                  className="absolute inset-0 h-full w-full"
-                  ariaLabel="Portfolio work network visualization"
-                />
-              </ErrorBoundary>
-              <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-br from-bg/30 via-transparent to-accent-muted/30"
-                aria-hidden
               />
             </div>
           </FadeIn>

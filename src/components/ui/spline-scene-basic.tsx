@@ -6,6 +6,8 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ShinyArrowButton } from "@/components/ui/ShinyArrowButton";
 import { Card } from "@/components/ui/card";
 import { Spotlight } from "@/components/ui/spotlight";
+import { NOMAD_SYNAPSE_THEME } from "@/components/ui/interactive-synapse-network";
+import { InteractiveSynapseNetworkLazy } from "@/components/ui/interactive-synapse-network-lazy";
 import { SplineScene } from "@/components/ui/splite";
 import { HeroVisualFallback } from "@/components/ui/HeroVisualFallback";
 import { StaggerItem, StaggerReveal } from "@/components/motion/StaggerReveal";
@@ -64,16 +66,18 @@ function HeroVisual() {
     return (
       <HeroVisualFallback
         className="h-full min-h-[280px] md:min-h-[420px]"
-        variant="gradient"
+        variant="operational"
       />
     );
   }
 
   return (
-    <SplineScene
-      scene={SPLINE_SCENE_URL}
-      className="h-full min-h-[280px] md:min-h-[420px]"
-    />
+    <div className="relative h-full min-h-[280px] md:min-h-[420px]">
+      <SplineScene
+        scene={SPLINE_SCENE_URL}
+        className="absolute inset-0 h-full w-full"
+      />
+    </div>
   );
 }
 
@@ -90,12 +94,30 @@ function SplineSceneBasicInner() {
             "min-h-[min(78vh,760px)]",
           )}
         >
+          <div className="absolute inset-0 z-0" aria-hidden>
+            <InteractiveSynapseNetworkLazy
+              {...NOMAD_SYNAPSE_THEME}
+              nodeCount={52}
+              connectionRadius={155}
+              trailOpacity={0.2}
+              className="h-full w-full"
+              ariaLabel=""
+            />
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/88 to-bg/55"
+              aria-hidden
+            />
+          </div>
           <Spotlight fill="rgba(45, 184, 138, 0.22)" />
 
           <div className="relative z-10 grid min-h-[min(78vh,760px)] grid-cols-1 items-center gap-8 p-6 md:grid-cols-2 md:gap-10 md:p-10 lg:p-12">
             <HeroCopy />
             <div className="relative min-h-[280px] md:min-h-[420px] lg:min-h-[480px]">
               <HeroVisual />
+              <div
+                className="pointer-events-none absolute inset-0 rounded-sm ring-1 ring-inset ring-accent-border/20"
+                aria-hidden
+              />
             </div>
           </div>
         </Card>
@@ -119,6 +141,20 @@ export function SplineSceneBasic() {
                 "min-h-[min(78vh,760px)]",
               )}
             >
+              <div className="absolute inset-0 z-0" aria-hidden>
+                <InteractiveSynapseNetworkLazy
+                  {...NOMAD_SYNAPSE_THEME}
+                  nodeCount={52}
+                  connectionRadius={155}
+                  trailOpacity={0.2}
+                  className="h-full w-full"
+                  ariaLabel=""
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/88 to-bg/55"
+                  aria-hidden
+                />
+              </div>
               <Spotlight fill="rgba(45, 184, 138, 0.22)" />
               <div className="relative z-10 grid min-h-[min(78vh,760px)] grid-cols-1 items-center gap-8 p-6 md:grid-cols-2 md:gap-10 md:p-10 lg:p-12">
                 <HeroCopy />

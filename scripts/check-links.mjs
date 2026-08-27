@@ -17,6 +17,8 @@ const ROUTES = [
   "/portfolio/fleetstock-operations",
   "/portfolio/gps-tracking-systems",
   "/portfolio/enterprise-portals",
+  "/portfolio/confidential-intelligent-ops",
+  "/portfolio/confidential-cloud-delivery",
   "/portfolio/confidential-cyber-assessment",
   "/sitemap.xml",
   "/robots.txt",

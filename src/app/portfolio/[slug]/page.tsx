@@ -31,8 +31,10 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
 
   const sections = [
+    { label: "Context", content: project.context },
     { label: "Challenge", content: project.challenge },
-    { label: "Approach", content: project.approach },
+    { label: "NomadLabz role", content: project.role },
+    { label: "Solution", content: project.solution },
     { label: "Outcome", content: project.outcome },
   ];
 
@@ -61,6 +63,16 @@ export default async function ProjectPage({ params }: Props) {
                 </>
               ) : null}
             </div>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {project.capabilities.map((cap) => (
+                <li
+                  key={cap}
+                  className="border border-accent-border/40 bg-accent-muted/20 px-3 py-1 font-mono text-xs uppercase tracking-[0.12em] text-accent"
+                >
+                  {cap}
+                </li>
+              ))}
+            </ul>
           </FadeIn>
         </div>
       </section>
@@ -75,10 +87,23 @@ export default async function ProjectPage({ params }: Props) {
               </div>
             </FadeIn>
           ))}
+          <FadeIn delay={0.1}>
+            <div>
+              <h2 className="mono-label mb-3">Core capabilities</h2>
+              <ul className="space-y-2 text-muted">
+                {project.coreCapabilities.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="text-accent" aria-hidden>—</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
           {project.technologies?.length ? (
-            <FadeIn delay={0.1}>
+            <FadeIn delay={0.12}>
               <div>
-                <h2 className="mono-label mb-3">Focus</h2>
+                <h2 className="mono-label mb-3">Technologies</h2>
                 <ul className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <li

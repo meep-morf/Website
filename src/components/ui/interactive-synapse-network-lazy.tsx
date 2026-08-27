@@ -9,7 +9,7 @@ const InteractiveSynapseNetwork = dynamic(
     ssr: false,
     loading: () => (
       <div
-        className="absolute inset-0 bg-[var(--network-bg,#08090a)]"
+        className="hero-scan-fallback absolute inset-0 h-full w-full"
         aria-hidden
       />
     ),
