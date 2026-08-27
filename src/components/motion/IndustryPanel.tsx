@@ -17,7 +17,7 @@ export function IndustryPanel({ industry, index }: IndustryPanelProps) {
   const article = (
     <article
       id={industry.slug}
-      className={`scroll-mt-28 grid gap-8 border-t pt-12 lg:grid-cols-[0.85fr_1.15fr] ${accent.border}`}
+      className={`scroll-mt-28 grid gap-8 rounded-sm border-t pt-12 lg:grid-cols-[0.85fr_1.15fr] ${accent.border} ${accent.tint} px-4 py-2 transition-colors hover:bg-accent-muted/20 md:px-6`}
     >
       <div>
         <div className="flex flex-wrap items-center gap-3">
@@ -62,10 +62,10 @@ export function IndustryPanel({ industry, index }: IndustryPanelProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
-      whileInView={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
-      viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.55, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.08 }}
+      transition={{ duration: 0.5, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
     >
       {article}
     </motion.div>

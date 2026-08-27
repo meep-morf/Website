@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "The Invisible Operating Layer",
   headline: "Software that moves business. Security that protects it.",
   description:
-    "NomadLabz designs and builds software systems and cybersecurity capabilities that quietly power operations — from customer interfaces to infrastructure and controls.",
+    "NomadLabz designs and builds software systems and cybersecurity capabilities that quietly power operations — from customer interfaces through integrations, cloud delivery, and controls.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://nomadlabz.com",
   email: "projects@nomadlabz.com",
   locale: "en_US",

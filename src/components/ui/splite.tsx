@@ -1,6 +1,8 @@
 "use client";
 
 import { Suspense, lazy, type ComponentProps } from "react";
+import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
+import { HeroVisualFallback } from "@/components/ui/HeroVisualFallback";
 import { cn } from "@/lib/utils";
 
 const Spline = lazy(() => import("@splinetool/react-spline"));
@@ -32,8 +34,17 @@ function SplineLoader({ className }: { className?: string }) {
 
 export function SplineScene({ scene, className, ...props }: SplineSceneProps) {
   return (
-    <Suspense fallback={<SplineLoader className={className} />}>
-      <Spline scene={scene} className={cn("h-full w-full", className)} {...props} />
-    </Suspense>
+    <ErrorBoundary
+      fallback={
+        <HeroVisualFallback
+          className={cn("h-full min-h-[280px] md:min-h-[420px]", className)}
+          variant="synapse"
+        />
+      }
+    >
+      <Suspense fallback={<SplineLoader className={className} />}>
+        <Spline scene={scene} className={cn("h-full w-full", className)} {...props} />
+      </Suspense>
+    </ErrorBoundary>
   );
 }

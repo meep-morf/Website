@@ -93,8 +93,10 @@ export function Header() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "cursor-pointer rounded-sm px-3 py-2 text-[0.9375rem] font-medium tracking-wide text-muted transition-colors duration-200 hover:text-text",
-                      active && "text-accent",
+                      "cursor-pointer rounded-sm px-3 py-2 text-[0.9375rem] tracking-wide text-muted transition-colors duration-200 hover:text-text",
+                      active
+                        ? "font-semibold text-accent underline decoration-accent decoration-2 underline-offset-[6px]"
+                        : "font-medium",
                     )}
                   >
                     {item.label}
@@ -159,7 +161,8 @@ export function Header() {
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "cursor-pointer rounded-sm px-3 py-3 text-base text-muted transition-colors hover:bg-surface hover:text-accent",
-                  active && "bg-surface text-accent",
+                  active &&
+                    "bg-accent-muted font-semibold text-accent underline decoration-accent decoration-2 underline-offset-[6px]",
                 )}
               >
                 {item.label}

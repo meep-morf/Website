@@ -2,6 +2,8 @@
 
 import dynamic from "next/dynamic";
 import type { GlobeStudyProps } from "@/components/ui/globe-study";
+import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
+import { GlobeStudyFallback } from "@/components/ui/GlobeStudyFallback";
 
 const GlobeStudy = dynamic(() => import("@/components/ui/globe-study"), {
   ssr: false,
@@ -14,5 +16,9 @@ const GlobeStudy = dynamic(() => import("@/components/ui/globe-study"), {
 });
 
 export function GlobeStudyLazy(props: GlobeStudyProps) {
-  return <GlobeStudy {...props} />;
+  return (
+    <ErrorBoundary fallback={<GlobeStudyFallback className="h-full w-full" />}>
+      <GlobeStudy {...props} />
+    </ErrorBoundary>
+  );
 }

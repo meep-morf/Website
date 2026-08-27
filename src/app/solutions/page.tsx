@@ -16,7 +16,7 @@ export const metadata = buildMetadata({
 export default function SolutionsPage() {
   return (
     <>
-      <section className="section-pad border-b border-border-subtle">
+      <section className="section-pad border-b border-border-subtle section-tint-info">
         <div className="container-page grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <FadeIn>
             <SectionHeader
@@ -24,7 +24,7 @@ export default function SolutionsPage() {
               kicker="Solutions"
               kickerClassName="!text-info"
               title="Industry context. Same operating discipline."
-              description="We adapt software and security work to the constraints of your sector — without inventing domain credentials we do not have."
+              description="We adapt software and security work to sector constraints — startups, enterprises, logistics, professional services, and sensitive environments — without inventing credentials we do not have."
             />
           </FadeIn>
           <FadeIn delay={0.05}>
@@ -35,7 +35,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="section-pad">
+      <section className="section-pad section-tint-accent">
         <div className="container-page space-y-4">
           {industries.map((industry, index) => (
             <IndustryPanel key={industry.slug} industry={industry} index={index} />

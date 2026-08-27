@@ -3,6 +3,7 @@
 :root {
   --network-bg: #08090a;
   --bg: #08090a;
+  --bg-subtle: #0c0e12;
   --bg-elevated: #141820;
   --surface: #1a1f28;
   --surface-hover: #222832;
@@ -15,6 +16,7 @@
   --accent: #2db88a;
   --accent-soft: #249a74;
   --accent-muted: rgba(45, 184, 138, 0.14);
+  --accent-glow: rgba(45, 184, 138, 0.22);
   --accent-border: rgba(45, 184, 138, 0.38);
   --focus: #3dcea0;
   /* Slate blue — info, links, external actions */
@@ -40,6 +42,7 @@
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
   --color-bg-elevated: var(--bg-elevated);
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
@@ -51,6 +54,7 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-accent-muted: var(--accent-muted);
+  --color-accent-glow: var(--accent-glow);
   --color-accent-border: var(--accent-border);
   --color-focus: var(--focus);
   --color-danger: var(--danger);
@@ -151,6 +155,44 @@
 
 .section-pad {
   padding-block: 5rem;
+}
+
+.section-tint-accent {
+  background:
+    linear-gradient(180deg, var(--accent-muted) 0%, transparent 42%),
+    transparent;
+}
+
+.section-tint-info {
+  background:
+    linear-gradient(135deg, var(--info-muted) 0%, transparent 50%),
+    transparent;
+}
+
+.section-tint-teal {
+  background:
+    linear-gradient(180deg, var(--teal-muted) 0%, transparent 45%),
+    transparent;
+}
+
+.industry-tint-startups {
+  background-color: color-mix(in srgb, var(--accent-muted) 35%, transparent);
+}
+
+.industry-tint-enterprises {
+  background-color: color-mix(in srgb, var(--info-muted) 40%, transparent);
+}
+
+.industry-tint-operations {
+  background-color: color-mix(in srgb, var(--amber-muted) 40%, transparent);
+}
+
+.industry-tint-professional {
+  background-color: color-mix(in srgb, var(--accent-muted) 30%, transparent);
+}
+
+.industry-tint-regulated {
+  background-color: color-mix(in srgb, var(--teal-muted) 40%, transparent);
 }
 
 @media (min-width: 768px) {

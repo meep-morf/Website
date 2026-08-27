@@ -25,27 +25,29 @@ export function ProjectListItem({
 
   return (
     <motion.li
-      initial={reduce ? false : { opacity: 0, y: 12 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.4, delay: index * 0.03 }}
+      initial={reduce ? false : { opacity: 0, x: -12, y: 16 }}
+      whileInView={reduce ? undefined : { opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.45, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
     >
       <Link
         href={`/portfolio/${slug}`}
-        className="group relative grid cursor-pointer gap-3 overflow-hidden py-8 transition-colors hover:bg-surface/30 md:grid-cols-[10rem_1fr_8rem] md:items-center md:gap-8 md:px-2"
+        className="group relative grid cursor-pointer gap-3 overflow-hidden py-8 transition-colors hover:bg-accent-muted/25 md:grid-cols-[10rem_1fr_8rem] md:items-center md:gap-8 md:px-2"
       >
         <div
-          className="pointer-events-none absolute inset-0 translate-y-full bg-gradient-to-t from-accent/8 to-transparent transition-transform duration-500 group-hover:translate-y-0"
+          className="pointer-events-none absolute inset-0 translate-y-full bg-gradient-to-t from-accent-glow/40 to-transparent transition-transform duration-500 group-hover:translate-y-0"
           aria-hidden
         />
-        <p className="relative mono-label !text-faint">{industry}</p>
+        <p className="relative mono-label !text-faint transition-colors group-hover:text-accent">
+          {industry}
+        </p>
         <div className="relative">
           <h2 className="text-2xl font-semibold tracking-tight transition-colors group-hover:text-accent">
             {title}
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-muted">{summary}</p>
         </div>
-        <p className="relative font-mono text-xs uppercase tracking-[0.14em] text-faint md:text-right">
+        <p className="relative font-mono text-xs uppercase tracking-[0.14em] text-faint transition-colors group-hover:text-accent md:text-right">
           {status === "live" ? "Live" : "Confidential"}
         </p>
       </Link>

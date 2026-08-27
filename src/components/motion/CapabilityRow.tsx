@@ -31,7 +31,7 @@ export function CapabilityRow({
     >
       <Link
         href={href}
-        className="group relative grid cursor-pointer gap-3 overflow-hidden py-7 transition-colors duration-200 hover:bg-surface/40 md:grid-cols-[8rem_1fr_auto] md:items-center md:gap-8 md:px-2"
+        className="group relative grid cursor-pointer gap-3 overflow-hidden py-7 transition-colors duration-200 hover:bg-accent-muted/20 md:grid-cols-[8rem_1fr_auto] md:items-center md:gap-8 md:px-2"
       >
         <span
           className="pointer-events-none absolute inset-y-0 left-0 w-0 bg-accent/10 transition-all duration-300 group-hover:w-full"
