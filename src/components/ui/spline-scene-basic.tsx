@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useReducedMotion } from "motion/react";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -8,7 +9,7 @@ import { Card } from "@/components/ui/card";
 import { Spotlight } from "@/components/ui/spotlight";
 import { NOMAD_SYNAPSE_THEME } from "@/components/ui/interactive-synapse-network";
 import { InteractiveSynapseNetworkLazy } from "@/components/ui/interactive-synapse-network-lazy";
-import { SplineScene } from "@/components/ui/splite";
+import { SplineScene } from "@/components/ui/spline-scene";
 import { HeroVisualFallback } from "@/components/ui/HeroVisualFallback";
 import { StaggerItem, StaggerReveal } from "@/components/motion/StaggerReveal";
 import { ctaPrimary, ctaSecondary, siteConfig } from "@/content/site";
@@ -16,6 +17,9 @@ import { cn } from "@/lib/utils";
 
 const SPLINE_SCENE_URL =
   "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
+
+const ROBOT_COLUMN_CLASS =
+  "relative min-h-[min(52vh,560px)] md:min-h-[520px] lg:min-h-[580px]";
 
 function HeroCopy() {
   return (
@@ -65,23 +69,22 @@ function HeroVisual() {
   if (reduceMotion) {
     return (
       <HeroVisualFallback
-        className="h-full min-h-[min(45vh,400px)] md:min-h-[440px] lg:min-h-[520px]"
+        className="h-full w-full min-h-[inherit]"
         variant="operational"
       />
     );
   }
 
   return (
-    <div className="relative h-full min-h-[min(45vh,400px)] w-full md:min-h-[440px] lg:min-h-[520px]">
-      <SplineScene
-        scene={SPLINE_SCENE_URL}
-        className="absolute inset-0 h-full w-full [&_canvas]:!h-full [&_canvas]:!w-full"
-      />
-    </div>
+    <SplineScene
+      scene={SPLINE_SCENE_URL}
+      className="h-full w-full min-h-[inherit]"
+      fallbackVariant="operational"
+    />
   );
 }
 
-function SplineSceneBasicInner() {
+function HomeHeroLayout({ visual }: { visual: ReactNode }) {
   return (
     <section
       className="relative border-b border-border-subtle section-pad section-tint-accent"
@@ -91,12 +94,12 @@ function SplineSceneBasicInner() {
         <Card
           className={cn(
             "group relative overflow-hidden border-border-subtle bg-bg shadow-none",
-            "min-h-[min(78vh,760px)]",
+            "min-h-[min(82vh,800px)]",
           )}
         >
           <Spotlight fill="rgba(45, 184, 138, 0.22)" className="z-[1]" />
 
-          <div className="relative z-10 grid min-h-[min(78vh,760px)] grid-cols-1 items-stretch md:grid-cols-2">
+          <div className="relative z-10 grid min-h-[min(82vh,800px)] grid-cols-1 items-stretch lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
             <div className="relative flex items-center p-6 md:p-10 lg:p-12">
               <div className="absolute inset-0 z-0" aria-hidden>
                 <InteractiveSynapseNetworkLazy
@@ -117,20 +120,16 @@ function SplineSceneBasicInner() {
               </div>
             </div>
 
-            <div className="relative min-h-[min(45vh,400px)] md:min-h-[440px] lg:min-h-[520px]">
+            <div className={ROBOT_COLUMN_CLASS}>
               <div
-                className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_80%_70%_at_50%_45%,rgba(45,184,138,0.08),transparent_65%)]"
+                className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_75%_65%_at_55%_50%,rgba(45,184,138,0.12),transparent_70%)]"
                 aria-hidden
               />
-              <div className="relative z-10 h-full min-h-[inherit] p-4 pt-0 md:p-6 md:pt-6 lg:p-8">
-                <HeroVisual />
+              <div className="relative z-10 h-full min-h-[inherit] p-3 md:p-5 lg:p-6">
+                {visual}
               </div>
               <div
-                className="pointer-events-none absolute inset-4 z-20 rounded-sm ring-1 ring-inset ring-accent-border/30 md:inset-6 lg:inset-8"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute inset-y-0 left-0 z-20 w-12 bg-gradient-to-r from-bg/70 to-transparent md:w-20"
+                className="pointer-events-none absolute inset-3 z-20 rounded-sm ring-1 ring-inset ring-accent-border/25 md:inset-5 lg:inset-6"
                 aria-hidden
               />
             </div>
@@ -141,52 +140,22 @@ function SplineSceneBasicInner() {
   );
 }
 
+function SplineSceneBasicInner() {
+  return <HomeHeroLayout visual={<HeroVisual />} />;
+}
+
 export function SplineSceneBasic() {
   return (
     <ErrorBoundary
       fallback={
-        <section
-          className="relative border-b border-border-subtle section-pad section-tint-accent"
-          aria-label="NomadLabz hero"
-        >
-          <div className="container-page">
-            <Card
-              className={cn(
-                "relative overflow-hidden border-border-subtle bg-bg shadow-none",
-                "min-h-[min(78vh,760px)]",
-              )}
-            >
-              <Spotlight fill="rgba(45, 184, 138, 0.22)" className="z-[1]" />
-              <div className="relative z-10 grid min-h-[min(78vh,760px)] grid-cols-1 items-stretch md:grid-cols-2">
-                <div className="relative flex items-center p-6 md:p-10 lg:p-12">
-                  <div className="absolute inset-0 z-0" aria-hidden>
-                    <InteractiveSynapseNetworkLazy
-                      {...NOMAD_SYNAPSE_THEME}
-                      nodeCount={36}
-                      connectionRadius={140}
-                      trailOpacity={0.14}
-                      className="h-full w-full opacity-80"
-                      ariaLabel=""
-                    />
-                    <div
-                      className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/92 to-bg/75"
-                      aria-hidden
-                    />
-                  </div>
-                  <div className="relative z-10 w-full">
-                    <HeroCopy />
-                  </div>
-                </div>
-                <div className="relative min-h-[min(45vh,400px)] p-4 pt-0 md:min-h-[440px] md:p-6 md:pt-6 lg:min-h-[520px] lg:p-8">
-                  <HeroVisualFallback
-                    className="h-full min-h-[inherit]"
-                    variant="operational"
-                  />
-                </div>
-              </div>
-            </Card>
-          </div>
-        </section>
+        <HomeHeroLayout
+          visual={
+            <HeroVisualFallback
+              className="h-full w-full min-h-[inherit]"
+              variant="operational"
+            />
+          }
+        />
       }
     >
       <SplineSceneBasicInner />
