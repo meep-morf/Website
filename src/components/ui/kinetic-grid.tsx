@@ -442,7 +442,7 @@ export default function KineticGrid({
   return (
     <div
       ref={wrapperRef}
-      className={cn("relative w-full overflow-hidden", className)}
+      className={cn("relative overflow-hidden", className)}
       style={{ backgroundColor: theme.bg }}
     >
       <canvas
@@ -450,7 +450,9 @@ export default function KineticGrid({
         className="pointer-events-none absolute inset-0 z-0 h-full w-full"
         aria-hidden
       />
-      <div className="relative z-10 w-full">{children}</div>
+      {children ? (
+        <div className="relative z-10 w-full">{children}</div>
+      ) : null}
     </div>
   );
 }
