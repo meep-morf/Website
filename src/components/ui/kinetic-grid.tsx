@@ -282,28 +282,33 @@ export default function KineticGrid({
           const p = pts[row][col];
           const pr = prox[row][col];
           const t = pr * pr * (3 - 2 * pr);
-          const r = lerpN(NODE_BASE_RADIUS, NODE_ACTIVE_RADIUS, t);
+          const nodeR = Math.max(0, lerpN(NODE_BASE_RADIUS, NODE_ACTIVE_RADIUS, t));
 
           if (t > 0.3) {
-            const glowR = r + lerpN(0, 6, (t - 0.3) / 0.7);
-            const grd = ctx.createRadialGradient(
-              p.x,
-              p.y,
-              r * 0.5,
-              p.x,
-              p.y,
-              glowR,
+            const glowR = Math.max(
+              0,
+              nodeR + lerpN(0, 6, (t - 0.3) / 0.7),
             );
-            grd.addColorStop(0, `rgba(${theme.glow},${(t * 0.3).toFixed(3)})`);
-            grd.addColorStop(1, `rgba(${theme.glow},0)`);
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
-            ctx.fillStyle = grd;
-            ctx.fill();
+            if (glowR > 0) {
+              const grd = ctx.createRadialGradient(
+                p.x,
+                p.y,
+                nodeR * 0.5,
+                p.x,
+                p.y,
+                glowR,
+              );
+              grd.addColorStop(0, `rgba(${theme.glow},${(t * 0.3).toFixed(3)})`);
+              grd.addColorStop(1, `rgba(${theme.glow},0)`);
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
+              ctx.fillStyle = grd;
+              ctx.fill();
+            }
           }
 
           ctx.beginPath();
-          ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+          ctx.arc(p.x, p.y, nodeR, 0, Math.PI * 2);
           ctx.fillStyle = lerpColor(theme.nodeBase, theme.nodeActive, t);
           ctx.fill();
         }
@@ -311,6 +316,7 @@ export default function KineticGrid({
 
       for (const r of ripples) {
         const safeRadius = Math.max(0, r.radius);
+        if (safeRadius <= 0) continue;
         ctx.beginPath();
         ctx.arc(r.x, r.y, safeRadius, 0, Math.PI * 2);
         ctx.strokeStyle = `rgba(${theme.ripple},${(r.opacity * 0.28).toFixed(3)})`;
