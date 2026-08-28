@@ -33,46 +33,56 @@ export function PortfolioHero() {
         <FadeIn className="w-full">
           <KineticGrid
             accent="nomad"
-            className="w-full rounded-sm border border-border-subtle"
+            className="min-h-[380px] w-full rounded-sm border border-border-subtle"
           >
-            <div className="bg-bg/75 p-8 backdrop-blur-md md:p-10">
-              <SectionHeader
-                as="h1"
-                kicker="Work"
-                title="Selected projects"
-                description="Verified live URLs where we can share them. Confidential engagements are described without client names, fabricated metrics, or unverifiable claims."
-              />
+            <div className="w-full bg-black/35 p-8 backdrop-blur-sm md:p-10">
+              <div className="grid w-full gap-8 lg:grid-cols-2 lg:items-end lg:gap-12">
+                <div className="w-full">
+                  <SectionHeader
+                    as="h1"
+                    kicker="Work"
+                    title="Selected projects"
+                    description="Verified live URLs where we can share them. Confidential engagements are described without client names, fabricated metrics, or unverifiable claims."
+                  />
 
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <motion.p
-                  className="mono-label !text-accent"
-                  initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-                  animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.15 }}
-                >
-                  {projects.length} projects — public and confidential
-                </motion.p>
-              </div>
-
-              <ul className="mt-5 flex flex-wrap gap-2" aria-label="Capability areas">
-                {capabilityTags.map((capability, index) => (
-                  <motion.li
-                    key={capability}
-                    initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-                    animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                    transition={{ duration: 0.35, delay: 0.2 + index * 0.04 }}
-                  >
-                    <span
-                      className={cn(
-                        "inline-block rounded-sm border px-2.5 py-1 font-mono text-[0.65rem] uppercase tracking-[0.12em]",
-                        CAPABILITY_ACCENTS[capability],
-                      )}
+                  <div className="mt-8 flex flex-wrap items-center gap-3">
+                    <motion.p
+                      className="mono-label !text-accent"
+                      initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+                      animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.15 }}
                     >
-                      {capability}
-                    </span>
-                  </motion.li>
-                ))}
-              </ul>
+                      {projects.length} projects — public and confidential
+                    </motion.p>
+                  </div>
+                </div>
+
+                <ul
+                  className="grid w-full grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3"
+                  aria-label="Capability areas"
+                >
+                  {capabilityTags.map((capability, index) => (
+                    <motion.li
+                      key={capability}
+                      initial={reduceMotion ? false : { opacity: 0, y: 6 }}
+                      animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.35,
+                        delay: 0.2 + index * 0.04,
+                      }}
+                    >
+                      <span
+                        className={cn(
+                          "inline-flex w-full items-center justify-center rounded-sm border px-2.5 py-1.5 text-center font-mono text-[0.65rem] uppercase tracking-[0.12em]",
+                          CAPABILITY_ACCENTS[capability],
+                        )}
+                      >
+                        {capability}
+                      </span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </KineticGrid>
         </FadeIn>

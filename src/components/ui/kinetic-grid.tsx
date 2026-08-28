@@ -18,6 +18,8 @@ interface Ripple {
 
 type Theme = {
   bg: string;
+  lineBase: { r: number; g: number; b: number; a: number };
+  nodeBase: { r: number; g: number; b: number; a: number };
   lineActive: { r: number; g: number; b: number; a: number };
   nodeActive: { r: number; g: number; b: number; a: number };
   glow: string;
@@ -32,12 +34,15 @@ const LERP_SPEED = 0.08;
 const MAX_DPR = 2;
 
 const LINE_BASE = { r: 255, g: 255, b: 255, a: 0.13 };
+const NODE_BASE = { r: 255, g: 255, b: 255, a: 0.2 };
 const NODE_BASE_RADIUS = 1.8;
 const NODE_ACTIVE_RADIUS = 3.2;
 
 const THEMES: Record<"default" | "monochrome", Theme> = {
   default: {
     bg: "#161618",
+    lineBase: LINE_BASE,
+    nodeBase: NODE_BASE,
     lineActive: { r: 74, g: 158, b: 255, a: 0.9 },
     nodeActive: { r: 74, g: 158, b: 255, a: 1.0 },
     glow: "74,158,255",
@@ -45,6 +50,8 @@ const THEMES: Record<"default" | "monochrome", Theme> = {
   },
   monochrome: {
     bg: "#000000",
+    lineBase: LINE_BASE,
+    nodeBase: NODE_BASE,
     lineActive: { r: 255, g: 255, b: 255, a: 0.9 },
     nodeActive: { r: 255, g: 255, b: 255, a: 1.0 },
     glow: "255,255,255",
@@ -53,11 +60,13 @@ const THEMES: Record<"default" | "monochrome", Theme> = {
 };
 
 const NOMAD_THEME: Theme = {
-  bg: "#08090a",
-  lineActive: { r: 45, g: 184, b: 138, a: 0.9 },
-  nodeActive: { r: 45, g: 184, b: 138, a: 1.0 },
+  bg: "#161618",
+  lineBase: { r: 200, g: 220, b: 210, a: 0.28 },
+  nodeBase: { r: 45, g: 184, b: 138, a: 0.35 },
+  lineActive: { r: 45, g: 184, b: 138, a: 1.0 },
+  nodeActive: { r: 60, g: 210, b: 160, a: 1.0 },
   glow: "45,184,138",
-  ripple: "60,200,150",
+  ripple: "60,210,160",
 };
 
 function lerpN(a: number, b: number, t: number) {
@@ -236,7 +245,7 @@ export default function KineticGrid({
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
-        ctx.strokeStyle = lerpColor(LINE_BASE, theme.lineActive, t);
+        ctx.strokeStyle = lerpColor(theme.lineBase, theme.lineActive, t);
         ctx.lineWidth = lerpN(0.8, 1.5, t);
         ctx.stroke();
       };
@@ -292,11 +301,7 @@ export default function KineticGrid({
 
           ctx.beginPath();
           ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-          ctx.fillStyle = lerpColor(
-            { r: 255, g: 255, b: 255, a: 0.2 },
-            theme.nodeActive,
-            t,
-          );
+          ctx.fillStyle = lerpColor(theme.nodeBase, theme.nodeActive, t);
           ctx.fill();
         }
       }
