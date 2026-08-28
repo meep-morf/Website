@@ -30,9 +30,10 @@ import {
 const TEXTUREMAP = { src: "/textures/hero-abstract.jpg" };
 const DEPTHMAP = { src: "/textures/hero-depth.webp" };
 
-/** Sea-green cybersecurity scan tint (replaces red-dominant overlay). */
+/** Sea-green cybersecurity scan tint with subtle warm accent for visibility. */
 const SCAN_TINT = vec3(0.2, 0.85, 0.65);
-const MASK_TINT = vec3(0.25, 8.0, 0.45);
+const SCAN_WARM = vec3(0.95, 0.42, 0.12);
+const MASK_TINT = vec3(0.55, 7.5, 0.38);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 extend(THREE as any);
@@ -43,11 +44,13 @@ export type HeroFuturisticProps = {
   showOverlay?: boolean;
   className?: string;
   heightClassName?: string;
+  /** 0–1 visual intensity for the WebGPU layer (default 0.95). */
+  intensity?: number;
 };
 
 function PostProcessing({
-  strength = 1,
-  threshold = 1,
+  strength = 1.35,
+  threshold = 0.85,
   fullScreenEffect = true,
 }: {
   strength?: number;
@@ -66,9 +69,11 @@ function PostProcessing({
 
     const scanPos = float(scanProgress.value);
     const uvY = uv().y;
-    const scanWidth = float(0.05);
+    const scanWidth = float(0.07);
     const scanLine = smoothstep(0, scanWidth, abs(uvY.sub(scanPos)));
-    const scanOverlay = SCAN_TINT.mul(oneMinus(scanLine)).mul(0.35);
+    const scanOverlayGreen = SCAN_TINT.mul(oneMinus(scanLine)).mul(0.5);
+    const scanOverlayWarm = SCAN_WARM.mul(oneMinus(scanLine)).mul(0.22);
+    const scanOverlay = scanOverlayGreen.add(scanOverlayWarm);
 
     const withScanEffect = mix(
       scenePassColor,
@@ -135,7 +140,7 @@ function Scene() {
     }
   });
 
-  const scaleFactor = 0.55;
+  const scaleFactor = 0.72;
   return (
     <mesh ref={meshRef} scale={[w * scaleFactor, h * scaleFactor, 1]} material={material}>
       <planeGeometry />
@@ -262,23 +267,25 @@ export default function HeroFuturistic({
   showOverlay = false,
   className = "",
   heightClassName = "h-full min-h-[280px]",
+  intensity = 0.95,
 }: HeroFuturisticProps) {
   const webgpu = useWebGPUSupport();
   const words = titleWords.split(" ");
+  const layerOpacity = Math.min(1, Math.max(0.4, intensity));
 
   return (
     <div className={`relative overflow-hidden ${heightClassName} ${className}`}>
       {showOverlay ? <TextOverlay titleWords={words} subtitle={subtitle} /> : null}
-      <div className="absolute inset-0 opacity-70">
+      <div className="absolute inset-0" style={{ opacity: layerOpacity }}>
         {webgpu === null ? (
-          <div className="h-full w-full animate-pulse bg-surface/30" aria-hidden="true" />
+          <div className="hero-scan-fallback h-full w-full" aria-hidden="true" />
         ) : webgpu ? (
           <WebGPUCanvas />
         ) : (
           <StaticFallback />
         )}
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/20 via-transparent to-bg/90" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/10 via-transparent to-bg/80" />
     </div>
   );
 }

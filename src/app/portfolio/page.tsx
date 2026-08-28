@@ -1,8 +1,7 @@
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ProjectListItem } from "@/components/motion/ProjectCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { NOMAD_SYNAPSE_THEME } from "@/components/ui/interactive-synapse-network";
-import { InteractiveSynapseNetworkLazy } from "@/components/ui/interactive-synapse-network-lazy";
+import { HeroFuturisticLazy } from "@/components/ui/hero-futuristic-lazy";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { projects } from "@/content/projects";
 import { buildMetadata } from "@/lib/metadata";
@@ -19,16 +18,14 @@ export default function PortfolioPage() {
     <>
       <section className="relative min-h-[min(58vh,520px)] overflow-hidden border-b border-border-subtle section-tint-info">
         <div className="absolute inset-0 z-0" aria-hidden>
-          <InteractiveSynapseNetworkLazy
-            {...NOMAD_SYNAPSE_THEME}
-            nodeCount={56}
-            connectionRadius={165}
-            trailOpacity={0.2}
-            className="h-full w-full"
-            ariaLabel="Portfolio work network visualization"
+          <HeroFuturisticLazy
+            titleWords="Selected projects"
+            subtitle="Engineering work across products, platforms, and security."
+            heightClassName="h-full min-h-[min(58vh,520px)]"
+            intensity={0.82}
           />
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/65 to-bg/90"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/25 via-bg/55 to-bg/88"
             aria-hidden
           />
         </div>

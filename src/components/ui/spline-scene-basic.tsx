@@ -65,17 +65,17 @@ function HeroVisual() {
   if (reduceMotion) {
     return (
       <HeroVisualFallback
-        className="h-full min-h-[280px] md:min-h-[420px]"
+        className="h-full min-h-[min(45vh,400px)] md:min-h-[440px] lg:min-h-[520px]"
         variant="operational"
       />
     );
   }
 
   return (
-    <div className="relative h-full min-h-[280px] md:min-h-[420px]">
+    <div className="relative h-full min-h-[min(45vh,400px)] w-full md:min-h-[440px] lg:min-h-[520px]">
       <SplineScene
         scene={SPLINE_SCENE_URL}
-        className="absolute inset-0 h-full w-full"
+        className="absolute inset-0 h-full w-full [&_canvas]:!h-full [&_canvas]:!w-full"
       />
     </div>
   );
@@ -94,28 +94,43 @@ function SplineSceneBasicInner() {
             "min-h-[min(78vh,760px)]",
           )}
         >
-          <div className="absolute inset-0 z-0" aria-hidden>
-            <InteractiveSynapseNetworkLazy
-              {...NOMAD_SYNAPSE_THEME}
-              nodeCount={52}
-              connectionRadius={155}
-              trailOpacity={0.2}
-              className="h-full w-full"
-              ariaLabel=""
-            />
-            <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/88 to-bg/55"
-              aria-hidden
-            />
-          </div>
-          <Spotlight fill="rgba(45, 184, 138, 0.22)" />
+          <Spotlight fill="rgba(45, 184, 138, 0.22)" className="z-[1]" />
 
-          <div className="relative z-10 grid min-h-[min(78vh,760px)] grid-cols-1 items-center gap-8 p-6 md:grid-cols-2 md:gap-10 md:p-10 lg:p-12">
-            <HeroCopy />
-            <div className="relative min-h-[280px] md:min-h-[420px] lg:min-h-[480px]">
-              <HeroVisual />
+          <div className="relative z-10 grid min-h-[min(78vh,760px)] grid-cols-1 items-stretch md:grid-cols-2">
+            <div className="relative flex items-center p-6 md:p-10 lg:p-12">
+              <div className="absolute inset-0 z-0" aria-hidden>
+                <InteractiveSynapseNetworkLazy
+                  {...NOMAD_SYNAPSE_THEME}
+                  nodeCount={36}
+                  connectionRadius={140}
+                  trailOpacity={0.14}
+                  className="h-full w-full opacity-80"
+                  ariaLabel=""
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/92 to-bg/75"
+                  aria-hidden
+                />
+              </div>
+              <div className="relative z-10 w-full">
+                <HeroCopy />
+              </div>
+            </div>
+
+            <div className="relative min-h-[min(45vh,400px)] md:min-h-[440px] lg:min-h-[520px]">
               <div
-                className="pointer-events-none absolute inset-0 rounded-sm ring-1 ring-inset ring-accent-border/20"
+                className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_80%_70%_at_50%_45%,rgba(45,184,138,0.08),transparent_65%)]"
+                aria-hidden
+              />
+              <div className="relative z-10 h-full min-h-[inherit] p-4 pt-0 md:p-6 md:pt-6 lg:p-8">
+                <HeroVisual />
+              </div>
+              <div
+                className="pointer-events-none absolute inset-4 z-20 rounded-sm ring-1 ring-inset ring-accent-border/30 md:inset-6 lg:inset-8"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute inset-y-0 left-0 z-20 w-12 bg-gradient-to-r from-bg/70 to-transparent md:w-20"
                 aria-hidden
               />
             </div>
@@ -141,27 +156,33 @@ export function SplineSceneBasic() {
                 "min-h-[min(78vh,760px)]",
               )}
             >
-              <div className="absolute inset-0 z-0" aria-hidden>
-                <InteractiveSynapseNetworkLazy
-                  {...NOMAD_SYNAPSE_THEME}
-                  nodeCount={52}
-                  connectionRadius={155}
-                  trailOpacity={0.2}
-                  className="h-full w-full"
-                  ariaLabel=""
-                />
-                <div
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/88 to-bg/55"
-                  aria-hidden
-                />
-              </div>
-              <Spotlight fill="rgba(45, 184, 138, 0.22)" />
-              <div className="relative z-10 grid min-h-[min(78vh,760px)] grid-cols-1 items-center gap-8 p-6 md:grid-cols-2 md:gap-10 md:p-10 lg:p-12">
-                <HeroCopy />
-                <HeroVisualFallback
-                  className="h-full min-h-[280px] md:min-h-[420px]"
-                  variant="operational"
-                />
+              <Spotlight fill="rgba(45, 184, 138, 0.22)" className="z-[1]" />
+              <div className="relative z-10 grid min-h-[min(78vh,760px)] grid-cols-1 items-stretch md:grid-cols-2">
+                <div className="relative flex items-center p-6 md:p-10 lg:p-12">
+                  <div className="absolute inset-0 z-0" aria-hidden>
+                    <InteractiveSynapseNetworkLazy
+                      {...NOMAD_SYNAPSE_THEME}
+                      nodeCount={36}
+                      connectionRadius={140}
+                      trailOpacity={0.14}
+                      className="h-full w-full opacity-80"
+                      ariaLabel=""
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/92 to-bg/75"
+                      aria-hidden
+                    />
+                  </div>
+                  <div className="relative z-10 w-full">
+                    <HeroCopy />
+                  </div>
+                </div>
+                <div className="relative min-h-[min(45vh,400px)] p-4 pt-0 md:min-h-[440px] md:p-6 md:pt-6 lg:min-h-[520px] lg:p-8">
+                  <HeroVisualFallback
+                    className="h-full min-h-[inherit]"
+                    variant="operational"
+                  />
+                </div>
               </div>
             </Card>
           </div>

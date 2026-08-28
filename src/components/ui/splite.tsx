@@ -16,7 +16,7 @@ function SplineLoader({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "flex h-full min-h-[280px] w-full items-center justify-center bg-bg",
+        "flex h-full min-h-[min(45vh,400px)] w-full items-center justify-center bg-bg-subtle/40 md:min-h-[440px]",
         className,
       )}
       aria-hidden="true"
@@ -37,7 +37,7 @@ export function SplineScene({ scene, className, ...props }: SplineSceneProps) {
     <ErrorBoundary
       fallback={
         <HeroVisualFallback
-          className={cn("h-full min-h-[280px] md:min-h-[420px]", className)}
+          className={cn("h-full min-h-[min(45vh,400px)] md:min-h-[440px]", className)}
           variant="synapse"
         />
       }

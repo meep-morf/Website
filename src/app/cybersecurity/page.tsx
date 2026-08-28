@@ -61,34 +61,37 @@ const principles = [
 export default function CybersecurityPage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-border-subtle">
-        <div className="absolute inset-0">
+      <section className="relative min-h-[min(62vh,560px)] overflow-hidden border-b border-border-subtle">
+        <div className="absolute inset-0 z-0" aria-hidden>
           <HeroFuturisticLazy
             titleWords="Security that protects software in motion"
             subtitle="Continuous assessment across your operating layer."
-            heightClassName="h-full min-h-[320px]"
+            heightClassName="h-full min-h-[min(62vh,560px)]"
+            intensity={1}
           />
         </div>
-        <div className="container-page relative z-10 max-w-4xl section-pad">
+        <div className="container-page relative z-10 flex min-h-[min(62vh,560px)] items-center section-pad">
           <FadeIn>
-            <p className="mb-4 text-sm text-faint">
-              <Link
-                href="/services"
-                className="cursor-pointer transition-colors hover:text-accent"
-              >
-                Services
-              </Link>
-              <span className="mx-2 text-border" aria-hidden>
-                /
-              </span>
-              <span className="text-muted">Cybersecurity</span>
-            </p>
-            <SectionHeader
-              as="h1"
-              kicker="Cybersecurity"
-              title="Security that protects software in motion"
-              description="NomadLabz helps organizations reduce real exposure across products and infrastructure — with engineering-grade clarity instead of theater."
-            />
+            <div className="max-w-4xl rounded-sm border border-border-subtle bg-bg/93 p-8 backdrop-blur-md md:p-10">
+              <p className="mb-4 text-sm text-faint">
+                <Link
+                  href="/services"
+                  className="cursor-pointer transition-colors hover:text-accent"
+                >
+                  Services
+                </Link>
+                <span className="mx-2 text-border" aria-hidden>
+                  /
+                </span>
+                <span className="text-muted">Cybersecurity</span>
+              </p>
+              <SectionHeader
+                as="h1"
+                kicker="Cybersecurity"
+                title="Security that protects software in motion"
+                description="NomadLabz helps organizations reduce real exposure across products and infrastructure — with engineering-grade clarity instead of theater."
+              />
+            </div>
           </FadeIn>
         </div>
       </section>
