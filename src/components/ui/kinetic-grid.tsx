@@ -88,9 +88,22 @@ function lerpColor(
 function resolveTheme(
   globalColor: "default" | "monochrome",
   accent?: "nomad",
+  intensity: "normal" | "high" = "normal",
 ): Theme {
-  if (accent === "nomad") return NOMAD_THEME;
-  return THEMES[globalColor];
+  const base = accent === "nomad" ? NOMAD_THEME : THEMES[globalColor];
+  if (intensity !== "high") return base;
+
+  return {
+    ...base,
+    lineBase: { ...base.lineBase, a: Math.max(base.lineBase.a, 0.55) },
+    nodeBase: {
+      ...base.nodeBase,
+      a: Math.min(base.nodeBase.a + 0.2, 1),
+      r: Math.min(base.nodeBase.r + 20, 255),
+      g: Math.min(base.nodeBase.g + 20, 255),
+      b: Math.min(base.nodeBase.b + 20, 255),
+    },
+  };
 }
 
 export default function KineticGrid({
@@ -98,12 +111,15 @@ export default function KineticGrid({
   className,
   globalColor = "default",
   accent,
+  intensity = "normal",
   fillContainer = true,
 }: {
   children?: ReactNode;
   className?: string;
   globalColor?: "default" | "monochrome";
   accent?: "nomad";
+  /** Boost line/node visibility for smaller panels (e.g. portfolio hero). */
+  intensity?: "normal" | "high";
   /** Size canvas to parent element instead of viewport. Default true. */
   fillContainer?: boolean;
 }) {
@@ -113,8 +129,10 @@ export default function KineticGrid({
   const targetMouseRef = useRef<Point>({ x: -9999, y: -9999 });
   const ripplesRef = useRef<Ripple[]>([]);
   const rafRef = useRef<number>(0);
+  const nowRef = useRef(0);
   const sizeRef = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const visibleRef = useRef(true);
+  const drawErrorLoggedRef = useRef(false);
 
   const getWarpedPoint = useCallback(
     (
@@ -190,150 +208,169 @@ export default function KineticGrid({
       if (!ctx) return;
 
       const { w: W, h: H } = sizeRef.current;
-      const mouse = mouseRef.current;
-      const ripples = ripplesRef.current;
-      const theme = resolveTheme(globalColor, accent);
+      if (W <= 0 || H <= 0) return;
 
-      ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = theme.bg;
-      ctx.fillRect(0, 0, W, H);
+      try {
+        const mouse = mouseRef.current;
+        const ripples = ripplesRef.current;
+        const theme = resolveTheme(globalColor, accent, intensity);
+        const baseLineWidth = intensity === "high" ? 1.4 : 1.0;
+        const activeLineWidth = intensity === "high" ? 2.6 : 2.0;
+        const baseNodeRadius =
+          intensity === "high" ? NODE_BASE_RADIUS + 0.4 : NODE_BASE_RADIUS;
 
-      ctx.fillStyle = "rgba(255,255,255,0.05)";
-      for (let x = DOT_SPACING / 2; x < W; x += DOT_SPACING) {
-        for (let y = DOT_SPACING / 2; y < H; y += DOT_SPACING) {
-          ctx.beginPath();
-          ctx.arc(x, y, 0.7, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = theme.bg;
+        ctx.fillRect(0, 0, W, H);
 
-      for (let i = ripples.length - 1; i >= 0; i--) {
-        const r = ripples[i];
-        const age = (now - r.born) / 1000;
-        r.radius = Math.max(0, age * 400);
-        r.opacity = Math.max(0, 1 - age * 1.2);
-        if (r.opacity <= 0) ripples.splice(i, 1);
-      }
-
-      const cols = Math.max(2, Math.ceil(W / CELL_SIZE)) + 1;
-      const rows = Math.max(2, Math.ceil(H / CELL_SIZE)) + 1;
-      const cellW = W / (cols - 1);
-      const cellH = H / (rows - 1);
-
-      const pts: Point[][] = [];
-      const prox: number[][] = [];
-
-      for (let row = 0; row < rows; row++) {
-        pts[row] = [];
-        prox[row] = [];
-        for (let col = 0; col < cols; col++) {
-          const { pt, proximity } = getWarpedPoint(
-            col * cellW,
-            row * cellH,
-            col,
-            row,
-            mouse,
-            ripples,
-            cols,
-            rows,
-          );
-          pts[row][col] = pt;
-          prox[row][col] = proximity;
-        }
-      }
-
-      const drawSeg = (p1: Point, p2: Point, pr1: number, pr2: number) => {
-        const avg = (pr1 + pr2) / 2;
-        const t = avg * avg * (3 - 2 * avg);
-        ctx.beginPath();
-        ctx.moveTo(p1.x, p1.y);
-        ctx.lineTo(p2.x, p2.y);
-        ctx.strokeStyle = lerpColor(theme.lineBase, theme.lineActive, t);
-        ctx.lineWidth = lerpN(1.0, 2.0, t);
-        ctx.stroke();
-      };
-
-      ctx.lineCap = "butt";
-
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols - 1; col++) {
-          drawSeg(
-            pts[row][col],
-            pts[row][col + 1],
-            prox[row][col],
-            prox[row][col + 1],
-          );
-        }
-      }
-
-      for (let col = 0; col < cols; col++) {
-        for (let row = 0; row < rows - 1; row++) {
-          drawSeg(
-            pts[row][col],
-            pts[row + 1][col],
-            prox[row][col],
-            prox[row + 1][col],
-          );
-        }
-      }
-
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const p = pts[row][col];
-          const pr = prox[row][col];
-          const t = pr * pr * (3 - 2 * pr);
-          const nodeR = Math.max(0, lerpN(NODE_BASE_RADIUS, NODE_ACTIVE_RADIUS, t));
-
-          if (t > 0.3) {
-            const glowR = Math.max(
-              0,
-              nodeR + lerpN(0, 6, (t - 0.3) / 0.7),
-            );
-            if (glowR > 0) {
-              const grd = ctx.createRadialGradient(
-                p.x,
-                p.y,
-                nodeR * 0.5,
-                p.x,
-                p.y,
-                glowR,
-              );
-              grd.addColorStop(0, `rgba(${theme.glow},${(t * 0.3).toFixed(3)})`);
-              grd.addColorStop(1, `rgba(${theme.glow},0)`);
-              ctx.beginPath();
-              ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
-              ctx.fillStyle = grd;
-              ctx.fill();
-            }
+        ctx.fillStyle =
+          intensity === "high"
+            ? "rgba(255,255,255,0.08)"
+            : "rgba(255,255,255,0.05)";
+        for (let x = DOT_SPACING / 2; x < W; x += DOT_SPACING) {
+          for (let y = DOT_SPACING / 2; y < H; y += DOT_SPACING) {
+            ctx.beginPath();
+            ctx.arc(x, y, intensity === "high" ? 0.9 : 0.7, 0, Math.PI * 2);
+            ctx.fill();
           }
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, nodeR, 0, Math.PI * 2);
-          ctx.fillStyle = lerpColor(theme.nodeBase, theme.nodeActive, t);
-          ctx.fill();
         }
-      }
 
-      for (const r of ripples) {
-        const safeRadius = Math.max(0, r.radius);
-        if (safeRadius <= 0) continue;
-        ctx.beginPath();
-        ctx.arc(r.x, r.y, safeRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${theme.ripple},${(r.opacity * 0.28).toFixed(3)})`;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
+        for (let i = ripples.length - 1; i >= 0; i--) {
+          const r = ripples[i];
+          const age = (now - r.born) / 1000;
+          r.radius = Math.max(0, age * 400);
+          r.opacity = Math.max(0, 1 - age * 1.2);
+          if (r.opacity <= 0) ripples.splice(i, 1);
+        }
+
+        const cols = Math.max(2, Math.ceil(W / CELL_SIZE)) + 1;
+        const rows = Math.max(2, Math.ceil(H / CELL_SIZE)) + 1;
+        const cellW = W / (cols - 1);
+        const cellH = H / (rows - 1);
+
+        const pts: Point[][] = [];
+        const prox: number[][] = [];
+
+        for (let row = 0; row < rows; row++) {
+          pts[row] = [];
+          prox[row] = [];
+          for (let col = 0; col < cols; col++) {
+            const { pt, proximity } = getWarpedPoint(
+              col * cellW,
+              row * cellH,
+              col,
+              row,
+              mouse,
+              ripples,
+              cols,
+              rows,
+            );
+            pts[row][col] = pt;
+            prox[row][col] = proximity;
+          }
+        }
+
+        const drawSeg = (p1: Point, p2: Point, pr1: number, pr2: number) => {
+          const avg = (pr1 + pr2) / 2;
+          const t = avg * avg * (3 - 2 * avg);
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = lerpColor(theme.lineBase, theme.lineActive, t);
+          ctx.lineWidth = lerpN(baseLineWidth, activeLineWidth, t);
+          ctx.stroke();
+        };
+
+        ctx.lineCap = "butt";
+
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols - 1; col++) {
+            drawSeg(
+              pts[row][col],
+              pts[row][col + 1],
+              prox[row][col],
+              prox[row][col + 1],
+            );
+          }
+        }
+
+        for (let col = 0; col < cols; col++) {
+          for (let row = 0; row < rows - 1; row++) {
+            drawSeg(
+              pts[row][col],
+              pts[row + 1][col],
+              prox[row][col],
+              prox[row + 1][col],
+            );
+          }
+        }
+
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const p = pts[row][col];
+            const pr = prox[row][col];
+            const t = pr * pr * (3 - 2 * pr);
+            const nodeR = Math.max(
+              0,
+              lerpN(baseNodeRadius, NODE_ACTIVE_RADIUS, t),
+            );
+
+            if (t > 0.3) {
+              const glowR = Math.max(
+                0,
+                nodeR + lerpN(0, 6, (t - 0.3) / 0.7),
+              );
+              if (glowR > 0) {
+                const grd = ctx.createRadialGradient(
+                  p.x,
+                  p.y,
+                  nodeR * 0.5,
+                  p.x,
+                  p.y,
+                  glowR,
+                );
+                grd.addColorStop(
+                  0,
+                  `rgba(${theme.glow},${(t * 0.3).toFixed(3)})`,
+                );
+                grd.addColorStop(1, `rgba(${theme.glow},0)`);
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
+                ctx.fillStyle = grd;
+                ctx.fill();
+              }
+            }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, nodeR, 0, Math.PI * 2);
+            ctx.fillStyle = lerpColor(theme.nodeBase, theme.nodeActive, t);
+            ctx.fill();
+          }
+        }
+
+        for (const r of ripples) {
+          const safeRadius = Math.max(0, r.radius);
+          if (safeRadius <= 0) continue;
+          ctx.beginPath();
+          ctx.arc(r.x, r.y, safeRadius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(${theme.ripple},${(r.opacity * 0.28).toFixed(3)})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+      } catch (err) {
+        if (!drawErrorLoggedRef.current) {
+          console.error("[KineticGrid] draw error:", err);
+          drawErrorLoggedRef.current = true;
+        }
       }
     },
-    [accent, getWarpedPoint, globalColor],
+    [accent, getWarpedPoint, globalColor, intensity],
   );
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
     const canvas = canvasRef.current;
     if (!wrapper || !canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
 
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -351,7 +388,11 @@ export default function KineticGrid({
       canvas.height = Math.floor(h * dpr);
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
       sizeRef.current = { w, h };
     };
 
@@ -368,6 +409,8 @@ export default function KineticGrid({
         return;
       }
 
+      nowRef.current = now;
+
       const m = mouseRef.current;
       const t = targetMouseRef.current;
       m.x = lerpN(m.x, t.x, LERP_SPEED);
@@ -382,34 +425,69 @@ export default function KineticGrid({
       rafRef.current = requestAnimationFrame(animate);
     };
 
-    const onMouseMove = (e: MouseEvent) => {
+    const updateTargetFromClient = (clientX: number, clientY: number) => {
       const rect = wrapper.getBoundingClientRect();
       targetMouseRef.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
+        x: clientX - rect.left,
+        y: clientY - rect.top,
       };
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      updateTargetFromClient(e.clientX, e.clientY);
     };
 
     const onMouseLeave = () => {
       targetMouseRef.current = { x: -9999, y: -9999 };
     };
 
-    const onClick = (e: MouseEvent) => {
+    const addRipple = (clientX: number, clientY: number) => {
       const rect = wrapper.getBoundingClientRect();
       ripplesRef.current.push({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
+        x: clientX - rect.left,
+        y: clientY - rect.top,
         radius: 0,
         opacity: 1,
-        born: performance.now(),
+        born: nowRef.current || performance.now(),
       });
+    };
+
+    const onClick = (e: MouseEvent) => {
+      addRipple(e.clientX, e.clientY);
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 0) return;
+      const touch = e.touches[0];
+      updateTargetFromClient(touch.clientX, touch.clientY);
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      targetMouseRef.current = { x: -9999, y: -9999 };
+      if (e.changedTouches.length > 0) {
+        const touch = e.changedTouches[0];
+        addRipple(touch.clientX, touch.clientY);
+      }
+    };
+
+    const onContextLost = (e: Event) => {
+      e.preventDefault();
+      stopLoop();
+    };
+
+    const onContextRestored = () => {
+      setSize();
+      draw(nowRef.current || performance.now());
+      if (!reducedMotion && visibleRef.current) {
+        startLoop();
+      }
     };
 
     setSize();
 
     const ro = new ResizeObserver(() => {
       setSize();
-      draw(performance.now());
+      draw(nowRef.current || performance.now());
     });
     ro.observe(wrapper);
 
@@ -433,9 +511,14 @@ export default function KineticGrid({
     wrapper.addEventListener("mousemove", onMouseMove);
     wrapper.addEventListener("mouseleave", onMouseLeave);
     wrapper.addEventListener("click", onClick);
+    wrapper.addEventListener("touchmove", onTouchMove, { passive: true });
+    wrapper.addEventListener("touchend", onTouchEnd, { passive: true });
+    canvas.addEventListener("contextlost", onContextLost);
+    canvas.addEventListener("contextrestored", onContextRestored);
 
     if (reducedMotion) {
-      draw(performance.now());
+      nowRef.current = performance.now();
+      draw(nowRef.current);
     } else {
       startLoop();
     }
@@ -449,6 +532,10 @@ export default function KineticGrid({
       wrapper.removeEventListener("mousemove", onMouseMove);
       wrapper.removeEventListener("mouseleave", onMouseLeave);
       wrapper.removeEventListener("click", onClick);
+      wrapper.removeEventListener("touchmove", onTouchMove);
+      wrapper.removeEventListener("touchend", onTouchEnd);
+      canvas.removeEventListener("contextlost", onContextLost);
+      canvas.removeEventListener("contextrestored", onContextRestored);
       stopLoop();
     };
   }, [draw, fillContainer]);
