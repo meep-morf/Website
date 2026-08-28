@@ -3,8 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { InteractiveSynapseNetworkLazy } from "@/components/ui/interactive-synapse-network-lazy";
-import { NOMAD_SYNAPSE_THEME } from "@/components/ui/interactive-synapse-network";
+import { HeroFuturisticLazy } from "@/components/ui/hero-futuristic-lazy";
 import { projects, type CapabilityArea } from "@/content/projects";
 import { cn } from "@/lib/utils";
 
@@ -30,21 +29,23 @@ export function PortfolioHero() {
 
   return (
     <section className="relative min-h-[min(72vh,560px)] overflow-hidden border-b border-border-subtle section-tint-info">
-      <div className="absolute inset-0" aria-hidden>
-        <InteractiveSynapseNetworkLazy
-          {...NOMAD_SYNAPSE_THEME}
-          nodeCount={48}
-          connectionRadius={150}
-          trailOpacity={0.16}
-          className="h-full w-full"
-          ariaLabel="Animated project network background"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/20 via-bg/50 to-bg/85" />
+      <div className="absolute inset-0 z-0" aria-hidden>
+        {reduceMotion ? (
+          <div className="hero-scan-fallback h-full w-full" />
+        ) : (
+          <HeroFuturisticLazy
+            showOverlay={false}
+            heightClassName="h-full min-h-[min(72vh,560px)]"
+            intensity={0.42}
+            className="opacity-100"
+          />
+        )}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/25 via-bg/45 to-bg/80" />
       </div>
 
       <div className="container-page relative z-10 flex min-h-[min(72vh,560px)] items-center section-pad">
         <FadeIn>
-          <div className="max-w-3xl rounded-sm border border-border-subtle bg-bg/88 p-8 backdrop-blur-md md:p-10">
+          <div className="max-w-3xl rounded-sm border border-border-subtle bg-bg/90 p-8 backdrop-blur-md md:p-10">
             <SectionHeader
               as="h1"
               kicker="Work"

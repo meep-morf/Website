@@ -64,15 +64,14 @@ export default function CybersecurityPage() {
       <section className="relative min-h-[min(62vh,560px)] overflow-hidden border-b border-border-subtle">
         <div className="absolute inset-0 z-0" aria-hidden>
           <HeroFuturisticLazy
-            titleWords="Security that protects software in motion"
-            subtitle="Continuous assessment across your operating layer."
+            showOverlay={false}
             heightClassName="h-full min-h-[min(62vh,560px)]"
-            intensity={1}
+            intensity={0.88}
           />
         </div>
         <div className="container-page relative z-10 flex min-h-[min(62vh,560px)] items-center section-pad">
           <FadeIn>
-            <div className="max-w-4xl rounded-sm border border-border-subtle bg-bg/93 p-8 backdrop-blur-md md:p-10">
+            <div className="max-w-4xl rounded-sm border border-border-subtle bg-bg/88 p-8 backdrop-blur-md md:p-10">
               <p className="mb-4 text-sm text-faint">
                 <Link
                   href="/services"

@@ -14,7 +14,7 @@ export const securityHeaders: Record<string, string> = {
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
-    "connect-src 'self' https://api.resend.com https://unpkg.com",
+    "connect-src 'self' https://api.resend.com https://prod.spline.design https://draft.spline.design https://spline.design https://unpkg.com",
     "media-src 'self' blob: https:",
     "worker-src 'self' blob:",
     "frame-ancestors 'none'",

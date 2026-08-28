@@ -285,7 +285,7 @@ export default function HeroFuturistic({
           <StaticFallback />
         )}
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/10 via-transparent to-bg/80" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/5 via-transparent to-bg/55" />
     </div>
   );
 }
