@@ -36,9 +36,10 @@ export function PortfolioHero() {
           >
             <KineticGrid
               accent="nomad"
-              className="absolute inset-0 h-full w-full"
+              fillContainer
+              className="absolute inset-0 z-0 h-full w-full"
             />
-            <div className="relative z-10 w-full bg-black/30 p-8 backdrop-blur-sm md:p-10">
+            <div className="relative z-10 w-full p-8 md:p-10 [text-shadow:0_1px_10px_rgba(0,0,0,0.85),0_0_24px_rgba(0,0,0,0.5)]">
               <div className="grid min-h-[min(360px,44vh)] gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
                 <div className="flex flex-col justify-center lg:col-span-5">
                   <SectionHeader

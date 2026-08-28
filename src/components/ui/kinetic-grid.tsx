@@ -26,7 +26,7 @@ type Theme = {
   ripple: string;
 };
 
-const CELL_SIZE = 55;
+const CELL_SIZE = 48;
 const INFLUENCE_RADIUS = 260;
 const MAX_WARP = 24;
 const DOT_SPACING = 28;
@@ -61,12 +61,12 @@ const THEMES: Record<"default" | "monochrome", Theme> = {
 
 const NOMAD_THEME: Theme = {
   bg: "#161618",
-  lineBase: { r: 200, g: 220, b: 210, a: 0.28 },
-  nodeBase: { r: 45, g: 184, b: 138, a: 0.35 },
-  lineActive: { r: 45, g: 184, b: 138, a: 1.0 },
-  nodeActive: { r: 60, g: 210, b: 160, a: 1.0 },
-  glow: "45,184,138",
-  ripple: "60,210,160",
+  lineBase: { r: 200, g: 230, b: 215, a: 0.5 },
+  nodeBase: { r: 45, g: 184, b: 138, a: 0.55 },
+  lineActive: { r: 55, g: 210, b: 165, a: 1.0 },
+  nodeActive: { r: 70, g: 230, b: 180, a: 1.0 },
+  glow: "55,210,165",
+  ripple: "70,230,180",
 };
 
 function lerpN(a: number, b: number, t: number) {
@@ -98,11 +98,14 @@ export default function KineticGrid({
   className,
   globalColor = "default",
   accent,
+  fillContainer = true,
 }: {
   children?: ReactNode;
   className?: string;
   globalColor?: "default" | "monochrome";
   accent?: "nomad";
+  /** Size canvas to parent element instead of viewport. Default true. */
+  fillContainer?: boolean;
 }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -246,7 +249,7 @@ export default function KineticGrid({
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
         ctx.strokeStyle = lerpColor(theme.lineBase, theme.lineActive, t);
-        ctx.lineWidth = lerpN(0.8, 1.5, t);
+        ctx.lineWidth = lerpN(1.0, 2.0, t);
         ctx.stroke();
       };
 
@@ -331,7 +334,9 @@ export default function KineticGrid({
     ).matches;
 
     const setSize = () => {
-      const rect = wrapper.getBoundingClientRect();
+      const rect = fillContainer
+        ? wrapper.getBoundingClientRect()
+        : { width: window.innerWidth, height: window.innerHeight };
       const w = Math.max(1, Math.floor(rect.width));
       const h = Math.max(1, Math.floor(rect.height));
       const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
@@ -398,11 +403,13 @@ export default function KineticGrid({
 
     const ro = new ResizeObserver(() => {
       setSize();
-      if (reducedMotion) {
-        draw(performance.now());
-      }
+      draw(performance.now());
     });
     ro.observe(wrapper);
+
+    if (!fillContainer) {
+      window.addEventListener("resize", setSize);
+    }
 
     const io = new IntersectionObserver(
       ([entry]) => {
@@ -430,24 +437,28 @@ export default function KineticGrid({
     return () => {
       ro.disconnect();
       io.disconnect();
+      if (!fillContainer) {
+        window.removeEventListener("resize", setSize);
+      }
       wrapper.removeEventListener("mousemove", onMouseMove);
       wrapper.removeEventListener("mouseleave", onMouseLeave);
       wrapper.removeEventListener("click", onClick);
       stopLoop();
     };
-  }, [draw]);
-
-  const theme = resolveTheme(globalColor, accent);
+  }, [draw, fillContainer]);
 
   return (
     <div
       ref={wrapperRef}
-      className={cn("relative overflow-hidden", className)}
-      style={{ backgroundColor: theme.bg }}
+      className={cn(
+        "relative overflow-hidden",
+        fillContainer && "h-full w-full",
+        className,
+      )}
     >
       <canvas
         ref={canvasRef}
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full"
+        className="pointer-events-none absolute inset-0 z-[1] h-full w-full"
         aria-hidden
       />
       {children ? (
