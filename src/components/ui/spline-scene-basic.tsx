@@ -5,9 +5,8 @@ import { useReducedMotion } from "motion/react";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ShinyArrowButton } from "@/components/ui/ShinyArrowButton";
+import { Card } from "@/components/ui/card";
 import { Spotlight } from "@/components/ui/spotlight";
-import { NOMAD_SYNAPSE_THEME } from "@/components/ui/interactive-synapse-network";
-import { InteractiveSynapseNetworkLazy } from "@/components/ui/interactive-synapse-network-lazy";
 import { SplineScene } from "@/components/ui/spline-scene";
 import { HeroVisualFallback } from "@/components/ui/HeroVisualFallback";
 import { StaggerItem, StaggerReveal } from "@/components/motion/StaggerReveal";
@@ -17,8 +16,10 @@ import { cn } from "@/lib/utils";
 const SPLINE_SCENE_URL =
   "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
 
-const ROBOT_COLUMN_CLASS =
-  "relative min-h-[min(52vh,560px)] md:min-h-[480px] lg:min-h-[560px]";
+const HOME_FALLBACK_VARIANT = "gradient" as const;
+
+const SPLINE_COLUMN_CLASS =
+  "relative min-h-[min(44vh,420px)] md:min-h-[480px] lg:min-h-[500px]";
 
 function HeroCopy() {
   return (
@@ -27,19 +28,17 @@ function HeroCopy() {
         <p className="mono-label mb-6">{siteConfig.name}</p>
       </StaggerItem>
       <StaggerItem>
-        <h1 className="display-heading max-w-4xl text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem]">
+        <h1 className="display-heading max-w-2xl text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] lg:leading-[1.08]">
           {siteConfig.headline}
         </h1>
       </StaggerItem>
       <StaggerItem>
-        <p className="mt-6 max-w-xl text-base text-muted md:text-lg">
-          NomadLabz engineers the invisible operating layer — product surfaces,
-          integrations, cloud delivery, and security controls — so teams ship with
-          confidence and operate without unmanaged risk.
+        <p className="mt-5 max-w-lg text-base text-muted md:text-lg">
+          {siteConfig.description}
         </p>
       </StaggerItem>
       <StaggerItem>
-        <div className="mt-10 flex flex-wrap items-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <ButtonLink href={ctaPrimary.href} className="cta-pulse">
             {ctaPrimary.label}
           </ButtonLink>
@@ -67,7 +66,7 @@ function HeroVisual() {
     return (
       <HeroVisualFallback
         className="h-full w-full min-h-[inherit]"
-        variant="operational"
+        variant={HOME_FALLBACK_VARIANT}
       />
     );
   }
@@ -76,7 +75,7 @@ function HeroVisual() {
     <SplineScene
       scene={SPLINE_SCENE_URL}
       className="h-full w-full min-h-[inherit]"
-      fallbackVariant="operational"
+      fallbackVariant={HOME_FALLBACK_VARIANT}
     />
   );
 }
@@ -84,39 +83,38 @@ function HeroVisual() {
 function HomeHeroLayout({ visual }: { visual: ReactNode }) {
   return (
     <section
-      className="group relative min-h-[min(92vh,920px)] overflow-hidden border-b border-border-subtle"
+      className="border-b border-border-subtle py-14 md:py-16 lg:py-20"
       aria-label="NomadLabz hero"
     >
-      <div className="absolute inset-0 opacity-[0.15]" aria-hidden>
-        <InteractiveSynapseNetworkLazy
-          {...NOMAD_SYNAPSE_THEME}
-          nodeCount={32}
-          connectionRadius={130}
-          trailOpacity={0.12}
-          className="h-full w-full"
-          ariaLabel=""
-        />
-      </div>
+      <div className="container-page">
+        <Card
+          className={cn(
+            "group relative w-full overflow-hidden border-border-subtle",
+            "bg-black/[0.96] shadow-[0_0_0_1px_rgba(45,184,138,0.06)]",
+            "min-h-[min(88vh,860px)] md:min-h-[500px] lg:min-h-[520px]",
+          )}
+        >
+          <Spotlight fill="rgba(45, 184, 138, 0.16)" className="z-[1]" />
 
-      <Spotlight fill="rgba(45, 184, 138, 0.16)" className="z-[1]" />
-
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/20 via-transparent to-bg/75"
-        aria-hidden
-      />
-
-      <div className="container-page relative z-10 grid min-h-[min(92vh,920px)] grid-cols-1 items-center gap-8 pb-28 pt-16 md:gap-10 md:pb-36 md:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-12">
-        <div className="relative z-10 flex flex-col justify-center">
-          <HeroCopy />
-        </div>
-
-        <div className={cn(ROBOT_COLUMN_CLASS, "relative z-10")}>
           <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_70%_at_50%_45%,rgba(45,184,138,0.14),transparent_72%)]"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent-glow/8 via-transparent to-bg/70"
             aria-hidden
           />
-          <div className="relative h-full min-h-[inherit] w-full">{visual}</div>
-        </div>
+
+          <div className="relative z-10 flex min-h-[inherit] flex-col lg:flex-row">
+            <div className="flex flex-1 flex-col justify-center px-6 py-10 sm:px-8 md:px-10 md:py-12 lg:px-12">
+              <HeroCopy />
+            </div>
+
+            <div className={cn(SPLINE_COLUMN_CLASS, "flex-1 lg:min-w-0")}>
+              <div
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_70%_at_50%_45%,rgba(45,184,138,0.12),transparent_72%)]"
+                aria-hidden
+              />
+              <div className="relative h-full min-h-[inherit] w-full">{visual}</div>
+            </div>
+          </div>
+        </Card>
       </div>
     </section>
   );
@@ -134,7 +132,7 @@ export function SplineSceneBasic() {
           visual={
             <HeroVisualFallback
               className="h-full w-full min-h-[inherit]"
-              variant="operational"
+              variant={HOME_FALLBACK_VARIANT}
             />
           }
         />
