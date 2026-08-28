@@ -31,14 +31,12 @@ export function PortfolioHero() {
     <section className="relative overflow-hidden border-b border-border-subtle">
       <div className="container-page relative z-10 flex min-h-[min(72vh,560px)] items-center section-pad">
         <FadeIn className="w-full">
-          <div
-            className="relative w-full min-h-[min(400px,48vh)] overflow-hidden rounded-xl border border-border-subtle"
-          >
+          <div className="relative -mx-4 w-[calc(100%+2rem)] min-h-[min(400px,48vh)] overflow-hidden rounded-xl border border-border-subtle md:-mx-6 md:w-[calc(100%+3rem)]">
             <KineticGrid
               accent="nomad"
               intensity="high"
               fillContainer
-              className="pointer-events-auto absolute inset-0 z-0 min-h-[280px] sm:min-h-[360px] h-full w-full"
+              className="pointer-events-auto absolute inset-0 z-0"
             />
             <div className="relative z-10 w-full p-8 md:p-10 [text-shadow:0_1px_10px_rgba(0,0,0,0.85),0_0_24px_rgba(0,0,0,0.5)]">
               <div className="grid min-h-[min(360px,44vh)] gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
