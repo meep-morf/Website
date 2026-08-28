@@ -7,6 +7,7 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ShinyArrowButton } from "@/components/ui/ShinyArrowButton";
 import { Card } from "@/components/ui/card";
 import { Spotlight } from "@/components/ui/spotlight";
+import { Macbook } from "@/components/ui/animated-3d-mac-book-air";
 import { SplineScene } from "@/components/ui/spline-scene";
 import { HeroVisualFallback } from "@/components/ui/HeroVisualFallback";
 import { StaggerItem, StaggerReveal } from "@/components/motion/StaggerReveal";
@@ -72,11 +73,21 @@ function HeroVisual() {
   }
 
   return (
-    <SplineScene
-      scene={SPLINE_SCENE_URL}
-      className="h-full w-full min-h-[inherit]"
-      fallbackVariant={HOME_FALLBACK_VARIANT}
-    />
+    <div className="relative h-full min-h-[inherit] w-full">
+      <SplineScene
+        scene={SPLINE_SCENE_URL}
+        className="relative z-0 h-full w-full min-h-[inherit]"
+        fallbackVariant={HOME_FALLBACK_VARIANT}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center"
+        aria-hidden
+      >
+        <div className="scale-150">
+          <Macbook />
+        </div>
+      </div>
+    </div>
   );
 }
 
